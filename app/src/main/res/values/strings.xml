@@ -38,14 +38,11 @@
     <string name="main_page">메인페이지</string>
     <string name="exercise_sit">운동상태</string>
     <string name="preferences">환경설정</string>
-    <string name="weight">weight</string>
-    <string name="bmi">bmi</string>
     <string name="user_condition">의 상태</string>
     <string name="subtract_day_btn_desc">select the day before</string>
     <string name="weight">WEIGHT</string>
     <string name="height">HEIGHT</string>
     <string name="bmi">BMI</string>
-    <string name="exercise_time">EXERCISE TIME</string>
     <string name="calorie_consumption">CALORIE CONSUMPTION</string>
     <string name="exercise_status_week_goal">주간목표</string>
     <string name="exercise_status_user_state">나의 운동 상태</string>
@@ -77,12 +74,6 @@
     <string name="reply_title">Default reply action</string>
 
     <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
-
     <string name="setting_dark_mode">다크모드</string>
     <string name="setting_app_noti">앱 알림 설정</string>
     <string name="setting_guide">이용가이드</string>
@@ -93,4 +84,8 @@
     <string name="setting_exer_notifi">운동 알림</string>
     <string name="setting_comm_notifi">커뮤니티 알림</string>
 
+    <string name="diet_add_finish">식단완료</string>
+    <string name="edit_finish">수정완료</string>
+    <string name="diet_record_add_edit_hint">식단을 추가해주세요.</string>
+    <string name="diet_record_dialog_title">식단기록</string>
 </resources>
