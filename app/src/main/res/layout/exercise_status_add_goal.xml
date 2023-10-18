@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/goal_list_deco"
+        android:layout_width="160dp"
+        android:layout_height="20dp"
+        android:background="@drawable/black_stroke_gray_back_shape"
+        android:translationZ="1dp"
+        app:layout_constraintEnd_toEndOf="@id/goal_list_wrap"
+        app:layout_constraintStart_toStartOf="@id/goal_list_wrap"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/goal_list_wrap"
+        android:layout_width="360dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/orange"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/goal_list_deco">
+
+        <android.widget.Button
+            android:id="@+id/finish_btn"
+            android:layout_width="170dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/black_stroke_white_back_shape"
+            android:text="@string/edit_finish"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/meal_edit" />
+
+
+        <LinearLayout
+            android:id="@+id/week_goal_wrap"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="5dp"
+            app:layout_constraintBottom_toTopOf="@id/meal_edit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/exercise_status_week_goal"
+                android:textSize="24sp" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/meal_listview"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/close_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/none"
+            android:src="@drawable/ic_close"
+            app:layout_constraintEnd_toEndOf="@id/week_goal_wrap"
+            app:layout_constraintTop_toTopOf="@id/week_goal_wrap" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="13dp"
+            android:background="@color/none"
+            android:src="@drawable/ic_add"
+            android:translationZ="1dp"
+            app:layout_constraintBottom_toBottomOf="@id/meal_edit"
+            app:layout_constraintEnd_toEndOf="@id/meal_edit"
+            app:layout_constraintTop_toTopOf="@id/meal_edit"
+            app:tint="@color/black" />
+
+        <EditText
+            android:id="@+id/meal_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/gray_stroke_white_back_shape"
+            android:gravity="center_vertical"
+            android:hint="@string/diet_record_add_edit_hint"
+            android:minHeight="50dp"
+            android:paddingHorizontal="10dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/week_goal_wrap" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
