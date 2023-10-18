@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="게시글 작성"
-        android:textSize="32dp"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,8 +25,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:text="글 제목"
-        android:textSize="16dp"
+        android:text="@string/community_newpost_tv_title"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_newpost" />
@@ -37,8 +37,8 @@
         android:layout_height="25dp"
         android:layout_marginTop="5dp"
         android:background="@color/light_blue"
-        android:hint="제목을 입력해주세요."
-        android:textSize="15dp"
+        android:hint="@string/community_newpost_title_hint"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/tv_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
@@ -48,8 +48,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        android:text="내용"
-        android:textSize="16dp"
+        android:text="@string/community_newpost_tv_info"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_title" />
 
@@ -64,12 +64,12 @@
         android:background="@color/light_blue"
         android:ems="10"
         android:gravity="top"
-        android:hint="게시글을 작성해주세요."
+        android:hint="@string/community_newpost_tv_info_hint"
         android:inputType="text"
         android:paddingStart="8dp"
         android:paddingTop="15dp"
         android:text=""
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.64"
@@ -95,25 +95,12 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/button_radius"
-        android:text="글쓰기"
+        android:text="@string/community_newpost_btn_write"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_info" />
 
-    <android.widget.Button
-        android:id="@+id/btn_amend"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/button_radius"
-        android:text="수정"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_info" />
 
     <android.widget.Button
         android:id="@+id/btn_cancel"
@@ -122,8 +109,8 @@
         android:layout_marginEnd="12dp"
         android:background="@drawable/button_radius"
         android:textColor="@color/white"
-        android:text="취소"
-        android:textSize="20dp"
+        android:text="@string/community_newpost_btn_cancel"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/btn_write"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btn_write" />

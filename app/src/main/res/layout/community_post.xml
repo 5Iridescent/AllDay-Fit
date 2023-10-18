@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginTop="28dp"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:text="글 제목"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
         android:layout_marginStart="58dp"
         android:layout_marginTop="35dp"
         android:text="쫄튀"
-        android:textSize="16dp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
@@ -46,8 +46,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
-        android:text="작성일:2023.11.20"
-        android:textSize="16dp"
+        android:text="@string/community_tv_date"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_nickname"
         app:layout_constraintStart_toEndOf="@+id/tv_nickname"
         app:layout_constraintTop_toTopOf="@+id/tv_nickname" />
@@ -58,8 +58,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="내용"
-        android:textSize="16dp"
+        android:text="@string/community_newpost_tv_info"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ic_user" />
 
@@ -72,12 +72,11 @@
         android:background="@color/light_blue"
         android:ems="10"
         android:gravity="top"
-        android:hint="게시글을 작성해주세요."
         android:inputType="text"
         android:paddingStart="8dp"
         android:paddingTop="15dp"
         android:text=""
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
