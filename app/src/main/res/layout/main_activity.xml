@@ -10,7 +10,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/main_toolbar"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/blue"
             app:layout_constraintEnd_toEndOf="parent"
@@ -23,32 +23,31 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="All-Day Fit"
+                    android:text="@string/app_name"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
         </androidx.appcompat.widget.Toolbar>
 
-        <FrameLayout
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/main_Frame"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/main_nav"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/main_toolbar"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintTop_toBottomOf="@id/main_toolbar">
 
-        </FrameLayout>
+        </androidx.fragment.app.FragmentContainerView>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/main_nav"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:theme="@style/Widget.BottomNavigationView"
             app:itemBackground="@color/blue"
             app:labelVisibilityMode="labeled"
+            app:itemTextAppearanceActiveBoldEnabled="true"
             app:itemIconTint="@drawable/menu_click_color"
             app:itemTextColor="@drawable/menu_click_color"
             app:layout_constraintBottom_toBottomOf="parent"

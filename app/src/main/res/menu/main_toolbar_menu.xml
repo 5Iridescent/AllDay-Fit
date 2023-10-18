@@ -4,11 +4,9 @@
     <item
         android:id="@+id/toolbar_calendar"
         app:showAsAction="always"
-        android:icon="@drawable/ic_calendar"
-        android:title="나의 달력" />
+        android:icon="@drawable/ic_calendar" />
     <item
         android:id="@+id/toolbar_user"
         app:showAsAction="always"
-        android:icon="@drawable/ic_user"
-        android:title="나의 달력" />
+        android:icon="@drawable/ic_user" />
 </menu>

@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">AllDayFit</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="month_record">월간 기록</string>
+    <string name="week_mode">Week mode</string>
+
     <string name="community_fab_add_post">내 게시물 추가</string>
     <string name="community_btn_amend">수정</string>
     <string name="community_btn_delete">삭제</string>
@@ -13,4 +16,15 @@
     <string name="community_newpost_btn_write">글쓰기</string>
     <string name="community_newpost_btn_amend">수정</string>
     <string name="community_newpost_btn_cancel">취소</string>
+    <string name="exercise_record">운동기록</string>
+    <string name="exercise_time">exercise\n Time</string>
+    <string name="slogan">Make your rootine</string>
+    <string name="commity">커뮤니티</string>
+    <string name="diet_record">식단기록</string>
+    <string name="main_page">메인페이지</string>
+    <string name="exercise_sit">운동상태</string>
+    <string name="preferences">환경설정</string>
+    <string name="weight">weight</string>
+    <string name="bmi">bmi</string>
+    <string name="user_condition">의 상태</string>
 </resources>
