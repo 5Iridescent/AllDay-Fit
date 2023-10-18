@@ -1,13 +1,5 @@
 <resources>
     <string name="app_name">AllDayFit</string>
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
     <!-- Sync Preferences -->
     <string name="sync_title">Sync email periodically</string>
     <string name="attachment_title">Download incoming attachments</string>
@@ -83,7 +75,6 @@
     <string name="setting_all_app_notifi">앱 전체 알림</string>
     <string name="setting_exer_notifi">운동 알림</string>
     <string name="setting_comm_notifi">커뮤니티 알림</string>
-
     <string name="diet_add_finish">식단완료</string>
     <string name="edit_finish">수정완료</string>
     <string name="diet_record_add_edit_hint">식단을 추가해주세요.</string>
