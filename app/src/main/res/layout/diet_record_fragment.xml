@@ -177,6 +177,8 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
+
+
         <include
             android:id="@+id/carbohydrates_view"
             layout="@layout/diet_record_nutritional_analysis_item" />
