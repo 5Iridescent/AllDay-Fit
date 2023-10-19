@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.alldayfit.databinding.ExerciseStatusFragmentBinding
+import com.example.alldayfit.main.MainFragment
 
 
 class ExerciseStatusFragment : Fragment() {
@@ -32,5 +33,6 @@ class ExerciseStatusFragment : Fragment() {
     }
 
     companion object {
+        fun newInstance() = ExerciseStatusFragment()
     }
 }

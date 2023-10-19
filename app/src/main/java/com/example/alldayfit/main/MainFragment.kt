@@ -31,4 +31,7 @@ class MainFragment : Fragment() {
         _binding = null
     }
 
+    companion object {
+        fun newInstance() = MainFragment()
+    }
 }

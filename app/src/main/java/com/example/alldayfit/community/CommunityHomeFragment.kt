@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.alldayfit.databinding.CalendarFragmentBinding
 import com.example.alldayfit.databinding.CommunityHomeFragmentBinding
 
 class CommunityHomeFragment : Fragment() {
@@ -22,8 +21,13 @@ class CommunityHomeFragment : Fragment() {
         return view
     }
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object{
+        fun newInstance() = CommunityHomeFragment()
     }
 }

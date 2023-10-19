@@ -29,5 +29,6 @@ class DietRecordFragment : Fragment() {
     }
 
     companion object {
+        fun newInstance() = DietRecordFragment()
     }
 }
