@@ -1,4 +1,4 @@
-<resources>
+    <resources>
     <!-- app theme color -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
