@@ -49,7 +49,9 @@ dependencies {
     implementation("androidx.preference:preference-ktx:1.2.1")
 
     // chart library::MPAndroidChart. https://github.com/PhilJay/MPAndroidChart.
-    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")  
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    // calendar library::Calendar. https://github.com/kizitonwose/Calendar.
+    implementation ("com.kizitonwose.calendar:view:2.4.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
