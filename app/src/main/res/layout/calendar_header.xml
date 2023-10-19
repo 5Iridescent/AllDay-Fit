@@ -21,7 +21,7 @@
         tools:text="May 2019" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/month_back"
         android:layout_width="42dp"
         android:layout_height="36dp"
         android:src="@drawable/ic_chevron_left"
@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/month_next"
         android:layout_width="42dp"
         android:layout_height="36dp"
         android:src="@drawable/ic_chevron_right"
@@ -46,7 +46,7 @@
         android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/exTwoHeaderText"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/month_back"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
@@ -55,7 +55,7 @@
         android:layout_marginStart="10dp"
         android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/month_next"
         app:layout_constraintStart_toEndOf="@id/exTwoHeaderText"
         app:layout_constraintTop_toTopOf="parent" />
 
