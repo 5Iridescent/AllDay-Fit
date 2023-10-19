@@ -6,7 +6,6 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="diet_record_breakfast">아침</string>
     <string name="diet_record_lunch">점심</string>
@@ -71,7 +70,7 @@
     <string name="setting_guide">이용가이드</string>
     <string name="setting_notice">공지사항</string>
     <string name="setting_mod_user">유저정보 수정</string>
-    <string name="setting_Inbody">Inbody 연동 여부</string>
+    <string name="setting_samsung_health">Samsung health 연동 여부</string>
     <string name="setting_all_app_notifi">앱 전체 알림</string>
     <string name="setting_exer_notifi">운동 알림</string>
     <string name="setting_comm_notifi">커뮤니티 알림</string>
@@ -79,4 +78,11 @@
     <string name="edit_finish">수정완료</string>
     <string name="diet_record_add_edit_hint">식단을 추가해주세요.</string>
     <string name="diet_record_dialog_title">식단기록</string>
+    <string name="community_main_tab_desc">커뮤니티 탭 레이아웃</string>
+    <string name="community_newpost_close">게시글 작성 닫기</string>
+    <string name="mod_user_nickname">유저 닉네임 변경</string>
+    <string name="mod_user_profile">프로필 사진 변경</string>
+    <string name="mod_login_info">로그인 정보</string>
+    <string name="mod_exercise_locate">운동 장소 설정</string>
+    <string name="mod_exercise_time">운동 시간 설정</string>
 </resources>
