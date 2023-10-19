@@ -1,16 +1,15 @@
 package com.example.alldayfit.main
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.alldayfit.databinding.FragmentMainBinding
-import com.example.alldayfit.databinding.MainActivityBinding
+import androidx.fragment.app.Fragment
+import com.example.alldayfit.databinding.MainFragmentBinding
 
 
 class MainFragment : Fragment() {
-    private var _binding: FragmentMainBinding? = null
+    private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +21,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        _binding = MainFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
