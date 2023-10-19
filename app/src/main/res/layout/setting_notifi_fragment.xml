@@ -4,104 +4,105 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingHorizontal="10dp"
-    android:paddingTop="15dp"
+    android:padding="10dp"
+
     android:background="@color/light_blue"
-    tools:context=".Settings.SettingAppNotifiFragment">
+    tools:context=".settings.ui.SettingAppNotifiFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="25dp"
             android:text="@string/setting_all_app_notifi"
             android:textSize="20sp" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <Switch
             android:id="@+id/all_app_notifi"
-            android:layout_marginEnd="20dp"
             android:layout_width="70dp"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp"
+            android:layout_marginEnd="20dp" />
 
     </LinearLayout>
 
     <View
-        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/black"/>
+        android:layout_marginVertical="5dp"
+        android:background="@color/gray" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="25dp"
             android:text="@string/setting_exer_notifi"
             android:textSize="20sp" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <Switch
             android:id="@+id/exer_notifi"
-            android:layout_marginEnd="20dp"
             android:layout_width="70dp"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp"
+            android:layout_marginEnd="20dp" />
 
     </LinearLayout>
 
     <View
-        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/black"/>
+        android:layout_marginVertical="5dp"
+        android:background="@color/gray" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="25dp"
             android:text="@string/setting_comm_notifi"
             android:textSize="20sp" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <Switch
             android:id="@+id/comm_notifi"
-            android:layout_marginEnd="20dp"
             android:layout_width="70dp"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp"
+            android:layout_marginEnd="20dp" />
 
     </LinearLayout>
 
     <View
-        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/black"/>
+        android:layout_marginVertical="5dp"
+        android:background="@color/gray" />
+
 </LinearLayout>

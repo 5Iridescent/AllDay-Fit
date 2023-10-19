@@ -53,9 +53,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
-        android:textAlignment="center"
         android:text="9월\n15일"
-        android:textSize="16sp"
+        android:textAlignment="center"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="@id/Frame"
         app:layout_constraintTop_toBottomOf="@id/exercise_record" />
 
@@ -65,20 +65,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:src="@drawable/ic_circle"
-        app:layout_constraintStart_toStartOf="@id/sun"
         app:layout_constraintEnd_toEndOf="@id/sun"
+        app:layout_constraintStart_toStartOf="@id/sun"
         app:layout_constraintTop_toBottomOf="@id/sun" />
 
     <TextView
         android:id="@+id/mon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
         android:text="9월\n16일"
+        android:textAlignment="center"
         android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/tue"
         app:layout_constraintStart_toEndOf="@id/sun"
-        app:layout_constraintTop_toTopOf="@id/sun"
-        app:layout_constraintEnd_toStartOf="@id/tue"/>
+        app:layout_constraintTop_toTopOf="@id/sun" />
 
     <ImageView
         android:id="@+id/mon_circle"
@@ -86,20 +86,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:src="@drawable/ic_circle"
-        app:layout_constraintStart_toStartOf="@id/mon"
         app:layout_constraintEnd_toEndOf="@id/mon"
+        app:layout_constraintStart_toStartOf="@id/mon"
         app:layout_constraintTop_toBottomOf="@id/mon" />
 
     <TextView
         android:id="@+id/tue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
         android:text="9월\n17일"
+        android:textAlignment="center"
         android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/wed"
         app:layout_constraintStart_toEndOf="@id/mon"
-        app:layout_constraintTop_toTopOf="@id/sun"
-        app:layout_constraintEnd_toStartOf="@id/wed"/>
+        app:layout_constraintTop_toTopOf="@id/sun" />
 
     <ImageView
         android:id="@+id/tue_circle"
@@ -107,20 +107,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:src="@drawable/ic_circle"
-        app:layout_constraintStart_toStartOf="@id/tue"
         app:layout_constraintEnd_toEndOf="@id/tue"
+        app:layout_constraintStart_toStartOf="@id/tue"
         app:layout_constraintTop_toBottomOf="@id/tue" />
 
     <TextView
         android:id="@+id/wed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
         android:text="9월\n18일"
+        android:textAlignment="center"
         android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/thu"
         app:layout_constraintStart_toEndOf="@id/tue"
-        app:layout_constraintTop_toTopOf="@id/sun"
-        app:layout_constraintEnd_toStartOf="@id/thu"/>
+        app:layout_constraintTop_toTopOf="@id/sun" />
 
 
     <ImageView
@@ -129,20 +129,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:src="@drawable/ic_circle"
-        app:layout_constraintStart_toStartOf="@id/wed"
         app:layout_constraintEnd_toEndOf="@id/wed"
+        app:layout_constraintStart_toStartOf="@id/wed"
         app:layout_constraintTop_toBottomOf="@id/wed" />
 
     <TextView
         android:id="@+id/thu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
         android:text="9월\n19일"
+        android:textAlignment="center"
         android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/fri"
         app:layout_constraintStart_toEndOf="@id/wed"
-        app:layout_constraintTop_toTopOf="@id/sun"
-        app:layout_constraintEnd_toStartOf="@id/fri"/>
+        app:layout_constraintTop_toTopOf="@id/sun" />
 
     <ImageView
         android:id="@+id/thu_circle"
@@ -150,20 +150,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:src="@drawable/ic_circle"
-        app:layout_constraintStart_toStartOf="@id/thu"
         app:layout_constraintEnd_toEndOf="@id/thu"
+        app:layout_constraintStart_toStartOf="@id/thu"
         app:layout_constraintTop_toBottomOf="@id/thu" />
 
     <TextView
         android:id="@+id/fri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
         android:text="9월\n20일"
+        android:textAlignment="center"
         android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/sat"
         app:layout_constraintStart_toEndOf="@id/thu"
-        app:layout_constraintTop_toTopOf="@id/sun"
-        app:layout_constraintEnd_toStartOf="@id/sat"/>
+        app:layout_constraintTop_toTopOf="@id/sun" />
 
     <ImageView
         android:id="@+id/fri_circle"
@@ -171,20 +171,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:src="@drawable/ic_circle"
-        app:layout_constraintStart_toStartOf="@id/fri"
         app:layout_constraintEnd_toEndOf="@id/fri"
+        app:layout_constraintStart_toStartOf="@id/fri"
         app:layout_constraintTop_toBottomOf="@id/fri" />
 
     <TextView
         android:id="@+id/sat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
         android:text="9월\n21일"
+        android:textAlignment="center"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/Frame"
         app:layout_constraintStart_toEndOf="@id/fri"
-        app:layout_constraintTop_toTopOf="@id/sun"
-        app:layout_constraintEnd_toEndOf="@id/Frame"/>
+        app:layout_constraintTop_toTopOf="@id/sun" />
 
     <ImageView
         android:id="@+id/sat_circle"
@@ -192,8 +192,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:src="@drawable/ic_circle"
-        app:layout_constraintStart_toStartOf="@id/sat"
         app:layout_constraintEnd_toEndOf="@id/sat"
+        app:layout_constraintStart_toStartOf="@id/sat"
         app:layout_constraintTop_toBottomOf="@id/sat" />
 
 
@@ -201,23 +201,24 @@
         android:id="@+id/btn_exercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingVertical="10dp"
-        android:paddingHorizontal="30dp"
         android:background="@drawable/main_btn"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/Frame"
         app:layout_constraintEnd_toEndOf="@id/Frame"
         app:layout_constraintStart_toStartOf="@id/Frame"
         app:layout_constraintTop_toBottomOf="@+id/Frame">
-    <TextView
-        android:id="@+id/do_exercise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="운동하기"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/do_exercise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="운동하기"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -245,33 +246,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phrase" />
 
-    <TextView
-        android:id="@+id/user"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="20dp"
-        android:layout_marginStart="105dp"
-        android:textColor="@color/blue"
-        android:text="홍현민"
-        android:textSize="32sp"
+        android:gravity="bottom"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/view_weight"
-        app:layout_constraintEnd_toStartOf="@id/user_sit"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/cons_white" />
+        app:layout_constraintTop_toTopOf="@id/cons_white">
 
-    <TextView
-        android:id="@+id/user_sit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
-        android:layout_marginEnd="105dp"
-        android:textColor="@color/blue"
-        android:text="@string/user_condition"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@id/view_bmi"
-        app:layout_constraintEnd_toEndOf="@id/cons_white"
-        app:layout_constraintStart_toEndOf="@id/user"
-        app:layout_constraintTop_toTopOf="@id/cons_white" />
+        <TextView
+            android:id="@+id/user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="홍현민"
+            android:textColor="@color/blue"
+            android:textSize="32sp" />
+
+        <TextView
+            android:id="@+id/user_sit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_condition"
+            android:textColor="@color/blue"
+            android:textSize="20dp" />
+    </LinearLayout>
 
     <View
         android:id="@+id/view_weight"
@@ -350,14 +351,14 @@
         android:id="@+id/view_bmi"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="35dp"
         android:layout_marginTop="72dp"
+        android:layout_marginEnd="35dp"
         android:layout_marginBottom="60dp"
         android:background="@drawable/user_cond_board"
-        app:layout_constraintTop_toTopOf="@id/cons_white"
+        app:layout_constraintBottom_toBottomOf="@id/cons_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/view_et"
-        app:layout_constraintBottom_toBottomOf="@id/cons_white"/>
+        app:layout_constraintTop_toTopOf="@id/cons_white" />
 
     <TextView
         android:id="@+id/txt_bmi"

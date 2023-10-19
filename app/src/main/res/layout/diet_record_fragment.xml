@@ -72,10 +72,7 @@
 
             <include
                 android:id="@+id/breakfast_view"
-                layout="@layout/diet_record_meal_item"
-                app:layout_constraintEnd_toStartOf="@id/lunch_view"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                layout="@layout/diet_record_meal_item"/>
 
             <View
                 android:layout_width="35dp"
@@ -83,10 +80,7 @@
 
             <include
                 android:id="@+id/lunch_view"
-                layout="@layout/diet_record_meal_item"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/breakfast_view"
-                app:layout_constraintTop_toTopOf="@id/breakfast_view" />
+                layout="@layout/diet_record_meal_item"/>
         </LinearLayout>
 
         <View
@@ -105,10 +99,7 @@
 
             <include
                 android:id="@+id/dinner_view"
-                layout="@layout/diet_record_meal_item"
-                app:layout_constraintEnd_toStartOf="@id/lunch_view"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                layout="@layout/diet_record_meal_item"/>
 
             <View
                 android:layout_width="35dp"
@@ -116,10 +107,7 @@
 
             <include
                 android:id="@+id/snack_view"
-                layout="@layout/diet_record_meal_item"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/breakfast_view"
-                app:layout_constraintTop_toTopOf="@id/breakfast_view" />
+                layout="@layout/diet_record_meal_item"/>
         </LinearLayout>
     </LinearLayout>
 
