@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.Menu
 import androidx.fragment.app.Fragment
 import com.example.alldayfit.community.CommunityHomeFragment
+import com.example.alldayfit.community.CommunityMainFragment
 import com.example.alldayfit.databinding.ExerciseStatusFragmentBinding
 import com.example.alldayfit.databinding.MainActivityBinding
 import com.example.alldayfit.dietrecord.DietRecordFragment
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             setOnItemSelectedListener {
                 when (it.itemId) {
                     R.id.app_bar_com -> {
-                        replaceFragment(CommunityHomeFragment.newInstance())
+                        replaceFragment(CommunityMainFragment.newInstance())
                     }
 
                     R.id.app_bar_diet -> {
