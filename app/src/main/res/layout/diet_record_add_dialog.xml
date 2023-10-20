@@ -79,6 +79,7 @@
         app:layout_constraintTop_toBottomOf="@id/meal_listview" />
 
     <ImageButton
+        android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="13dp"
@@ -93,11 +94,13 @@
         android:id="@+id/finish_btn"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/white_stroke_blue_back_shape"
         android:text="@string/diet_add_finish"
         android:textSize="@dimen/text_size_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/meal_edit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

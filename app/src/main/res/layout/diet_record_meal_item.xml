@@ -5,7 +5,8 @@
     android:layout_height="145dp"
     android:background="@drawable/view_corner_5"
     android:backgroundTint="@color/light_blue"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:clickable="true">
 
     <TextView
         android:id="@+id/meal_txt"
@@ -28,6 +29,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/meal_txt" />
+        app:layout_constraintTop_toBottomOf="@id/meal_txt"
+        android:clickable="true"
+        android:focusable="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
