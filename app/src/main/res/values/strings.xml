@@ -50,7 +50,7 @@
     <string name="community_btn_amend">수정</string>
     <string name="community_btn_delete">삭제</string>
     <string name="community_tv_date">작성일 : </string>
-    <string name="community_newpost_title_hint">제목을 입력해주세요.</string>
+    <string name="community_newpost_title_hint">제목을 <입력해주세></입력해주세>요.</string>
     <string name="community_newpost_tv_title">글 제목</string>
     <string name="community_newpost_tv_info">내용</string>
     <string name="community_newpost_tv_info_hint">게시글을 작성해주세요.</string>
@@ -81,4 +81,7 @@
     <string name="example_2_title">Example 2</string>
     <string name="example_2_subtitle">Month header view, single selection, vertical scrolling, hides in and out dates.</string>
     <string name="activity_title_view">Calendar View Sample</string>
+    <string name="main_exercise_time">HEIGHT</string>
+    <string name="calendar">달력</string>
+    <string name="user">유저</string>
 </resources>

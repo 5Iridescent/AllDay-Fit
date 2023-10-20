@@ -227,7 +227,6 @@ class  CalendarFragment : BaseFragment(R.layout.calendar_fragment), HasToolbar, 
                     container.textView.text = displayText
                 }
             }
-    }
 }
 
 
