@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import com.example.alldayfit.databinding.MainFragmentBinding
 
 
 class MainFragment : Fragment() {
