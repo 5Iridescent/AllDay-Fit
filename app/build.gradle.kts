@@ -66,6 +66,9 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx")
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
+    // firebase real-time database
+    implementation("com.google.firebase:firebase-database-ktx")
+    implementation("com.google.firebase:firebase-storage-ktx")
 
     // Import Room Library
     val roomVersion = "2.5.0"
