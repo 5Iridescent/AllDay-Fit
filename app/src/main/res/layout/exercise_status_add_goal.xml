@@ -36,7 +36,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/meal_edit" />
+            app:layout_constraintTop_toBottomOf="@id/goal_edit" />
 
 
         <LinearLayout
@@ -47,7 +47,7 @@
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="5dp"
-            app:layout_constraintBottom_toTopOf="@id/meal_edit"
+            app:layout_constraintBottom_toTopOf="@id/goal_edit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -60,7 +60,7 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/meal_listview"
+                android:id="@+id/goal_listview"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
@@ -77,25 +77,25 @@
             app:layout_constraintTop_toTopOf="@id/week_goal_wrap" />
 
         <ImageButton
+            android:id="@+id/add_goal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="13dp"
             android:background="@color/none"
             android:src="@drawable/ic_add"
             android:translationZ="1dp"
-            app:layout_constraintBottom_toBottomOf="@id/meal_edit"
-            app:layout_constraintEnd_toEndOf="@id/meal_edit"
-            app:layout_constraintTop_toTopOf="@id/meal_edit"
+            app:layout_constraintBottom_toBottomOf="@id/goal_edit"
+            app:layout_constraintEnd_toEndOf="@id/goal_edit"
+            app:layout_constraintTop_toTopOf="@id/goal_edit"
             app:tint="@color/black" />
 
         <EditText
-            android:id="@+id/meal_edit"
+            android:id="@+id/goal_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/gray_stroke_white_back_shape"
             android:gravity="center_vertical"
-            android:hint="@string/diet_record_add_edit_hint"
             android:minHeight="50dp"
             android:paddingHorizontal="10dp"
             android:textSize="@dimen/text_size_very_small"
