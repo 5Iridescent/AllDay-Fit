@@ -40,4 +40,6 @@
     <string name="main_exercise_time">HEIGHT</string>
     <string name="calendar">달력</string>
     <string name="user">유저</string>
+    <string name="diet_record_add_btn_desc">식단 음식 추가</string>
+    <string name="diet_record_close_btn_desc">식단 기록 추가 화면 닫기</string>
 </resources>

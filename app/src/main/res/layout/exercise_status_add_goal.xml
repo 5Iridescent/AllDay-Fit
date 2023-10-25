@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/exercise_status_week_goal"
-                android:textSize="24sp" />
+                android:textSize="@dimen/text_size_medium" />
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -98,7 +98,7 @@
             android:hint="@string/diet_record_add_edit_hint"
             android:minHeight="50dp"
             android:paddingHorizontal="10dp"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_size_very_small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/week_goal_wrap" />

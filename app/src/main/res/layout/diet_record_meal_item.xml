@@ -16,6 +16,7 @@
         android:backgroundTint="@color/white"
         android:gravity="center"
         android:text="@string/diet_record_breakfast"
+        android:textSize="@dimen/text_size_very_small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

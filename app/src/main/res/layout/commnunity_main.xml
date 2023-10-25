@@ -7,13 +7,13 @@
     tools:context=".community.CommunityMainFragment">
 
     <com.google.android.material.tabs.TabLayout
-        android:contentDescription="@string/community_main_tab_desc"
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/community_main_tab_desc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpager"
@@ -21,7 +21,8 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_post_btn"
@@ -31,9 +32,10 @@
         android:backgroundTint="@color/dark_blue"
         android:contentDescription="@string/community_fab_add_post"
         android:src="@drawable/ic_add"
+        app:elevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:maxImageSize="27dp"
+        app:maxImageSize="80dp"
         app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

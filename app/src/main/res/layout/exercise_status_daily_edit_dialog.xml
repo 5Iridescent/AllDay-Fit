@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="2023.10.24"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="@dimen/text_size_medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -59,7 +59,7 @@
         android:layout_marginTop="25dp"
         android:text="홍현민의 오늘 상태"
         android:textColor="@color/white"
-        android:textSize="32sp"
+        android:textSize="@dimen/text_size_very_large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/date_txt" />
@@ -132,7 +132,7 @@
         android:background="@drawable/exercise_status_fix_btn_shape"
         android:text="수정완료"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="@dimen/text_size_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

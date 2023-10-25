@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:text="@string/mod_user_nickname"
-            android:textSize="20sp" />
+            android:textSize="@dimen/text_size_small" />
 
         <Space
             android:layout_width="0dp"
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:text="@string/mod_user_profile"
-            android:textSize="20sp" />
+            android:textSize="@dimen/text_size_small" />
 
         <Space
             android:layout_width="0dp"
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:text="@string/mod_login_info"
-            android:textSize="20sp" />
+            android:textSize="@dimen/text_size_small" />
 
         <Space
             android:layout_width="0dp"
@@ -117,7 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:text="@string/mod_exercise_locate"
-            android:textSize="20sp" />
+            android:textSize="@dimen/text_size_small" />
 
         <Space
             android:layout_width="0dp"
@@ -144,7 +144,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:text="@string/mod_exercise_time"
-            android:textSize="20sp" />
+            android:textSize="@dimen/text_size_small" />
 
         <Space
             android:layout_width="0dp"
@@ -171,7 +171,7 @@
             android:background="@drawable/button_radius"
             android:text="수정"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="@dimen/text_size_small" />
 
         <Space
             android:layout_width="0dp"
@@ -185,7 +185,7 @@
             android:background="@drawable/button_radius"
             android:text="취소"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="@dimen/text_size_small" />
     </LinearLayout>
 
 </LinearLayout>

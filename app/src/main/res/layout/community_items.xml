@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:maxHeight="170dp"
+    android:maxHeight="190dp"
     android:padding="10dp">
 
     <ImageView
@@ -50,6 +50,8 @@
         android:id="@+id/tv_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="3"
         android:text="글의 내용을 적어두기"
         android:textSize="@dimen/text_size_small"
         app:layout_constraintBottom_toTopOf="@id/btn_amend"

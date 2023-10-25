@@ -9,6 +9,7 @@ import com.example.alldayfit.community.CommunityHomeFragment
 import com.example.alldayfit.community.CommunityMainFragment
 import com.example.alldayfit.databinding.ExerciseStatusFragmentBinding
 import com.example.alldayfit.databinding.MainActivityBinding
+import com.example.alldayfit.db.RealTimeRepository
 import com.example.alldayfit.dietrecord.DietRecordFragment
 import com.example.alldayfit.exercisestatus.ExerciseStatusFragment
 import com.example.alldayfit.main.MainFragment

@@ -40,6 +40,10 @@ class DietRecordFragment : Fragment() {
         lunchView.mealTxt.text = getString(R.string.diet_record_lunch)
         dinnerView.mealTxt.text = getString(R.string.diet_record_dinner)
         snackView.mealTxt.text = getString(R.string.diet_record_snack)
+        carbohydratesView.analysisTxt.text = getString(R.string.carbohydrates)
+        proteinView.analysisTxt.text = getString(R.string.protein)
+        fatView.analysisTxt.text = getString(R.string.fat)
+        caloriesView.analysisTxt.text = getString(R.string.calories)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -67,7 +71,7 @@ class DietRecordFragment : Fragment() {
     }
 
     // 식단 기록의 ImageButton을 클릭했을 때 식단 기록 추가 다이얼로그를 띄우는 함수
-    private fun showDietRecordAddDialog(){
+    private fun showDietRecordAddDialog() {
         val dialogBinding = DietRecordAddDialogBinding.inflate(layoutInflater)
         val dialogView = dialogBinding.root
 
@@ -87,7 +91,7 @@ class DietRecordFragment : Fragment() {
         dialogBinding.btnAdd.setOnClickListener {
             val dietRecord = dialogBinding.mealEdit.text.toString()
             //editText가 빈칸일 때 toast 메세지 띄우고 식단 추가 되지 않음
-            if(dietRecord.isNotEmpty()){
+            if (dietRecord.isNotEmpty()) {
                 dietRecordsList.add(dietRecord)
                 Log.d("yjRyu", "dietRecordsList = $dietRecordsList")
                 dietRecordAdapter.notifyDataSetChanged()
