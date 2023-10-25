@@ -68,10 +68,10 @@ dependencies {
     // https://firebase.google.com/docs/android/setup#available-libraries
     // firebase real-time database
     implementation("com.google.firebase:firebase-database-ktx")
+    // firebase cloud database
     implementation("com.google.firebase:firebase-storage-ktx")
-
     // Import Room Library
-    val roomVersion = "2.5.0"
+    val roomVersion = "2.6.0"
     implementation("androidx.room:room-runtime:$roomVersion")
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
     // To use Kotlin annotation processing tool (kapt)
@@ -88,11 +88,18 @@ dependencies {
     implementation("androidx.room:room-guava:$roomVersion")
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$roomVersion")
-
+    // navigation library
+    val navVersion = "2.7.4"
+    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+    // Feature module Support
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$navVersion")
+    
     // test library
     // optional - Test helpers
     testImplementation("androidx.room:room-testing:$roomVersion")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.navigation:navigation-testing:$navVersion")
 }
