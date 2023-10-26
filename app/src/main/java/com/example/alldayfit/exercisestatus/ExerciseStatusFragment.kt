@@ -25,7 +25,6 @@ class ExerciseStatusFragment : Fragment() {
     }
     val exerciseStatusViewModel: ExerciseStatusViewModel by viewModels()
     private lateinit var adapter: DailyAdapter
-    private var goalList: List<DailyEdit> = emptyList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,17 +37,16 @@ class ExerciseStatusFragment : Fragment() {
             val addGoalDialog =
                 ExerciseStatusDailyEditDialog(exerciseStatusViewModel)
             addGoalDialog.show(childFragmentManager, "ExerciseStatusDailyEditDialog")
-        }//프래그먼트 띄우기
+            exerciseStatusViewModel.changePostType(exerciseStatusViewModel.dailyEditList)
+        }//프래그먼트 띄우기 및 타입 변환
 
         binding.goalList.layoutManager =
             androidx.recyclerview.widget.LinearLayoutManager(context)
-        adapter = DailyAdapter(goalList)
+        adapter = DailyAdapter(exerciseStatusViewModel)
         binding.goalList.adapter = adapter
-        //어댑터 달아주기
         exerciseStatusViewModel.goalLiveData.observe(viewLifecycleOwner, Observer { data ->
             adapter.addGoal(data)
         })
-        //라이브데이터 업데이트 확인
         return binding.root
     }
 

@@ -12,15 +12,17 @@ import com.example.alldayfit.R
 import com.example.alldayfit.databinding.ExerciseStatusAddGoalBinding
 import com.example.alldayfit.databinding.ExerciseStatusDailyEditDialogBinding
 import com.example.alldayfit.databinding.ExerciseStatusFragmentBinding
+import com.example.alldayfit.exercisestatus.DailyEdit.Companion.DIALOG_POSITION
+import com.example.alldayfit.exercisestatus.DailyEdit.Companion.POST_POSITION
 import com.github.mikephil.charting.utils.Utils.init
 
-class ExerciseStatusDailyEditDialog(private val exerciseStatusViewModel: ExerciseStatusViewModel) : DialogFragment() {
+class ExerciseStatusDailyEditDialog(private val exerciseStatusViewModel: ExerciseStatusViewModel) :
+    DialogFragment() {
 
     private var _binding: ExerciseStatusAddGoalBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: DailyAdapter
-    private var goalList: List<DailyEdit> = emptyList()
-
+    private lateinit var goal: DailyEdit
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,28 +37,29 @@ class ExerciseStatusDailyEditDialog(private val exerciseStatusViewModel: Exercis
 
         binding.goalListview.layoutManager =
             androidx.recyclerview.widget.LinearLayoutManager(context)
-        adapter = DailyAdapter(goalList)
+        adapter = DailyAdapter(exerciseStatusViewModel)
         binding.goalListview.adapter = adapter
 
+
+
         binding.addGoal.setOnClickListener {
-            val goal = binding.goalEdit.text.toString()
+            goal = DailyEdit(binding.goalEdit.text.toString(), false, POST_POSITION)
             exerciseStatusViewModel.setGoalList(goal)
         }
-
         exerciseStatusViewModel.goalLiveData.observe(
             viewLifecycleOwner,
-            Observer { data -> adapter.addGoal(data)
+            Observer { data ->
+                adapter.addGoal(data)
             })
 
-        binding.closeBtn.setOnClickListener{
-            dismiss()
-        }
-        binding.finishBtn.setOnClickListener{
+
+        binding.finishBtn.setOnClickListener {
+            goal = DailyEdit(binding.goalEdit.text.toString(), false, POST_POSITION)
+            exerciseStatusViewModel.changeDialogType(goal)
             dismiss()
         }
         return view
     }
-
 
 
 }
