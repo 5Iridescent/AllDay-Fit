@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.alldayfit.community.CommunityHomeFragment
 import com.example.alldayfit.community.CommunityMainFragment
 import com.example.alldayfit.databinding.ExerciseStatusFragmentBinding
@@ -14,6 +17,7 @@ import com.example.alldayfit.dietrecord.DietRecordFragment
 import com.example.alldayfit.exercisestatus.ExerciseStatusFragment
 import com.example.alldayfit.main.MainFragment
 import com.example.alldayfit.settings.ui.SettingMainFragment
+import com.google.firebase.FirebaseApp
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mBinding: MainActivityBinding
@@ -28,44 +32,11 @@ class MainActivity : AppCompatActivity() {
 
     /* bottom navigation click event - 클릭 */
     private fun initNavigationBar() {
-        mBinding.mainNav.run {
-            setOnItemSelectedListener {
-                when (it.itemId) {
-                    R.id.app_bar_com -> {
-                        replaceFragment(CommunityMainFragment.newInstance())
-                    }
-
-                    R.id.app_bar_diet -> {
-                        replaceFragment(DietRecordFragment.newInstance())
-                    }
-
-                    R.id.app_bar_main -> {
-                        replaceFragment(MainFragment.newInstance())
-                    }
-
-                    R.id.app_bar_mypage -> {
-                        replaceFragment(ExerciseStatusFragment.newInstance())
-                    }
-
-                    R.id.app_bar_menu -> {
-                        replaceFragment(SettingMainFragment.newInstance())
-                    }
-                }
-                true
-            }
-            selectedItemId = R.id.app_bar_main
-        }
-    }
-
-    private fun replaceFragment(fragment: Fragment) {
-        val nFragment = supportFragmentManager.findFragmentById(mBinding.mainFrame.id)
-//        if (fragment) {
-//            Log.d("test","null")
-//        }
-        supportFragmentManager.beginTransaction().apply {
-            replace(mBinding.mainFrame.id, fragment)
-            commit()
-        }
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(mBinding.mainFrame.id) as NavHostFragment
+        val navController = navHostFragment.navController
+        mBinding.mainNav.setupWithNavController(navController)
+        mBinding.mainNav.selectedItemId = R.id.mainFragment
     }
 
     // 툴바 메뉴 버튼을 설정- menu에 있는 item을 연결하는 부분
@@ -76,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         val mTitle = mBinding.toolbarTitle
         mTitle.text = "All_DayFit"
     }
+
     // 툴바 메뉴 버튼을 설정- menu에 있는 item을 연결하는 부분
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
@@ -83,4 +55,4 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    }
+}
