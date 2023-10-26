@@ -2,9 +2,10 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
-    id ("kotlin-kapt")
+    id("kotlin-kapt")
     // Add the Google services Gradle plugin
     id("com.google.gms.google-services")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -72,6 +73,7 @@ dependencies {
     implementation("com.google.firebase:firebase-database-ktx")
     // firebase cloud database
     implementation("com.google.firebase:firebase-storage-ktx")
+
     // Import Room Library
     val roomVersion = "2.6.0"
     implementation("androidx.room:room-runtime:$roomVersion")
@@ -96,7 +98,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
     // Feature module Support
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$navVersion")
-    
+
     // test library
     // optional - Test helpers
     testImplementation("androidx.room:room-testing:$roomVersion")
