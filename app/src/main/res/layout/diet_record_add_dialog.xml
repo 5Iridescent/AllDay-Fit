@@ -39,7 +39,7 @@
         android:layout_marginHorizontal="5dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/exercise_status_fix_btn_shape"
-
+        android:scaleType="centerInside"
         android:src="@drawable/ic_camera"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

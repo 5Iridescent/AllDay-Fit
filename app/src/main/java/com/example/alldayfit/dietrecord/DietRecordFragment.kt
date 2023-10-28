@@ -1,19 +1,21 @@
 package com.example.alldayfit.dietrecord
 
+import android.Manifest
 import android.app.Activity.RESULT_OK
 import android.app.AlertDialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alldayfit.R
 import com.example.alldayfit.databinding.DietRecordAddDialogBinding
@@ -65,6 +67,7 @@ class DietRecordFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        dialogBinding = null
     }
 
     companion object {
@@ -95,7 +98,6 @@ class DietRecordFragment : Fragment() {
               //editText가 빈칸일 때 toast 메세지 띄우고 식단 추가 되지 않음
               if (dietRecord.isNotEmpty()) {
                   dietRecordsList.add(dietRecord)
-                  Log.d("yjRyu", "dietRecordsList = $dietRecordsList")
                   dietRecordAdapter.notifyDataSetChanged()
                   Toast.makeText(requireContext(), "식단 추가 완료!", Toast.LENGTH_SHORT).show()
                   //식단 기록 입력 후 editText 초기화
@@ -110,22 +112,46 @@ class DietRecordFragment : Fragment() {
           }
 
           dialogBinding.finishBtn.setOnClickListener {
-              alertDialog.dismiss()
+              if(dietRecordsList.isEmpty()){
+                  Toast.makeText(requireContext(), "식단을 입력해주세요.", Toast.LENGTH_SHORT).show()
+              } else {
+                  alertDialog.dismiss()
+              }
           }
 
-          dialogBinding.dietImg.setOnClickListener {
-              //Todo 권한체크 코드
-              openGallery()
+          //권한체크 후 갤러리 열어주는 코드
+          dialogBinding.dietImg.setOnClickListener{
+              if (ActivityCompat.checkSelfPermission(
+                      requireContext(),
+                      Manifest.permission.READ_MEDIA_IMAGES,
+                  ) != PackageManager.PERMISSION_GRANTED
+              ) {
+                  (ActivityCompat.requestPermissions(
+                      requireActivity(),
+                      arrayOf(
+                          Manifest.permission.READ_MEDIA_IMAGES,
+                      ),
+                      1
+                  )
+                          )
+              } else {
+                  openGallery()
+              }
           }
           alertDialog.show()
+
       }
-
     }
-
     private fun openGallery() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        intent.type = "image/*"
-        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+        try {
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            intent.type = "image/*"
+            startActivityForResult(intent, PICK_IMAGE_REQUEST)
+        } catch (e: Exception) {
+            // 갤러리 열기 중에 문제 발생 시 처리
+            e.printStackTrace()
+            Toast.makeText(requireContext(), "갤러리를 열 수 없습니다.", Toast.LENGTH_SHORT).show()
+        }
     }
 
     // 상대경로를 절대경로로 바꿔주는 코드
@@ -158,14 +184,12 @@ class DietRecordFragment : Fragment() {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.data != null) {
             val imageUri: Uri = data.data!!
             val newImageUri = getRealPathFromURI(imageUri)
-            Log.d("yjRyu", "Selected Image: $imageUri")
 
             // Glide
             Glide.with(requireContext())
                 .load(File(newImageUri).path)
+                .centerCrop()
                 .into(dialogBinding!!.dietImg)
-
-
     }
 }
 }
