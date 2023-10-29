@@ -1,16 +1,13 @@
 package com.example.alldayfit.exercisestatus
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.alldayfit.exercisestatus.DailyEdit.Companion.DIALOG_POSITION
-import com.example.alldayfit.exercisestatus.DailyEdit.Companion.POST_POSITION
-import java.nio.file.Paths.get
+import com.example.alldayfit.exercisestatus.model.DailyEdit
+import com.example.alldayfit.exercisestatus.model.DailyEdit.Companion.DIALOG_POSITION
+import com.example.alldayfit.exercisestatus.model.DailyEdit.Companion.POST_POSITION
 
-class ExerciseStatusViewModel : ViewModel() {
-     val dailyEditList = mutableListOf<DailyEdit>()
+class ExerciseStatusAddGoalViewModel : ViewModel() {
+    val dailyEditList = mutableListOf<DailyEdit>()
     val goalLiveData = MutableLiveData<List<DailyEdit>>()
 
 
@@ -24,6 +21,7 @@ class ExerciseStatusViewModel : ViewModel() {
         dailyEditList.add(dailyEdit)
         goalLiveData.value = dailyEditList
     }
+
     fun changeDialogType(dailyEdit: DailyEdit) {
         val updatedList = dailyEditList.map { dailyEdit ->
             if (dailyEdit.type == POST_POSITION) {
@@ -35,16 +33,16 @@ class ExerciseStatusViewModel : ViewModel() {
         goalLiveData.value = updatedList
     }
 
-        fun changePostType(dailyEditList: List<DailyEdit>){
-            val updatedList = dailyEditList.map {dailyEdit ->
-                if (dailyEdit.type == DIALOG_POSITION) {
-                    dailyEdit.copy(type = POST_POSITION)
-                } else {
-                    dailyEdit
-                }
+    fun changePostType(dailyEditList: List<DailyEdit>) {
+        val updatedList = dailyEditList.map { dailyEdit ->
+            if (dailyEdit.type == DIALOG_POSITION) {
+                dailyEdit.copy(type = POST_POSITION)
+            } else {
+                dailyEdit
             }
-            goalLiveData.value = updatedList
-            }
+        }
+        goalLiveData.value = updatedList
+    }
 
 
     fun deletegoal(dailyEdit: DailyEdit) {
