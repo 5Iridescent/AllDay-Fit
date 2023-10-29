@@ -1,8 +1,6 @@
 package com.example.alldayfit.exercisestatus
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.alldayfit.databinding.ExerciseStatusFragmentBinding
-import com.example.alldayfit.main.MainFragment
 
 
 class ExerciseStatusFragment : Fragment() {
@@ -24,14 +21,30 @@ class ExerciseStatusFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
     val exerciseStatusViewModel: ExerciseStatusViewModel by viewModels()
-    private lateinit var adapter: DailyAdapter
 
+    private lateinit var viewModel: BodyStatusViewModel
+    private lateinit var adapter: DailyAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = ExerciseStatusFragmentBinding.inflate(inflater, container, false)
         initView()
+
+        viewModel = ViewModelProvider(requireActivity()).get(BodyStatusViewModel::class.java)
+
+
+        viewModel.bodyStatus.observe(viewLifecycleOwner) { bodyStatus ->
+            // 라이브 데이터 변경 감지
+            binding.statusWeightView.statusMetricsTxt.text = "${bodyStatus.weight}"
+            binding.statusHeightView.statusMetricsTxt.text = " ${bodyStatus.height}"
+        }
+
+
+        binding.fixed.setOnClickListener {
+                val dialog = BodyStatusDialog()
+                dialog.show(requireActivity().supportFragmentManager, "ExerciseStatusDailyEditDialog")
+            }
 
         binding.goalListFixBtn.setOnClickListener {
             val addGoalDialog =

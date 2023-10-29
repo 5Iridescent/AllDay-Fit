@@ -82,7 +82,7 @@
 
             <include
                 android:id="@+id/status_weight_view"
-                layout="@layout/exercise_status_user_item" />
+                layout="@layout/exercise_status_user_input_item" />
 
             <View
                 android:layout_width="0dp"
@@ -91,7 +91,7 @@
 
             <include
                 android:id="@+id/status_height_view"
-                layout="@layout/exercise_status_user_item" />
+                layout="@layout/exercise_status_user_input_item" />
 
             <View
                 android:layout_width="0dp"
@@ -127,6 +127,7 @@
     </LinearLayout>
 
     <android.widget.Button
+        android:id="@+id/correction_complete"
         android:layout_width="170dp"
         android:layout_height="45dp"
         android:background="@drawable/exercise_status_fix_btn_shape"

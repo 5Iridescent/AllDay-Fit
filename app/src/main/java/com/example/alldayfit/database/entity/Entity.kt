@@ -6,7 +6,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "users")
 data class UserEntity(
     @PrimaryKey
-    val userId: String,
     val email: String,
     val name: String,
     val nickname: String
@@ -15,7 +14,7 @@ data class UserEntity(
 @Entity(tableName = "physical_information")
 data class PhysicalInformationEntity(
     @PrimaryKey
-    val userId: String,
+    val name: String,
     val inputDate: String, // yyyy.MM.dd 형식의 날짜 문자열
     val height: Int,
     val weight: Int
@@ -24,7 +23,7 @@ data class PhysicalInformationEntity(
 @Entity(tableName = "exercise_logs")
 data class ExerciseLogEntity(
     @PrimaryKey
-    val userId: String,
+    val name: String,
     val totalTime: Int,
     val exerciseDate: String // yyyy.MM.dd 형식의 날짜 문자열
 )
@@ -32,7 +31,7 @@ data class ExerciseLogEntity(
 @Entity(tableName = "diet_logs")
 data class DietLogEntity(
     @PrimaryKey
-    val userId: String,
+    val name: String,
     val breakfastFoodText: List<String>,
     val breakfastFoodImage: String,
     val lunchFoodText: List<String>,

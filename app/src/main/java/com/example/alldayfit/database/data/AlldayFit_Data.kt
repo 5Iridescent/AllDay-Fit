@@ -1,7 +1,6 @@
 package com.example.alldayfit.database.data
 
 data class User(
-    val userId: String,
     val email: String,
     val name: String,
     val nickname: String
@@ -14,7 +13,7 @@ data class InformationId(
 )
 
 data class PhysicalInformation(
-    val userId: String,
+    val name: String,
     val informationId: InformationId
 )
 
@@ -24,7 +23,7 @@ data class LogId(
 )
 
 data class ExerciseLog(
-    val userId: String,
+    val name: String,
     val logId: LogId
 )
 
@@ -42,6 +41,6 @@ data class Meal(
 )
 
 data class DietLog(
-    val userId: String,
+    val name: String,
     val mealLogId: MealLogId
 )

@@ -143,51 +143,29 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
-
-            <View
-                android:layout_width="21dp"
-                android:layout_height="16dp"
-                android:layout_marginEnd="5dp"
-                android:background="@color/blue" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="@string/daily_intake"
-                android:textSize="@dimen/text_size_very_small" />
-
-            <View
-                android:layout_width="21dp"
-                android:layout_height="16dp"
-                android:layout_marginEnd="5dp"
-                android:background="@color/gray" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/daily_recommended_amount"
-                android:textSize="@dimen/text_size_very_small" />
         </LinearLayout>
-
-
-
-        <include
-            android:id="@+id/carbohydrates_view"
-            layout="@layout/diet_record_nutritional_analysis_item" />
-
-        <include
-            android:id="@+id/protein_view"
-            layout="@layout/diet_record_nutritional_analysis_item" />
-
-        <include
-            android:id="@+id/fat_view"
-            layout="@layout/diet_record_nutritional_analysis_item" />
-
-        <include
-            android:id="@+id/calories_view"
-            layout="@layout/diet_record_nutritional_analysis_item" />
     </LinearLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nutritional_analysis_wrap">
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/diet_record_chart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/light_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

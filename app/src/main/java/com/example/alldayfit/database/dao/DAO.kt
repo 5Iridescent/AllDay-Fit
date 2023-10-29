@@ -18,8 +18,8 @@ interface UserDao {
     suspend fun insertUser(user: UserEntity)
 
     // 특정 userId에 해당하는 사용자 정보를 조회
-    @Query("SELECT * FROM users WHERE userId = :userId")
-    suspend fun getUserById(userId: String): UserEntity?
+    @Query("SELECT * FROM users WHERE name = :name")
+    suspend fun getUserByName(name: String): UserEntity?
 }
 
 
@@ -31,8 +31,8 @@ interface PhysicalInformationDao {
     suspend fun insertPhysicalInformation(physicalInformation: PhysicalInformationEntity)
 
     // 특정 userId에 해당하는 신체 정보를 조회
-    @Query("SELECT * FROM physical_information WHERE userId = :userId")
-    suspend fun getPhysicalInformationByUserId(userId: String): PhysicalInformationEntity?
+    @Query("SELECT * FROM physical_information WHERE name = :name")
+    suspend fun getPhysicalInformationByUserId(name: String): PhysicalInformationEntity?
 }
 
 
@@ -44,8 +44,8 @@ interface ExerciseLogDao {
     suspend fun insertExerciseLog(exerciseLog: ExerciseLogEntity)
 
     // 특정 userId에 해당하는 운동 로그를 조회
-    @Query("SELECT * FROM exercise_logs WHERE userId = :userId")
-    suspend fun getExerciseLogByUserId(userId: String): ExerciseLogEntity?
+    @Query("SELECT * FROM exercise_logs WHERE name = :name")
+    suspend fun getExerciseLogByUserId(name: String): ExerciseLogEntity?
 }
 
 
@@ -57,8 +57,8 @@ interface DietLogDao {
     suspend fun insertDietLog(dietLog: DietLogEntity)
 
     // 특정 userId에 해당하는 식사 로그를 조회
-    @Query("SELECT * FROM diet_logs WHERE userId = :userId")
-    suspend fun getDietLogByUserId(userId: String): DietLogEntity?
+    @Query("SELECT * FROM diet_logs WHERE name = :name")
+    suspend fun getDietLogByUserId(name: String): DietLogEntity?
 }
 
 
