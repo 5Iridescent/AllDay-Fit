@@ -1,4 +1,4 @@
-package com.example.alldayfit.exercisestatus
+package com.example.alldayfit.exercisestatus.model
 
 data class DailyEdit(
     val goals: String,

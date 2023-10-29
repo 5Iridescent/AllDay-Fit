@@ -1,20 +1,19 @@
-package com.example.alldayfit.exercisestatus
+package com.example.alldayfit.exercisestatus.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.hardware.fingerprint.FingerprintManagerCompat.from
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alldayfit.databinding.DietRecordAddItemBinding
-import com.example.alldayfit.databinding.ExerciseStatusAddGoalBinding
 import com.example.alldayfit.databinding.ExerciseStatusGoalItemBinding
-import com.example.alldayfit.exercisestatus.DailyEdit.Companion.DIALOG_POSITION
-import com.example.alldayfit.exercisestatus.DailyEdit.Companion.POST_POSITION
+import com.example.alldayfit.exercisestatus.ExerciseStatusAddGoalViewModel
+import com.example.alldayfit.exercisestatus.model.DailyEdit
+import com.example.alldayfit.exercisestatus.model.DailyEdit.Companion.DIALOG_POSITION
+import com.example.alldayfit.exercisestatus.model.DailyEdit.Companion.POST_POSITION
 import java.lang.RuntimeException
 
-class DailyAdapter(private val viewModel: ExerciseStatusViewModel) :
+class DailyAdapter(private val viewModel: ExerciseStatusAddGoalViewModel) :
     ListAdapter<DailyEdit, RecyclerView.ViewHolder>(diffUtil) {
 
 
