@@ -129,6 +129,11 @@ class DietRecordFragment : Fragment() {
         _binding = null
     }
 
+    /* main_graph의 action을 활용해서 dialog 띄우기 */
+    private fun showDialog(action: Int) {
+        findNavController().navigate(action)
+    }
+
     companion object {
         fun newInstance() = DietRecordFragment()
     }
