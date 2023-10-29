@@ -17,6 +17,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alldayfit.R
 import com.example.alldayfit.databinding.DietRecordAddDialogBinding
@@ -27,6 +28,7 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.example.alldayfit.dietrecord.adapter.DietRecordAdapter
 
 class DietRecordFragment : Fragment() {
     private var _binding: DietRecordFragmentBinding? = null
@@ -91,7 +93,7 @@ class DietRecordFragment : Fragment() {
         val fat = random.nextFloat() * 100 // 지방
         val calories = (carbs * 4 + protein * 4 + fat * 9).toFloat() // 칼로리 계산
 
-       entries.add(BarEntry(0f, carbs))
+        entries.add(BarEntry(0f, carbs))
         entries.add(BarEntry(1f, protein))
         entries.add(BarEntry(2f, fat))
         entries.add(BarEntry(3f, calories))
@@ -100,6 +102,7 @@ class DietRecordFragment : Fragment() {
     }
 
     private fun initView() = with(binding) {
+        /* 식사 위젯, 칼로리 수치 아이템 text 초기 설정*/
         breakfastView.mealTxt.text = getString(R.string.diet_record_breakfast)
         lunchView.mealTxt.text = getString(R.string.diet_record_lunch)
         dinnerView.mealTxt.text = getString(R.string.diet_record_dinner)
@@ -108,15 +111,21 @@ class DietRecordFragment : Fragment() {
 //        proteinView.analysisTxt.text = getString(R.string.protein)
 //        fatView.analysisTxt.text = getString(R.string.fat)
 //        caloriesView.analysisTxt.text = getString(R.string.calories)
+        /* 위젯 클릭 이벤트 효과 추가 */
+        /* 식사(아침,점심,저녁,간식) 이미지 클릭 시 다이얼로그 표시 */
+        breakfastView.addMealView.setOnClickListener { showDialog(R.id.action_dietRecordFragment_to_dietRecordAddDialog) }
+        lunchView.addMealView.setOnClickListener { showDialog(R.id.action_dietRecordFragment_to_dietRecordAddDialog) }
+        dinnerView.addMealView.setOnClickListener { showDialog(R.id.action_dietRecordFragment_to_dietRecordAddDialog) }
+        snackView.addMealView.setOnClickListener { showDialog(R.id.action_dietRecordFragment_to_dietRecordAddDialog) }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val addMealView = view.findViewById<ImageView>(R.id.add_meal_view)
-        addMealView.setOnClickListener {
-            showDietRecordAddDialog()
-        }
+//        recyclerView = view.findViewById(R.id.meal_listview)
+//        dietRecordAdapter = DietRecordAdapter(dietRecordsList)
+//
+//        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+//        recyclerView.adapter = dietRecordAdapter
     }
 
     override fun onDestroyView() {
@@ -125,27 +134,32 @@ class DietRecordFragment : Fragment() {
         dialogBinding = null
     }
 
+    /* main_graph의 action을 활용해서 dialog 띄우기 */
+    private fun showDialog(action: Int) {
+        findNavController().navigate(action)
+    }
+
     companion object {
         fun newInstance() = DietRecordFragment()
     }
 
     // 식단 기록의 ImageButton을 클릭했을 때 식단 기록 추가 다이얼로그를 띄우는 함수
     private fun showDietRecordAddDialog() {
-      dialogBinding?.let { dialogBinding ->
+        dialogBinding?.let { dialogBinding ->
 
-          val dialogView = dialogBinding.root
+            val dialogView = dialogBinding.root
 
-          val builder = AlertDialog.Builder(requireContext())
-              .setView(dialogView)
+            val builder = AlertDialog.Builder(requireContext())
+                .setView(dialogView)
 
-          val alertDialog = builder.create()
+            val alertDialog = builder.create()
 
-          // RecyclerView 및 어댑터 초기화
-          val recyclerView = dialogBinding.mealListview
-          val dietRecordAdapter = DietRecordAdapter(dietRecordsList)
+            // RecyclerView 및 어댑터 초기화
+            val recyclerView = dialogBinding.mealListview
+            val dietRecordAdapter = DietRecordAdapter(dietRecordsList)
 
-          recyclerView.layoutManager = LinearLayoutManager(requireContext())
-          recyclerView.adapter = dietRecordAdapter
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            recyclerView.adapter = dietRecordAdapter
 
           // 식단 입력 후 plus 버튼 눌렀을 때 음식이 추가되는 클릭 리스너
           dialogBinding.btnAdd.setOnClickListener {
@@ -162,9 +176,25 @@ class DietRecordFragment : Fragment() {
               }
           }
 
-          dialogBinding.closeBtn.setOnClickListener {
-              alertDialog.dismiss()
-          }
+            // 식단 입력 후 plus 버튼 눌렀을 때 음식이 추가되는 클릭 리스너
+            dialogBinding.btnAdd.setOnClickListener {
+                val dietRecord = dialogBinding.mealEdit.text.toString()
+                //editText가 빈칸일 때 toast 메세지 띄우고 식단 추가 되지 않음
+                if (dietRecord.isNotEmpty()) {
+                    dietRecordsList.add(dietRecord)
+                    Log.d("yjRyu", "dietRecordsList = $dietRecordsList")
+                    dietRecordAdapter.notifyDataSetChanged()
+                    Toast.makeText(requireContext(), "식단 추가 완료!", Toast.LENGTH_SHORT).show()
+                    //식단 기록 입력 후 editText 초기화
+                    dialogBinding.mealEdit.text.clear()
+                } else {
+                    Toast.makeText(requireContext(), "식단을 입력해주세요.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            dialogBinding.closeBtn.setOnClickListener {
+                alertDialog.dismiss()
+            }
 
           dialogBinding.finishBtn.setOnClickListener {
               if(dietRecordsList.isEmpty()){
@@ -196,6 +226,17 @@ class DietRecordFragment : Fragment() {
           alertDialog.show()
 
       }
+            dialogBinding.finishBtn.setOnClickListener {
+                alertDialog.dismiss()
+            }
+
+            dialogBinding.dietImg.setOnClickListener {
+                //Todo 권한체크 코드
+                openGallery()
+            }
+            alertDialog.show()
+        }
+
     }
     private fun openGallery() {
         try {
@@ -245,6 +286,8 @@ class DietRecordFragment : Fragment() {
                 .load(File(newImageUri).path)
                 .centerCrop()
                 .into(dialogBinding!!.dietImg)
+
+
+        }
     }
-}
 }
