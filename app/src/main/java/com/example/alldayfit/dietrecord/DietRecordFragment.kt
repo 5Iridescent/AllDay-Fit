@@ -19,6 +19,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.alldayfit.R
 import com.example.alldayfit.databinding.DietRecordAddDialogBinding
 import com.example.alldayfit.databinding.DietRecordFragmentBinding
@@ -29,6 +30,7 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.example.alldayfit.dietrecord.adapter.DietRecordAdapter
+import java.io.File
 
 class DietRecordFragment : Fragment() {
     private var _binding: DietRecordFragmentBinding? = null
@@ -286,7 +288,6 @@ class DietRecordFragment : Fragment() {
                 .load(File(newImageUri).path)
                 .centerCrop()
                 .into(dialogBinding!!.dietImg)
-
 
         }
     }
