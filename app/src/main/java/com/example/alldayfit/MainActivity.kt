@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ReportFragment.Companion.reportFragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -26,16 +28,25 @@ class MainActivity : AppCompatActivity() {
         mBinding = MainActivityBinding.inflate(layoutInflater)
         val view = mBinding.root
         initNavigationBar()
-        setContentView(view)
         setCustomToolbar()
+        setContentView(view)
     }
 
     /* bottom navigation click event - 클릭 */
     private fun initNavigationBar() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(mBinding.mainFrame.id) as NavHostFragment
-        val navController = navHostFragment.navController
-        mBinding.mainNav.setupWithNavController(navController)
+        val navController = navHostFragment.navController // 기본 선택 아이템
+        var lastSelectedItemId = R.id.mainFragment
+        mBinding.mainNav.setOnItemSelectedListener { item ->
+            // error
+//            if (lastSelectedItemId == item.itemId) {
+//                return@setOnItemSelectedListener false
+//            }
+            navController.navigate(item.itemId) // 아이템 선택
+            lastSelectedItemId = item.itemId
+            true
+        }
         mBinding.mainNav.selectedItemId = R.id.mainFragment
     }
 
