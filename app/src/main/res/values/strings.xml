@@ -21,6 +21,8 @@
     <string name="diet_record">식단 기록</string>
     <string name="month_record">월간 기록</string>
     <string name="week_mode">Week mode</string>
+    <string name="community_tab_home">홈</string>
+    <string name="community_tab_my_post">마이 게시물</string>
     <string name="community_fab_add_post">내 게시물 추가</string>
     <string name="exercise_record">운동기록</string>
     <string name="exercise_time">exercise\n Time</string>
