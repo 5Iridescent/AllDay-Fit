@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
     app:startDestination="@id/calendarFragment">
+
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.alldayfit.main.MainFragment"
@@ -14,25 +15,85 @@
         android:id="@+id/dietRecordFragment"
         android:name="com.example.alldayfit.dietrecord.DietRecordFragment"
         android:label="diet_record_fragment"
-        tools:layout="@layout/diet_record_fragment" />
+        tools:layout="@layout/diet_record_fragment">
+        <action
+            android:id="@+id/action_dietRecordFragment_to_dietRecordAddDialog"
+            app:destination="@id/dietRecordAddDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/dietRecordAddDialog"
+        android:name="com.example.alldayfit.dietrecord.DietRecordAddDialog"
+        android:label="diet_record_add_dialog"
+        tools:layout="@layout/diet_record_add_dialog" />
 
     <fragment
         android:id="@+id/exerciseStatusFragment"
         android:name="com.example.alldayfit.exercisestatus.ExerciseStatusFragment"
         android:label="exercise_status_fragment"
-        tools:layout="@layout/exercise_status_fragment" />
+        tools:layout="@layout/exercise_status_fragment">
+        <action
+            android:id="@+id/action_exerciseStatusFragment_to_exerciseStatusDailyEditDialog"
+            app:destination="@id/exerciseStatusDailyEditDialog"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_exerciseStatusFragment_to_exerciseStatusAddGoalDialog"
+            app:destination="@id/exerciseStatusAddGoalDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/exerciseStatusAddGoalDialog"
+        android:name="com.example.alldayfit.exercisestatus.ExerciseStatusAddGoalDialog"
+        android:label="exercise_status_add_goal_dialog"
+        tools:layout="@layout/exercise_status_add_goal_dialog" />
+    <dialog
+        android:id="@+id/exerciseStatusDailyEditDialog"
+        android:name="com.example.alldayfit.exercisestatus.ExerciseStatusDailyEditDialog"
+        android:label="exercise_status_daily_edit_dialog"
+        tools:layout="@layout/exercise_status_daily_edit_dialog" />
 
     <fragment
         android:id="@+id/communityMainFragment"
         android:name="com.example.alldayfit.community.CommunityMainFragment"
         android:label="commnunity_main"
-        tools:layout="@layout/commnunity_main" />
+        tools:layout="@layout/community_main_fragment" />
 
     <fragment
         android:id="@+id/settingMainFragment"
         android:name="com.example.alldayfit.settings.ui.SettingMainFragment"
         android:label="setting_main_fragment"
-        tools:layout="@layout/setting_main_fragment" />
+        tools:layout="@layout/setting_main_fragment" >
+        <action
+            android:id="@+id/action_settingMainFragment_to_settingAppNotifiFragment"
+            app:destination="@id/settingAppNotifiFragment" />
+        <action
+            android:id="@+id/action_settingMainFragment_to_settingGuideFragment"
+            app:destination="@id/settingGuideFragment" />
+        <action
+            android:id="@+id/action_settingMainFragment_to_settingNoticeFragment"
+            app:destination="@id/settingNoticeFragment" />
+        <action
+            android:id="@+id/action_settingMainFragment_to_settingModUserFragment"
+            app:destination="@id/settingModUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingAppNotifiFragment"
+        android:name="com.example.alldayfit.settings.ui.SettingAppNotifiFragment"
+        android:label="setting_notifi_fragment"
+        tools:layout="@layout/setting_notifi_fragment" />
+    <fragment
+        android:id="@+id/settingGuideFragment"
+        android:name="com.example.alldayfit.settings.ui.SettingGuideFragment"
+        android:label="setting_guide_fragment"
+        tools:layout="@layout/setting_guide_fragment" />
+    <fragment
+        android:id="@+id/settingNoticeFragment"
+        android:name="com.example.alldayfit.settings.ui.SettingNoticeFragment"
+        android:label="setting_notice_fragment"
+        tools:layout="@layout/setting_notice_fragment" />
+    <fragment
+        android:id="@+id/settingModUserFragment"
+        android:name="com.example.alldayfit.settings.ui.SettingModUserFragment"
+        android:label="setting_mod_user_fragment"
+        tools:layout="@layout/setting_mod_user_fragment" />
 
     <fragment
         android:id="@+id/calendarFragment"
