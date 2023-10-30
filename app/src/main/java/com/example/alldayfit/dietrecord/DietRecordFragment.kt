@@ -18,6 +18,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.alldayfit.R
 import com.example.alldayfit.databinding.DietRecordAddDialogBinding
 import com.example.alldayfit.databinding.DietRecordFragmentBinding
@@ -27,6 +28,7 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import java.io.File
 
 class DietRecordFragment : Fragment() {
     private var _binding: DietRecordFragmentBinding? = null
@@ -164,6 +166,7 @@ class DietRecordFragment : Fragment() {
 
           dialogBinding.closeBtn.setOnClickListener {
               alertDialog.dismiss()
+              (dialogBinding.root.parent as ViewGroup).removeView(dialogBinding.root)
           }
 
           dialogBinding.finishBtn.setOnClickListener {
@@ -171,6 +174,7 @@ class DietRecordFragment : Fragment() {
                   Toast.makeText(requireContext(), "식단을 입력해주세요.", Toast.LENGTH_SHORT).show()
               } else {
                   alertDialog.dismiss()
+                  (dialogBinding.root.parent as ViewGroup).removeView(dialogBinding.root)
               }
           }
 
