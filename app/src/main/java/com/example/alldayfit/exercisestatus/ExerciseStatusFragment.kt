@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.example.alldayfit.R
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.alldayfit.databinding.ExerciseStatusFragmentBinding
 import com.example.alldayfit.exercisestatus.adapter.DailyAdapter
@@ -21,7 +22,7 @@ class ExerciseStatusFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-    val exerciseStatusViewModel: ExerciseStatusViewModel by viewModels()
+    val exerciseStatusViewModel: ExerciseStatusAddGoalViewModel by viewModels()
 
     private lateinit var viewModel: BodyStatusViewModel
     private lateinit var adapter: DailyAdapter
@@ -47,18 +48,19 @@ class ExerciseStatusFragment : Fragment() {
                 dialog.show(requireActivity().supportFragmentManager, "ExerciseStatusDailyEditDialog")
             }
 
-        binding.goalListFixBtn.setOnClickListener {
-            val addGoalDialog =
-                ExerciseStatusAddGoalDialog(exerciseStatusAddGoalViewModel)
-            addGoalDialog.show(childFragmentManager, "ExerciseStatusDailyEditDialog")
-            exerciseStatusAddGoalViewModel.changePostType(exerciseStatusAddGoalViewModel.dailyEditList)
-        }//프래그먼트 띄우기 및 타입 변환
+        // Todo 다이얼로그 이사로 인해 코드 수정 필요
+//        binding.goalListFixBtn.setOnClickListener {
+//            val addGoalDialog =
+//                ExerciseStatusAddGoalDialog(exerciseStatusViewModel)
+//            addGoalDialog.show(childFragmentManager, "ExerciseStatusDailyEditDialog")
+//            exerciseStatusViewModel.changePostType(exerciseStatusViewModel.dailyEditList)
+//        }//프래그먼트 띄우기 및 타입 변환
 
-        binding.goalList.layoutManager =
-            androidx.recyclerview.widget.LinearLayoutManager(context)
-        adapter = DailyAdapter(exerciseStatusAddGoalViewModel)
-        binding.goalList.adapter = adapter
-        exerciseStatusAddGoalViewModel.goalLiveData.observe(viewLifecycleOwner, Observer { data ->
+//        binding.goalList.layoutManager =
+//            androidx.recyclerview.widget.LinearLayoutManager(context)
+        adapter = DailyAdapter(exerciseStatusViewModel)
+//        binding.goalList.adapter = adapter
+        exerciseStatusViewModel.goalLiveData.observe(viewLifecycleOwner, Observer { data ->
             adapter.addGoal(data)
         })
         return binding.root
@@ -74,12 +76,12 @@ class ExerciseStatusFragment : Fragment() {
         statusCalorieConsumptionView.statusTypeTxt.textSize = 13F
 
         // 수정 버튼 클릭 시 해당 dialog 뜨위기
-        userConditionFixBtn.setOnClickListener {
+        fixed.setOnClickListener {
             showDialog(R.id.action_exerciseStatusFragment_to_exerciseStatusDailyEditDialog)
         }
-        goalListFixBtn.setOnClickListener {
-            showDialog(R.id.action_exerciseStatusFragment_to_exerciseStatusAddGoalDialog)
-        }
+//        goalListFixBtn.setOnClickListener {
+//            showDialog(R.id.action_exerciseStatusFragment_to_exerciseStatusAddGoalDialog)
+//        }
     }
 
     override fun onDestroyView() {
