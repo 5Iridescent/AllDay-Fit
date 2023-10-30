@@ -21,6 +21,8 @@
     <string name="diet_record">식단 기록</string>
     <string name="month_record">월간 기록</string>
     <string name="week_mode">Week mode</string>
+    <string name="community_tab_home">홈</string>
+    <string name="community_tab_my_post">마이 게시물</string>
     <string name="community_fab_add_post">내 게시물 추가</string>
     <string name="exercise_record">운동기록</string>
     <string name="exercise_time">exercise\n Time</string>
@@ -31,6 +33,7 @@
     <string name="preferences">환경설정</string>
     <string name="user_condition">의 상태</string>
     <string name="subtract_day_btn_desc">select the day before</string>
+    <string name="add_day_btn_desc">select the day next</string>
     <string name="weight">WEIGHT</string>
     <string name="height">HEIGHT</string>
     <string name="bmi">BMI</string>
@@ -88,4 +91,5 @@
     <string name="diet_record_close_btn_desc">식단 기록 추가 화면 닫기</string>
     <string name="count_ment_user">루트를 지정하시면 \n 루트에 맞춰서 \n 진행이 가능합니다.</string>
     <string name="count_frist_ment">Start with \n click</string>
+    <string name="fix_goal_list_btn">주간 목표 수정</string>
 </resources>
