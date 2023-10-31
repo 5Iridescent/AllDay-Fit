@@ -2,17 +2,14 @@ package com.example.alldayfit.count
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
-import com.example.alldayfit.R
-import com.example.alldayfit.databinding.ActivityCountPageBinding
-import com.example.alldayfit.exercisestatus.ExerciseStatusDailyEditDialog
+import com.example.alldayfit.databinding.CountPageActivityBinding
 
 
 class CountPage : AppCompatActivity() {
-    private lateinit var mBinding: ActivityCountPageBinding
+    private lateinit var mBinding: CountPageActivityBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = ActivityCountPageBinding.inflate(layoutInflater)
+        mBinding = CountPageActivityBinding.inflate(layoutInflater)
         val view = mBinding.root
         setContentView(view)
         mBinding.setRootine.setOnClickListener {
