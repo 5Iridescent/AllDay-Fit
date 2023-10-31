@@ -240,11 +240,11 @@ class DietRecordFragment : Fragment() {
             val imageUri: Uri = data.data!!
             val newImageUri = getRealPathFromURI(imageUri)
 
-            // Glide
-//            Glide.with(requireContext())
-//                .load(File(newImageUri).path)
-//                .centerCrop()
-//                .into(dialogBinding!!.dietImg)
+             Glide
+            Glide.with(requireContext())
+                .load(File(newImageUri).path)
+                .centerCrop()
+                .into(dialogBinding!!.dietImg)
     }
 }
 }
