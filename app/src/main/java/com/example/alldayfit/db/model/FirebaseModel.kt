@@ -35,8 +35,8 @@ data class FirebaseModel(
         val mealDate: String,
     ) {
         data class Meal(
-            val FoodText: List<String>,
-            val FoodImage: String,
+            val foodText: List<String>,
+            val foodImage: String,
         )
     }
 
@@ -44,15 +44,14 @@ data class FirebaseModel(
 
 //{
 //    users{
-//    userId{
+//        userId{
 //        email : String
 //        name : String
 //        nickname : String
+//        }
 //    }
-//}
 //    physicalInformation{
-//    userId{
-//        {
+//        userId{
 //            informationId {
 //                inputDate : yyyy.MM.dd
 //                Height : Int
@@ -60,20 +59,16 @@ data class FirebaseModel(
 //            }
 //        }
 //    }
-//}
 //    exerciseLog{
 //    userId{
-//        {
 //            logId {
 //                TotalTime : Int
 //                exerciseDate : yyyy.MM.dd
 //            }
 //        }
 //    }
-//}
 //    dietLog{
-//    userId{
-//        {
+//        userId{
 //            meallogId {
 //                Breakfast{
 //                    FoodText : [String String String]
@@ -95,5 +90,4 @@ data class FirebaseModel(
 //            }
 //        }
 //    }
-//}
 //}

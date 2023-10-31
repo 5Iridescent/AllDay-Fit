@@ -2,31 +2,31 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/app_bar_com"
+        android:id="@+id/communityMainFragment"
         android:enabled="true"
         android:icon="@drawable/ic_commity"
         android:title="@string/commity" />
 
     <item
-        android:id="@+id/app_bar_diet"
+        android:id="@+id/dietRecordFragment"
         android:enabled="true"
         android:icon="@drawable/ic_diet"
         android:title="@string/diet_record" />
 
     <item
-        android:id="@+id/app_bar_main"
+        android:id="@+id/mainFragment"
         android:enabled="true"
         android:icon="@drawable/ic_main"
         android:title="@string/main_page" />
 
     <item
-        android:id="@+id/app_bar_mypage"
+        android:id="@+id/exerciseStatusFragment"
         android:enabled="true"
         android:icon="@drawable/ic_mypage"
         android:title="@string/exercise_sit" />
 
     <item
-        android:id="@+id/app_bar_menu"
+        android:id="@+id/settingMainFragment"
         android:enabled="true"
         android:icon="@drawable/ic_menu"
         android:title="@string/preferences" />

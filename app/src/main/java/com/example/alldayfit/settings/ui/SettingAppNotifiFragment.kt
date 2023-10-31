@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.alldayfit.MainActivity
 import com.example.alldayfit.databinding.SettingNotifiFragmentBinding
 
 class SettingAppNotifiFragment : Fragment() {
@@ -16,7 +17,12 @@ class SettingAppNotifiFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = SettingNotifiFragmentBinding.inflate(inflater, container, false)
+        initView()
         return binding.root
+    }
+
+    /* setting page design, data 초기 설정 */
+    private fun initView() {
     }
 
     override fun onDestroyView() {

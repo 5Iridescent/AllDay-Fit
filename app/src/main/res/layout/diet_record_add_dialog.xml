@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="360dp"
-    android:layout_height="690dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@drawable/view_corner_10"
     android:backgroundTint="@color/light_blue"
-    android:maxHeight="690dp"
-    android:minHeight="510dp"
-    android:padding="15dp">
+    android:padding="15dp"
+    tools:context=".dietrecord.DietRecordAddDialog">
 
     <TextView
         android:id="@+id/dialog_title"
@@ -21,11 +21,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:contentDescription="@string/diet_record_close_btn_desc"
         android:id="@+id/close_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/none"
+        android:contentDescription="@string/diet_record_close_btn_desc"
         android:minWidth="48dp"
         android:minHeight="48dp"
         android:src="@drawable/ic_close"
@@ -35,9 +35,10 @@
     <ImageView
         android:id="@+id/diet_img"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="2:1"
         android:layout_marginHorizontal="5dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/exercise_status_fix_btn_shape"
         android:scaleType="centerInside"
         android:src="@drawable/ic_camera"
@@ -59,8 +60,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/meal_listview"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="10dp"
         app:layout_constraintBottom_toTopOf="@id/meal_edit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/meal_text"
@@ -70,16 +71,16 @@
         android:id="@+id/meal_edit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/gray_stroke_white_back_shape"
         android:gravity="center_vertical"
         android:hint="@string/diet_record_add_edit_hint"
         android:minHeight="50dp"
         android:paddingHorizontal="10dp"
         android:textSize="@dimen/text_size_very_small"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/close_btn"
         app:layout_constraintStart_toStartOf="@id/meal_text"
-        app:layout_constraintTop_toBottomOf="@id/meal_listview" />
+        app:layout_constraintBottom_toTopOf="@id/finish_btn" />
 
     <ImageButton
         android:id="@+id/btn_add"
@@ -87,26 +88,24 @@
         android:layout_height="wrap_content"
         android:layout_margin="13dp"
         android:background="@color/none"
-        android:src="@drawable/ic_add"
+        android:contentDescription="@string/diet_record_add_btn_desc"
         android:minWidth="48dp"
         android:minHeight="48dp"
+        android:src="@drawable/ic_add"
         app:layout_constraintBottom_toBottomOf="@id/meal_edit"
         app:layout_constraintEnd_toEndOf="@id/meal_edit"
         app:layout_constraintTop_toTopOf="@id/meal_edit"
-        android:contentDescription="@string/diet_record_add_btn_desc"
         app:tint="@color/black" />
 
     <android.widget.Button
         android:id="@+id/finish_btn"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginTop="80dp"
         android:background="@drawable/white_stroke_blue_back_shape"
         android:text="@string/diet_add_finish"
         android:textSize="@dimen/text_size_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/meal_edit" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
