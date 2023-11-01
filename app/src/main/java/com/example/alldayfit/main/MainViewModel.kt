@@ -28,6 +28,28 @@ class MainViewModel : ViewModel() {
     fun togglegoal(goal: Goal) {
         goal.goalckeck = !goal.goalckeck
         goalLiveData.value = goalList
+    private val _exerciseBtnTxt: MutableLiveData<Int> = MutableLiveData()
+    val exerciseBtnTxt: LiveData<Int> get() = _exerciseBtnTxt
+
+    fun updateExerciseTime(){
+    // ViewModel 초기 값 설정
+    init {
+        _exerciseBtnTxt.value = R.string.exercise_start_txt
+    }
+
+
+    fun toggleExerciseBtn() {
+        val currentTxt = exerciseBtnTxt.value
+        if (currentTxt == R.string.exercise_start_txt) {
+            _exerciseBtnTxt.value = R.string.exercise_finish_txt
+            startTime = getCurrentLocalTime()
+        } else {
+            _exerciseBtnTxt.value = R.string.exercise_start_txt
+            endTime = getCurrentLocalTime()
+            val elapsedTime =
+                elapsedTimeInMinutes(startTime.toZonedDateTime(), endTime.toZonedDateTime())
+        }
+    }
     }
 
     // ViewModel 초기 값 설정
