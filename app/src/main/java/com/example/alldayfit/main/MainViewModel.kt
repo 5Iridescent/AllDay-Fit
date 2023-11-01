@@ -2,9 +2,12 @@ package com.example.alldayfit.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-
+import androidx.lifecycle.ViewModel
+import com.example.alldayfit.db.RealTimeRepository
+import com.example.alldayfit.db.RealTimeRepositoryImpl
 
 class MainViewModel : ViewModel() {
+    val realtimeDB : RealTimeRepository = RealTimeRepositoryImpl()
     val goalList = mutableListOf<Goal>()
     val goalLiveData = MutableLiveData<List<Goal>>()
 
