@@ -25,7 +25,7 @@ data class FirebaseModel(
 
     data class ExerciseRecord(
         val totalTime: Int,
-        val exerciseDate: String,
+        val logDate: String,
     )
 
     data class DietRecord(
@@ -33,7 +33,7 @@ data class FirebaseModel(
         val lunch: Meal,
         val dinner: Meal,
         val snack: Meal,
-        val mealDate: String,
+        val logDate: String,
     ) {
         data class Meal(
             val foodText: List<String>,
