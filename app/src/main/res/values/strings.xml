@@ -33,6 +33,7 @@
     <string name="preferences">환경설정</string>
     <string name="user_condition">의 상태</string>
     <string name="subtract_day_btn_desc">select the day before</string>
+    <string name="add_day_btn_desc">select the day next</string>
     <string name="weight">WEIGHT</string>
     <string name="height">HEIGHT</string>
     <string name="bmi">BMI</string>
