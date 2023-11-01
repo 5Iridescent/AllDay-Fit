@@ -2,9 +2,17 @@ package com.example.alldayfit.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.alldayfit.R
 import com.example.alldayfit.db.RealTimeRepository
 import com.example.alldayfit.db.RealTimeRepositoryImpl
+import com.example.alldayfit.db.model.FirebaseModel
+import java.time.Duration
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 class MainViewModel : ViewModel() {
     val realtimeDB : RealTimeRepository = RealTimeRepositoryImpl()
@@ -15,10 +23,13 @@ class MainViewModel : ViewModel() {
     fun togglegoal(goal: Goal) {
         goal.goalckeck = !goal.goalckeck
         goalLiveData.value = goalList
+    private val realtimeDB: RealTimeRepository = RealTimeRepositoryImpl()
     private val _exerciseBtnTxt: MutableLiveData<Int> = MutableLiveData()
     val exerciseBtnTxt: LiveData<Int> get() = _exerciseBtnTxt
+    private lateinit var exerciseData: FirebaseModel.ExerciseRecord
+    private lateinit var startTime: String
+    private lateinit var endTime: String
 
-    fun updateExerciseTime(){
     // ViewModel 초기 값 설정
     init {
         _exerciseBtnTxt.value = R.string.exercise_start_txt
@@ -37,6 +48,49 @@ class MainViewModel : ViewModel() {
                 elapsedTimeInMinutes(startTime.toZonedDateTime(), endTime.toZonedDateTime())
         }
     }
+
+    private fun updateExerciseData(elapsedTime: Int) {
+        exerciseData = FirebaseModel.ExerciseRecord(
+            totalTime = elapsedTime, logDate = getCurrentLocalTime(
+                MainFragment.LOG_FORMAT
+            )
+        )
+        realtimeDB.addExercise(exerciseData)
+    }
+
+    /* zonDatetime 형식으로 다시 반환 */
+    private fun String.toZonedDateTime(): ZonedDateTime {
+        val formatter = DateTimeFormatter.ISO_ZONED_DATE_TIME
+        return ZonedDateTime.parse(this, formatter)
+    }
+
+    /* ZonedDateTime 라이브러리로 현지 시각 구하기 */
+    private fun getCurrentLocalTime(format: String = ""): String {
+        // 현지 시스템 지역 ID를 가지고 ZonedDateTime에 넣으면 현지 시각을 구할 수 있다.
+        val nowDateTime = ZonedDateTime.now(ZoneId.systemDefault())
+        // 파리미터로 원하는 format을 받아서 그에 맞춰 형식을 바꿔서 반환
+        return if (format.isEmpty()) {
+            nowDateTime
+        } else {
+            val formatter = DateTimeFormatter.ofPattern(format)
+            nowDateTime.format(formatter)
+        }.toString()
+    }
+
+    // 시작 시간과 끝 시간 차이 비교
+    private fun elapsedTimeInMinutes(startTime: ZonedDateTime, endTime: ZonedDateTime): Long? {
+        // 시작 시간의 지역과 끝 시각의 지역이 다르면 null로
+        if (startTime.zone != endTime.zone) {
+            return null
+        }
+        // time라이브러리 duration로 통해서 시간 비교
+        val duration = Duration.between(startTime, endTime)
+        // 분으로 반환
+        return duration.toMinutes()
+    }
+
+    fun updateExerciseTime(exerciseData: FirebaseModel.ExerciseRecord) {
+
     }
 
 
