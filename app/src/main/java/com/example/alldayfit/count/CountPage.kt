@@ -34,6 +34,8 @@ class CountPage : AppCompatActivity() {
                 // 더블클릭 시 화면에 TextView 표시
                 mBinding.finishTextView.visibility = View.VISIBLE
                 mBinding.timer.visibility = View.INVISIBLE
+                // 스톱워치 종료 후 다시 클릭해도 반응 없게하는 코드
+                mBinding.count.isEnabled = false
             }
             lastClickTime = clickTime
         }
@@ -71,6 +73,6 @@ class CountPage : AppCompatActivity() {
     }
 
     companion object {
-        private const val DOUBLE_CLICK_TIME_DELTA: Long = 300 // 더블클릭 간격 (밀리초)
+        private const val DOUBLE_CLICK_TIME_DELTA: Long = 300 // 더블클릭 간격
     }
 }
