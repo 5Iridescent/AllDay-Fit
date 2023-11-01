@@ -9,6 +9,7 @@ data class FirebaseModel(
     val physicalData: PhysicalData,
     val exerciseRecord: ExerciseRecord,
     val dietRecord: DietRecord,
+    val post: Post
 ) {
     data class UserData(
         val email: String,
@@ -40,36 +41,51 @@ data class FirebaseModel(
         )
     }
 
+    data class Post(
+        val author: String,
+        val postingDate: String,
+        val image: String,
+        val content: String,
+    )
 }
 
 //{
 //    users{
-//        userId{
-//        email : String
-//        name : String
-//        nickname : String
+//        userId(firebase Authentication user id){
+//            Email : String
+//            Name : String
+//            Nickname : String
+//            Gender : String
 //        }
 //    }
-//    physicalInformation{
+//    information{
 //        userId{
-//            informationId {
-//                inputDate : yyyy.MM.dd
+//            exerciseLocate :
+//            exerciseTime :
+//
+//        }
+//    }
+//    physicalLog{
+//        userId(firebase Authentication user id){
+//            physicalId(firebaseid) {
+//                LogDate : yyyy.MM.dd
 //                Height : Int
 //                Weight : Int
+//                weeklyGoal : List<String>
 //            }
 //        }
 //    }
 //    exerciseLog{
-//    userId{
-//            logId {
-//                TotalTime : Int
-//                exerciseDate : yyyy.MM.dd
-//            }
+//        userId{
+//                logId(firebaseid) {
+//                    TotalTime : Int
+//                    LogDate : yyyy.MM.dd
+//                }
 //        }
 //    }
 //    dietLog{
-//        userId{
-//            meallogId {
+//        userId(firebase Authentication user id) {
+//            mealLogId(firebaseid) {
 //                Breakfast{
 //                    FoodText : [String String String]
 //                    FoodImage : String
@@ -86,8 +102,16 @@ data class FirebaseModel(
 //                    FoodText : [String String String]
 //                    FoodImage : String
 //                }
-//                mealDate : yyyy.MM.dd
+//                LogDate : yyyy.MM.dd
 //            }
+//        }
+//    }
+//    postLog{
+//        postId(firebaseid){
+//            Author: String
+//            PostingDate : String
+//            Image : String
+//            Content : String
 //        }
 //    }
 //}
