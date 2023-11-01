@@ -14,6 +14,7 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
     private val mealRef = getReference(RealTimeRepository.DIET)
     private val informationRef = getReference(RealTimeRepository.PHYSICAL)
     private val exerciseRef = getReference(RealTimeRepository.EXERCISE)
+    private val postRef = getReference(RealTimeRepository.POST)
 
     /* 현 유저의 고유 user id를 가지고 user 테이블에 접근하여 데이터 가져오기 */
     override fun getUserData() {
@@ -112,6 +113,33 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
 
             override fun onCancelled(databaseError: DatabaseError) {
                 // 에러
+            }
+        })
+    }
+
+    override fun retrievePosts() {
+        var query = postRef.orderByKey()
+        var lastItemId : String? = null
+        // 이전 페이지의 마지막 아이템을 시작점으로 지정
+        if (lastItemId != null) {
+            query = query.startAt(lastItemId)
+        }
+        query.limitToFirst(20).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // 데이터를 처리하고 마지막 아이템의 키를 저장
+                    for (childSnapshot in dataSnapshot.children) {
+                        val itemKey = childSnapshot.key
+                        lastItemId = itemKey.toString()
+
+                    }
+                } else {
+                    // 더 이상 데이터가 없음
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // 에러 처리
             }
         })
     }
