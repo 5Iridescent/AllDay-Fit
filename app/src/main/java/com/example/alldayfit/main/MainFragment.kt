@@ -23,7 +23,13 @@ import java.util.Locale
 class MainFragment : Fragment() {
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
-
+    private val viewModel: MainViewModel by lazy {
+        ViewModelProvider(
+            this,
+            MainViewModelFactory()
+        )[MainViewModel::class.java]
+    }
+    private lateinit var exerciseData : FirebaseModel.ExerciseRecord
     lateinit var selectedDate: LocalDate
     val cal: Calendar = Calendar.getInstance()
 
