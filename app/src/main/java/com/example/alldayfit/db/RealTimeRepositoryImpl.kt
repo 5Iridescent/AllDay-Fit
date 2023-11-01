@@ -36,7 +36,7 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
     }
 
     override fun addExercise(data: FirebaseModel.ExerciseRecord) {
-        val query = exerciseRef.orderByChild(RealTimeRepository.DATE).equalTo(data.exerciseDate)
+        val query = exerciseRef.orderByChild(RealTimeRepository.DATE).equalTo(data.logDate)
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -57,7 +57,7 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
 
     //
     override fun addMealAll(data: FirebaseModel.DietRecord) {
-        val query = mealRef.orderByChild(RealTimeRepository.DATE).equalTo(data.mealDate)
+        val query = mealRef.orderByChild(RealTimeRepository.DATE).equalTo(data.logDate)
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -77,7 +77,7 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
     }
 
     override fun addMealOne(mealType: String, data: FirebaseModel.DietRecord) {
-        val query = mealRef.orderByChild(RealTimeRepository.DATE).equalTo(data.mealDate)
+        val query = mealRef.orderByChild(RealTimeRepository.DATE).equalTo(data.logDate)
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
