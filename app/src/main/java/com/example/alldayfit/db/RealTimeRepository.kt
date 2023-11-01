@@ -18,6 +18,7 @@ interface RealTimeRepository {
     fun getReference(path: String, id: String = userId): DatabaseReference {
         return database.reference.child(path).child(id)
     }
+
     private val userId: String
         get() = "NTqKsmydkVOE9fWxxTolGDSkL7p2"
     private val database: FirebaseDatabase
@@ -33,6 +34,8 @@ interface RealTimeRepository {
     fun addMealOne(mealType: String, data: FirebaseModel.DietRecord) {}
 
     fun isPresenceDataExercise(date: String) {}
+
+    fun retrievePosts() {}
 
     companion object {
         const val USERS = "users"
