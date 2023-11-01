@@ -16,17 +16,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <Chronometer
-        android:id="@+id/timer"
+    <FrameLayout
+        android:id="@+id/framelayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="24sp"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@+id/count"
         app:layout_constraintEnd_toEndOf="@+id/count"
         app:layout_constraintStart_toStartOf="@+id/count"
-        app:layout_constraintTop_toTopOf="@+id/count"
-        app:layout_constraintVertical_bias="0.47" />
+        app:layout_constraintTop_toTopOf="@+id/count">
+
+        <Chronometer
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="50sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/count"
+            app:layout_constraintEnd_toEndOf="@+id/count"
+            app:layout_constraintStart_toStartOf="@+id/count"
+            app:layout_constraintTop_toTopOf="@+id/count" />
+    </FrameLayout>
 
     <ImageView
         android:id="@+id/count"
@@ -46,6 +57,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/count_frist_ment"
+        android:visibility="visible"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="@+id/count"
+        app:layout_constraintEnd_toEndOf="@+id/count"
+        app:layout_constraintStart_toStartOf="@+id/count"
+        app:layout_constraintTop_toTopOf="@+id/count" />
+
+    <TextView
+        android:id="@+id/finish_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="오늘도 맛있다"
+        android:visibility="invisible"
         android:textAlignment="center"
         android:textColor="@color/blue"
         android:textSize="48sp"
