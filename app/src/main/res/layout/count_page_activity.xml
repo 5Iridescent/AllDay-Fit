@@ -16,6 +16,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <Chronometer
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/count"
+        app:layout_constraintEnd_toEndOf="@+id/count"
+        app:layout_constraintStart_toStartOf="@+id/count"
+        app:layout_constraintTop_toTopOf="@+id/count"
+        app:layout_constraintVertical_bias="0.47" />
+
     <ImageView
         android:id="@+id/count"
         android:layout_width="0dp"
@@ -30,16 +42,17 @@
         app:srcCompat="@drawable/circle_blue_back_shape" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="48sp"
-        android:textColor="@color/blue"
-        android:textAlignment="center"
         android:text="@string/count_frist_ment"
-        app:layout_constraintTop_toTopOf="@+id/count"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="@+id/count"
         app:layout_constraintEnd_toEndOf="@+id/count"
         app:layout_constraintStart_toStartOf="@+id/count"
-        app:layout_constraintBottom_toBottomOf="@+id/count"/>
+        app:layout_constraintTop_toTopOf="@+id/count" />
 
     <TextView
         android:id="@+id/set_rootine"

@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:background="@color/none"
-        android:contentDescription="@string/add_day_btn_desc"
+        android:contentDescription="@string/subtract_day_btn_desc"
         android:src="@drawable/ic_next"
         app:layout_constraintBottom_toBottomOf="@id/date_txt"
         app:layout_constraintStart_toEndOf="@id/date_txt"
