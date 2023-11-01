@@ -16,6 +16,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <FrameLayout
+        android:id="@+id/framelayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/count"
+        app:layout_constraintEnd_toEndOf="@+id/count"
+        app:layout_constraintStart_toStartOf="@+id/count"
+        app:layout_constraintTop_toTopOf="@+id/count">
+
+        <Chronometer
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="50sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/count"
+            app:layout_constraintEnd_toEndOf="@+id/count"
+            app:layout_constraintStart_toStartOf="@+id/count"
+            app:layout_constraintTop_toTopOf="@+id/count" />
+    </FrameLayout>
+
     <ImageView
         android:id="@+id/count"
         android:layout_width="0dp"
@@ -30,16 +53,32 @@
         app:srcCompat="@drawable/circle_blue_back_shape" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="48sp"
-        android:textColor="@color/blue"
-        android:textAlignment="center"
         android:text="@string/count_frist_ment"
-        app:layout_constraintTop_toTopOf="@+id/count"
+        android:visibility="visible"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="@+id/count"
         app:layout_constraintEnd_toEndOf="@+id/count"
         app:layout_constraintStart_toStartOf="@+id/count"
-        app:layout_constraintBottom_toBottomOf="@+id/count"/>
+        app:layout_constraintTop_toTopOf="@+id/count" />
+
+    <TextView
+        android:id="@+id/finish_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="오늘도 맛있다"
+        android:visibility="invisible"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toBottomOf="@+id/count"
+        app:layout_constraintEnd_toEndOf="@+id/count"
+        app:layout_constraintStart_toStartOf="@+id/count"
+        app:layout_constraintTop_toTopOf="@+id/count" />
 
     <TextView
         android:id="@+id/set_rootine"
@@ -68,5 +107,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/count" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

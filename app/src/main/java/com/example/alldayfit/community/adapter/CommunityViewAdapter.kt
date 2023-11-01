@@ -12,7 +12,7 @@ import com.example.alldayfit.R
 import com.example.alldayfit.community.CommunityModel
 import com.example.alldayfit.community.CommunityViewModel
 import com.example.alldayfit.databinding.CommunityItemsBinding
-
+import com.example.alldayfit.exercisestatus.adapter.DailyAdapter.Companion.diffUtil
 
 class CommunityViewAdapter(private var viewModel: CommunityViewModel) :
     ListAdapter<CommunityModel, CommunityViewAdapter.HomeHolder>(diffUtil) {
