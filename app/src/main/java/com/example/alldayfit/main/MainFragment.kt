@@ -12,6 +12,11 @@ import androidx.lifecycle.Observer
 import com.example.alldayfit.count.CountPage
 import com.example.alldayfit.databinding.MainFragmentBinding
 import com.example.alldayfit.main.adapter.GoalAdapter
+import androidx.lifecycle.ViewModelProvider
+import com.example.alldayfit.count.CountPage
+import com.example.alldayfit.databinding.MainFragmentBinding
+import com.example.alldayfit.db.RealTimeRepository
+import com.example.alldayfit.db.model.FirebaseModel
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -57,6 +62,7 @@ class MainFragment : Fragment() {
                 endTime = SimpleDateFormat("yyyy.MM.dd HH:mm:ss").format(Date())
                 val message = "운동완료 시간: $endTime"
                 showToast(message)
+                viewModel.updateExerciseTime()
                 val elapsedTime = calculateElapsedTime(startTime!!, endTime!!)
                 showToast(
                     "운동 시간: ${elapsedTime.get(Calendar.MINUTE)} 분" + " ${elapsedTime.get(Calendar.SECOND)} 초"
@@ -78,6 +84,10 @@ class MainFragment : Fragment() {
             adapter.addGoal(data)
         })
         return binding.root
+    }
+
+    private fun updateExerciseData(){
+        exerciseData.exerciseDate = Calendar.DATE.toString()
     }
 
     // 운동 시간 계산
