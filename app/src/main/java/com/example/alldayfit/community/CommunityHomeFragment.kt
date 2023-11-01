@@ -29,13 +29,11 @@ class CommunityHomeFragment : Fragment() {
     ): View {
         _binding = CommunityHomeFragmentBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(requireActivity()).get(CommunityViewModel::class.java)
-        Log.d("tkdkfkfk",viewModel.communityEditlist.toString())
         adapter = CommunityViewAdapter(viewModel)
         binding.recyclerview.adapter = adapter
         binding.recyclerview.layoutManager = LinearLayoutManager(context)
         viewModel.communityLivedata.observe(viewLifecycleOwner, Observer { data ->
             adapter.setData(data)
-            Log.d("dfkjk", viewModel.communityLivedata.toString())
         })
         return binding.root
     }

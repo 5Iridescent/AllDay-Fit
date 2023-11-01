@@ -35,7 +35,6 @@ class CommunityNewPostDialog(private var viewModel: CommunityViewModel): DialogF
             val currentDate = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault()).format(Date())
            comment = CommunityModel(binding.etTitle.text.toString(),binding.etInfo.text.toString(),currentDate)
             viewModel.addcomment(comment)
-            Log.d("fhkfldjlf",comment.toString())
             dismiss()
         }
         return (view)

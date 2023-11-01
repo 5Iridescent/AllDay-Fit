@@ -15,8 +15,6 @@ class CommunityViewModel : ViewModel() {
     fun addcomment(communityModel: CommunityModel) {
         communityEditlist.add(communityModel)
         communityLivedata.value = communityEditlist
-        Log.d("fjkdjkfjf",communityLivedata.toString())
-        Log.d("tagthw", communityEditlist.toString())
     }
 
 }

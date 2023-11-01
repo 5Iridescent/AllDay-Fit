@@ -39,7 +39,6 @@ class CommunityMainFragment() : Fragment() {
         addPostBtn.setOnClickListener{
             viewModel = ViewModelProvider(requireActivity()).get(CommunityViewModel::class.java)
             val newPostDialog = CommunityNewPostDialog(viewModel)
-            Log.d("thwn12",viewModel.communityEditlist.toString())
             newPostDialog.show(childFragmentManager, "newpost")
         }
     }
