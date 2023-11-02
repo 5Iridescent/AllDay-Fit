@@ -3,7 +3,6 @@ package com.example.alldayfit.community.adapter
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +11,6 @@ import com.example.alldayfit.R
 import com.example.alldayfit.community.CommunityModel
 import com.example.alldayfit.community.CommunityViewModel
 import com.example.alldayfit.databinding.CommunityItemsBinding
-import com.example.alldayfit.exercisestatus.adapter.DailyAdapter.Companion.diffUtil
 
 class CommunityViewAdapter(private var viewModel: CommunityViewModel) :
     ListAdapter<CommunityModel, CommunityViewAdapter.HomeHolder>(diffUtil) {
