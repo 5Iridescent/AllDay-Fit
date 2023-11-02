@@ -39,10 +39,6 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController // 기본 선택 아이템
         var lastSelectedItemId = R.id.mainFragment
         mBinding.mainNav.setOnItemSelectedListener { item ->
-            // error
-//            if (lastSelectedItemId == item.itemId) {
-//                return@setOnItemSelectedListener false
-//            }
             navController.navigate(item.itemId) // 아이템 선택
             lastSelectedItemId = item.itemId
             true
