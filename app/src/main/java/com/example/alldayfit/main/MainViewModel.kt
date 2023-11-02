@@ -3,32 +3,32 @@ package com.example.alldayfit.main
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.alldayfit.R
 import com.example.alldayfit.db.RealTimeRepository
 import com.example.alldayfit.db.RealTimeRepositoryImpl
 import com.example.alldayfit.db.model.FirebaseModel
+import com.example.alldayfit.main.model.Goal
 import java.time.Duration
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 class MainViewModel : ViewModel() {
-    val realtimeDB : RealTimeRepository = RealTimeRepositoryImpl()
+    private val realtimeDB : RealTimeRepository = RealTimeRepositoryImpl()
     val goalList = mutableListOf<Goal>()
     val goalLiveData = MutableLiveData<List<Goal>>()
 
+    private val _exerciseBtnTxt: MutableLiveData<Int> = MutableLiveData()
+    val exerciseBtnTxt: LiveData<Int> get() = _exerciseBtnTxt
+
+    private lateinit var exerciseData: FirebaseModel.ExerciseRecord
+    private lateinit var startTime: String
+    private lateinit var endTime: String
 
     fun togglegoal(goal: Goal) {
         goal.goalckeck = !goal.goalckeck
         goalLiveData.value = goalList
-    private val realtimeDB: RealTimeRepository = RealTimeRepositoryImpl()
-    private val _exerciseBtnTxt: MutableLiveData<Int> = MutableLiveData()
-    val exerciseBtnTxt: LiveData<Int> get() = _exerciseBtnTxt
-    private lateinit var exerciseData: FirebaseModel.ExerciseRecord
-    private lateinit var startTime: String
-    private lateinit var endTime: String
+    }
 
     // ViewModel 초기 값 설정
     init {
