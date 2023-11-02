@@ -110,29 +110,31 @@ class DietRecordFragment : Fragment() {
 //        caloriesView.analysisTxt.text = getString(R.string.calories)
         /* 위젯 클릭 이벤트 효과 추가 */
         /* 식사(아침,점심,저녁,간식) 이미지 클릭 시 다이얼로그 표시 */
-        breakfastView.addMealView.setOnClickListener { showDialog(R.id.action_dietRecordFragment_to_dietRecordAddDialog) }
-        lunchView.addMealView.setOnClickListener { showDialog(R.id.action_dietRecordFragment_to_dietRecordAddDialog) }
-        dinnerView.addMealView.setOnClickListener { showDialog(R.id.action_dietRecordFragment_to_dietRecordAddDialog) }
-        snackView.addMealView.setOnClickListener { showDialog(R.id.action_dietRecordFragment_to_dietRecordAddDialog) }
+        breakfastView.mealTxt.text = getString(R.string.diet_record_breakfast)
+        lunchView.mealTxt.text = getString(R.string.diet_record_lunch)
+        dinnerView.mealTxt.text = getString(R.string.diet_record_dinner)
+        snackView.mealTxt.text = getString(R.string.diet_record_snack)
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        recyclerView = view.findViewById(R.id.meal_listview)
-//        dietRecordAdapter = DietRecordAdapter(dietRecordsList)
-//
-//        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-//        recyclerView.adapter = dietRecordAdapter
+        setupView()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun setupView() = with(binding) {
+        /* 식사(아침,점심,저녁,간식) 이미지 클릭 시 다이얼로그 표시 */
+        showDietAddDialog(breakfastView)
+        showDietAddDialog(lunchView)
+        showDietAddDialog(dinnerView)
+        showDietAddDialog(snackView)
     }
 
     /* main_graph의 action을 활용해서 dialog 띄우기 */
-    private fun showDialog(action: Int) {
-        findNavController().navigate(action)
+    private fun showDietAddDialog(view: DietRecordMealItemBinding) {
+        view.addMealView.setOnClickListener {
+            findNavController().navigate(DietRecordFragmentDirections.actionDietRecordFragmentToDietRecordAddDialog(view.mealTxt.text.toString()))
+        }
     }
 
     companion object {
