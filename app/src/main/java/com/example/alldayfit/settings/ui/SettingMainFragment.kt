@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import com.example.alldayfit.R
 import com.example.alldayfit.databinding.SettingMainFragmentBinding
 
 class SettingMainFragment : Fragment() {
@@ -24,10 +24,10 @@ class SettingMainFragment : Fragment() {
 
     /* setting page design, data 초기 설정 */
     private fun initView() = with(binding) {
-        appNotifiSetting.setOnClickListener { showDialog(R.id.action_settingMainFragment_to_settingNoticeFragment) }
-        settingGuide.setOnClickListener { showDialog(R.id.action_settingMainFragment_to_settingGuideFragment) }
-        settingNotice.setOnClickListener { showDialog(R.id.action_settingMainFragment_to_settingAppNotifiFragment) }
-        modUserInfo.setOnClickListener { showDialog(R.id.action_settingMainFragment_to_settingModUserFragment) }
+        appNotifiSetting.setOnClickListener { showDialog(SettingMainFragmentDirections.actionSettingMainFragmentToSettingNoticeFragment()) }
+        settingGuide.setOnClickListener { showDialog(SettingMainFragmentDirections.actionSettingMainFragmentToSettingGuideFragment()) }
+        settingNotice.setOnClickListener { showDialog(SettingMainFragmentDirections.actionSettingMainFragmentToSettingAppNotifiFragment()) }
+        modUserInfo.setOnClickListener { showDialog(SettingMainFragmentDirections.actionSettingMainFragmentToSettingModUserFragment()) }
     }
 
     override fun onDestroyView() {
@@ -36,7 +36,7 @@ class SettingMainFragment : Fragment() {
     }
 
     /* main_graph의 action을 활용해서 dialog 띄우기 */
-    private fun showDialog(action: Int) {
+    private fun showDialog(action: NavDirections) {
         findNavController().navigate(action)
     }
 
