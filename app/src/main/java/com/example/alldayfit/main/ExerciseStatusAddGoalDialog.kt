@@ -9,6 +9,7 @@ import androidx.fragment.app.DialogFragment
 import com.example.alldayfit.databinding.MainAddGoalDialogBinding
 
 import com.example.alldayfit.main.adapter.GoalAdapter
+import com.example.alldayfit.main.model.Goal
 
 class ExerciseStatusAddGoalDialog(private val mainViewModel: MainViewModel) :
     DialogFragment() {

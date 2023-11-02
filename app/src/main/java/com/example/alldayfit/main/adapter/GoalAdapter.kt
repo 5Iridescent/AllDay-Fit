@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alldayfit.databinding.DietRecordAddItemBinding
 import com.example.alldayfit.databinding.MainGoalItemBinding
-import com.example.alldayfit.main.Goal
+import com.example.alldayfit.main.model.Goal
 import com.example.alldayfit.main.MainViewModel
 import java.lang.RuntimeException
 
