@@ -78,6 +78,7 @@ class DietRecordFragment : Fragment() {
         return entries
     }
 
+    /* fragment design, data 초기 설정 */
     private fun initView() = with(binding) {
         /* 식사 위젯, 칼로리 수치 아이템 text 초기 설정*/
         breakfastView.mealTxt.text = getString(R.string.diet_record_breakfast)
@@ -103,7 +104,11 @@ class DietRecordFragment : Fragment() {
     /* main_graph의 action을 활용해서 dialog 띄우기 */
     private fun showDietAddDialog(view: DietRecordMealItemBinding) {
         view.addMealView.setOnClickListener {
-            findNavController().navigate(DietRecordFragmentDirections.actionDietRecordFragmentToDietRecordAddDialog(view.mealTxt.text.toString()))
+            findNavController().navigate(
+                DietRecordFragmentDirections.actionDietRecordFragmentToDietRecordAddDialog(
+                    view.mealTxt.text.toString()
+                )
+            )
         }
     }
 

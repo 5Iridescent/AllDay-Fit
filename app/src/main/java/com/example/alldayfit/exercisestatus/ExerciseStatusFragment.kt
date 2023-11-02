@@ -48,7 +48,7 @@ class ExerciseStatusFragment : Fragment() {
 
         return binding.root
     }
-
+    /* fragment design, data 초기 설정 */
     private fun initView() = with(binding) {
         /*  아이템 text 초기 설정*/
         statusWeightView.statusTypeTxt.text = getString(R.string.weight)
