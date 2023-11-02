@@ -6,9 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.alldayfit.R
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.example.alldayfit.databinding.ExerciseStatusFragmentBinding
 
@@ -61,7 +60,7 @@ class ExerciseStatusFragment : Fragment() {
 
         // 수정 버튼 클릭 시 해당 dialog 뜨위기
         fixed.setOnClickListener {
-            showDialog(R.id.action_exerciseStatusFragment_to_exerciseStatusDailyEditDialog)
+            showDialog(ExerciseStatusFragmentDirections.actionExerciseStatusFragmentToExerciseStatusDailyEditDialog())
         }
 //        goalListFixBtn.setOnClickListener {
 //            showDialog(R.id.action_exerciseStatusFragment_to_exerciseStatusAddGoalDialog)
@@ -73,7 +72,7 @@ class ExerciseStatusFragment : Fragment() {
         _binding = null
     }
     /* main_graph의 action을 활용해서 dialog 띄우기 */
-    private fun showDialog(action : Int) {
+    private fun showDialog(action: NavDirections) {
         findNavController().navigate(action)
     }
 
