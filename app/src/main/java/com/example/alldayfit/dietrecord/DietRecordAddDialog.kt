@@ -47,6 +47,15 @@ class DietRecordAddDialog : DialogFragment() {
     }
 
     private fun initView() = with(binding) {
+        mealText.text = mealType
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupView()
+    }
+
+    private fun setupView() = with(binding) {
         // RecyclerView 및 어댑터 초기화
         mealListview.layoutManager = LinearLayoutManager(requireContext())
         mealListview.adapter = dietRecordAdapter
