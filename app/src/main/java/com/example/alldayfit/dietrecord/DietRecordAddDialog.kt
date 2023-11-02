@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.alldayfit.databinding.DietRecordAddDialogBinding
@@ -24,7 +25,11 @@ import java.io.File
 class DietRecordAddDialog : DialogFragment() {
     private var _binding: DietRecordAddDialogBinding? = null
     private val binding get() = _binding!!
+
+    private val args: DietRecordAddDialogArgs by navArgs()
+    private val mealType: String by lazy { args.mealType }
     private val PICK_IMAGE_REQUEST = 1
+
     // adapter data list
     private val dietRecordsList: MutableList<String> = mutableListOf()
 
