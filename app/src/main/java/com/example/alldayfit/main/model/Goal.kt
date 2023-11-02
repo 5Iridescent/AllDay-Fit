@@ -1,4 +1,4 @@
-package com.example.alldayfit.main
+package com.example.alldayfit.main.model
 
 data class Goal(
     val goals: String,
