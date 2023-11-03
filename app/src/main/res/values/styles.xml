@@ -1,4 +1,4 @@
-    <resources>
+<resources>
     <!-- app theme color -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -10,12 +10,15 @@
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
     </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
     <!-- chart library style -->
     <style name="Example4ToolbarTheme" parent="ThemeOverlay.MaterialComponents.Light">
         <item name="colorControlNormal">@color/example_4_grey</item>
     </style>
+
     <style name="Example4ButtonTheme" parent="ThemeOverlay.MaterialComponents.Light">
         <item name="colorPrimary">@color/example_4_green</item>
     </style>
@@ -25,4 +28,14 @@
         <item name="android:minHeight">0dp</item>
         <item name="android:textSize">@dimen/text_size_very_small</item>
     </style>
+
+    <style name="titleText">
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="subtitleText">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
