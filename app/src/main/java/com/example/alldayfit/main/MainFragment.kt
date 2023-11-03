@@ -7,20 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.alldayfit.R
 import com.example.alldayfit.count.CountPage
 import com.example.alldayfit.databinding.MainFragmentBinding
-import com.example.alldayfit.db.model.FirebaseModel
-import java.text.SimpleDateFormat
-import java.time.Duration
-import java.time.LocalDate
+import com.example.alldayfit.databinding.MainWeeklyRecordItemBinding
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
-import java.util.Calendar
-import java.util.Date
-import java.util.Locale
 
 class MainFragment : Fragment() {
     private var _binding: MainFragmentBinding? = null
@@ -31,8 +27,27 @@ class MainFragment : Fragment() {
             MainViewModelFactory()
         )[MainViewModel::class.java]
     }
-    lateinit var selectedDate: LocalDate
-    val cal: Calendar = Calendar.getInstance()
+    private val days: List<MainWeeklyRecordItemBinding> by lazy {
+        listOf(
+            binding.sun,
+            binding.mon,
+            binding.tue,
+            binding.wed,
+            binding.thu,
+            binding.fri,
+            binding.sat
+        )
+    }
+    private val weekDays: List<Int> = listOf(
+        R.string.sunday,
+        R.string.monday,
+        R.string.tuesday,
+        R.string.wednesday,
+        R.string.thursday,
+        R.string.friday,
+        R.string.saturday
+    )
+    private val today: ZonedDateTime = ZonedDateTime.now(ZoneId.systemDefault())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -43,72 +58,70 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
+    /* fragment design, data 초기 설정 */
     private fun initView() = with(binding) {
-        doExercise.setOnClickListener{
-            viewModel.toggleExerciseBtn()
+        // 이번주 요일 text 설정
+        for (i in days) {
+            i.weekTxt.text = getString(weekDays[days.indexOf(i)])
+        }
+        // 이번 달 month text 설정
+        yearDateTxt.text = today.toDateFormat(MONTH_FORMAT)
+        val startDay = getStartDay()
+        for (i in days.indices) {
+            val day = startDay.plusDays(i.toLong())
+            days[i].dayTxt.text = getString(R.string.today, day.toDateFormat(DAY_FORMAT))
+        }
+        val currentDay = today.dayOfWeek.value % 7
+        for (i in days.indices) {
+            val dayView = days[i]
+            val textColor = if (i == currentDay) R.color.white else R.color.black
+            val backgroundColor = if (i == currentDay) R.color.blue else R.color.white
+            with(dayView) {
+                dayWrap.setBackgroundColor(ContextCompat.getColor(requireContext(), backgroundColor))
+                dayTxt.setTextColor(ContextCompat.getColor(requireContext(), textColor))
+                weekTxt.setTextColor(ContextCompat.getColor(requireContext(), textColor))
+            }
         }
     }
 
     private fun initViewModel() {
         with(viewModel) {
             exerciseBtnTxt.observe(viewLifecycleOwner) { it ->
-                binding.doExercise.text = getString(it)
+                binding.exerciseBtn.text = getString(it)
             }
+        }
+    }
+
+    /* ZonedDateTime을 원하는 형식으로 변경 */
+    private fun ZonedDateTime.toDateFormat(format: String): String {
+        val formatter = DateTimeFormatter.ofPattern(format)
+        return this.format(formatter)
+    }
+
+    private fun getStartDay(): ZonedDateTime {
+        // 현재 날짜의 요일을 구합니다.
+        val currentDayOfWeek = today.dayOfWeek
+        // 주의 시작 날짜를 계산합니다. (월요일을 시작으로 한 주)
+        return today.minusDays(currentDayOfWeek.value.toLong())
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupView()
+
+    }
+
+    private fun setupView() = with(binding) {
+        exerciseBtn.setOnClickListener {
+            viewModel.toggleExerciseBtn()
+            val intent = Intent(context, CountPage::class.java)
+            startActivity(intent)
         }
     }
 
     private fun showToast(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setDayView()
-        doDayOfWeek()
-    }
-
-    private fun setDayView() {
-        selectedDate = LocalDate.now()
-        val monthformatter = DateTimeFormatter.ofPattern("yyyy.MM")
-        val date = monthformatter.format(selectedDate).toString()
-        binding.yearDate.text = date
-        // 년도와 월 표시
-    }
-
-    private fun doDayOfWeek() {
-        fun dateDay(date: Date): String {
-            val dayFormat = SimpleDateFormat("dd일", Locale.getDefault())
-            val day = dayFormat.format(date)
-            return day
-        }
-
-        val daysOfWeek = listOf(
-            binding.sun,
-            binding.mon,
-            binding.tue,
-            binding.wed,
-            binding.thu,
-            binding.fri,
-            binding.sat
-        )
-        for (i in 0 until 7) {
-            cal.add(Calendar.DAY_OF_MONTH, (i + 1 - cal.get(Calendar.DAY_OF_WEEK)))
-            val date = cal.time
-            val formattedDate = dateDay(date)
-            val dayView = daysOfWeek[i]
-            dayView.text = formattedDate
-            cal.add(Calendar.DAY_OF_MONTH, 1)
-        }
-        //일주일 날짜 표기
-        val daysToAdd = if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-            0
-        } else {
-            7 - cal.get(Calendar.DAY_OF_WEEK) + 1
-        }
-        cal.add(Calendar.DAY_OF_MONTH, daysToAdd)
-        //일요일이 지난 경우 한 주을 더해주기
-    }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -117,8 +130,8 @@ class MainFragment : Fragment() {
 
     companion object {
         fun newInstance() = MainFragment()
-        const val TIME_FORMAT = "yyyy.MM.dd.HH.mm"
-        const val LOG_FORMAT = "yyyy.MM.dd"
+        const val DAY_FORMAT = "dd"
+        const val MONTH_FORMAT = "yyyy.MM"
     }
 
 
