@@ -34,20 +34,20 @@ class MainViewModel : ViewModel() {
     fun updateExerciseTime(){
     // ViewModel 초기 값 설정
     init {
-        _exerciseBtnTxt.value = R.string.exercise_start_txt
+        _exerciseBtnTxt.value = R.string.exercise_start
     }
 
 
     fun toggleExerciseBtn() {
         val currentTxt = exerciseBtnTxt.value
-        if (currentTxt == R.string.exercise_start_txt) {
-            _exerciseBtnTxt.value = R.string.exercise_finish_txt
+        if (currentTxt == R.string.exercise_start) {
+            _exerciseBtnTxt.value = R.string.exercise_finish
             startTime = getCurrentLocalTime()
         } else {
-            _exerciseBtnTxt.value = R.string.exercise_start_txt
+            _exerciseBtnTxt.value = R.string.exercise_start
             endTime = getCurrentLocalTime()
             val elapsedTime =
-                elapsedTimeInMinutes(startTime.toZonedDateTime(), endTime.toZonedDateTime())
+                elapsedTimeInMinutes(startTime, endTime)
         }
     }
     }
