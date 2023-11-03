@@ -20,8 +20,8 @@
         android:id="@+id/framelayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="125dp"
         android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="@+id/count"
         app:layout_constraintEnd_toEndOf="@+id/count"
         app:layout_constraintStart_toStartOf="@+id/count"
         app:layout_constraintTop_toTopOf="@+id/count">
@@ -31,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textColor="@color/blue"
             android:textSize="50sp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/count"
@@ -38,6 +39,21 @@
             app:layout_constraintStart_toStartOf="@+id/count"
             app:layout_constraintTop_toTopOf="@+id/count" />
     </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/rest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="휴식"
+        android:textSize="48sp"
+        android:textColor="@color/blue"
+        android:layout_marginTop="2dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/framelayout"
+        app:layout_constraintHorizontal_bias="0.578"
+        app:layout_constraintStart_toStartOf="@+id/framelayout"
+        app:layout_constraintTop_toBottomOf="@+id/framelayout" />
 
     <ImageView
         android:id="@+id/count"
@@ -70,11 +86,11 @@
         android:id="@+id/finish_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="오늘도 맛있다"
+        android:text="@string/count_finish_ment"
         android:visibility="invisible"
         android:textAlignment="center"
         android:textColor="@color/blue"
-        android:textSize="48sp"
+        android:textSize="64sp"
         app:layout_constraintBottom_toBottomOf="@+id/count"
         app:layout_constraintEnd_toEndOf="@+id/count"
         app:layout_constraintStart_toStartOf="@+id/count"
@@ -108,5 +124,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/count" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <android.widget.Button
+            android:id="@+id/btn_more_exercise"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="41dp"
+            android:layout_marginBottom="47dp"
+            android:background="@drawable/button_radius"
+            android:text="@string/btn_more_exercise"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="3:1"
+            app:layout_constraintEnd_toStartOf="@+id/btn_finish_exercise"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <android.widget.Button
+            android:id="@+id/btn_finish_exercise"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="41dp"
+            android:background="@drawable/button_radius"
+            android:backgroundTint="@color/gray"
+            android:text="@string/btn_finish_exercise"
+            android:textSize="20sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_more_exercise"
+            app:layout_constraintDimensionRatio="3:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_more_exercise"
+            app:layout_constraintTop_toTopOf="@+id/btn_more_exercise" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
