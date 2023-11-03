@@ -1,10 +1,12 @@
 package com.example.alldayfit.count
 
 
+import ExerciseRecordAdapter
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alldayfit.R
@@ -16,6 +18,10 @@ class CountPage : AppCompatActivity() {
     private lateinit var mBinding: CountPageActivityBinding
     private var timerRunning = false
     private var lastClickTime: Long = 0
+
+    //리사이클러뷰 및 어댑터 초기화
+    val exerciseRecords = mutableListOf<ExerciseRecord>()
+    val adapter = ExerciseRecordAdapter(exerciseRecords)
 
 //    private var rainbow = GradientDrawable(
 //        GradientDrawable.Orientation.TL_BR,
@@ -36,10 +42,16 @@ class CountPage : AppCompatActivity() {
         val view = mBinding.root
         setContentView(view)
 
+        // 어댑터 연결
+        mBinding.rvCount.layoutManager = LinearLayoutManager(this)
+        mBinding.rvCount.adapter = adapter
+
         mBinding.setRootine.setOnClickListener {
             val countDialog = CountDialog()
             countDialog.show(supportFragmentManager, "CountDialogFragment")
         }
+
+
 
         mBinding.count.setOnClickListener {
             clickTimer()
@@ -101,7 +113,17 @@ class CountPage : AppCompatActivity() {
         } else {
             mBinding.rest.visibility = View.VISIBLE
             mBinding.count.setImageResource(R.drawable.circle_orange_back_shape)
-//            stopTimer()
+            mBinding.rvCount.visibility = View.VISIBLE
+
+            // 클릭한 순간의 타이머 값을 타임스탬프로 사용
+            val timestamp = SystemClock.elapsedRealtime() - mBinding.timer.base
+            val exerciseRecord = ExerciseRecord(mBinding.timer.text.toString())
+
+            // 리스트에 기록 추가
+            exerciseRecords.add(exerciseRecord)
+
+            // 어댑터에 데이터 변경 알림
+            adapter.notifyDataSetChanged()
         }
         timerRunning = !timerRunning
     }
