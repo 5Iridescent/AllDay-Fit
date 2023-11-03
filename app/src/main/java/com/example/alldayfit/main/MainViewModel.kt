@@ -22,8 +22,8 @@ class MainViewModel : ViewModel() {
     val exerciseBtnTxt: LiveData<Int> get() = _exerciseBtnTxt
 
     private lateinit var exerciseData: FirebaseModel.ExerciseRecord
-    private lateinit var startTime: String
-    private lateinit var endTime: String
+    private lateinit var startTime: ZonedDateTime
+    private lateinit var endTime: ZonedDateTime
 
     fun togglegoal(goal: Goal) {
         goal.goalckeck = !goal.goalckeck
@@ -32,49 +32,40 @@ class MainViewModel : ViewModel() {
 
     // ViewModel 초기 값 설정
     init {
-        _exerciseBtnTxt.value = R.string.exercise_start_txt
+        _exerciseBtnTxt.value = R.string.exercise_start
     }
 
 
     fun toggleExerciseBtn() {
         val currentTxt = exerciseBtnTxt.value
-        if (currentTxt == R.string.exercise_start_txt) {
-            _exerciseBtnTxt.value = R.string.exercise_finish_txt
+        if (currentTxt == R.string.exercise_start) {
+            _exerciseBtnTxt.value = R.string.exercise_finish
             startTime = getCurrentLocalTime()
         } else {
-            _exerciseBtnTxt.value = R.string.exercise_start_txt
+            _exerciseBtnTxt.value = R.string.exercise_start
             endTime = getCurrentLocalTime()
             val elapsedTime =
-                elapsedTimeInMinutes(startTime.toZonedDateTime(), endTime.toZonedDateTime())
+                elapsedTimeInMinutes(startTime, endTime)
         }
     }
 
     private fun updateExerciseData(elapsedTime: Int) {
         exerciseData = FirebaseModel.ExerciseRecord(
-            totalTime = elapsedTime, logDate = getCurrentLocalTime(
-                MainFragment.LOG_FORMAT
-            )
+            totalTime = elapsedTime, logDate = getCurrentLocalTime().toLogFormat()
         )
         realtimeDB.addExercise(exerciseData)
     }
 
     /* zonDatetime 형식으로 다시 반환 */
-    private fun String.toZonedDateTime(): ZonedDateTime {
-        val formatter = DateTimeFormatter.ISO_ZONED_DATE_TIME
-        return ZonedDateTime.parse(this, formatter)
+    private fun ZonedDateTime.toLogFormat(): String {
+        val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
+        return this.format(formatter)
     }
 
     /* ZonedDateTime 라이브러리로 현지 시각 구하기 */
-    private fun getCurrentLocalTime(format: String = ""): String {
+    private fun getCurrentLocalTime(): ZonedDateTime {
         // 현지 시스템 지역 ID를 가지고 ZonedDateTime에 넣으면 현지 시각을 구할 수 있다.
-        val nowDateTime = ZonedDateTime.now(ZoneId.systemDefault())
-        // 파리미터로 원하는 format을 받아서 그에 맞춰 형식을 바꿔서 반환
-        return if (format.isEmpty()) {
-            nowDateTime
-        } else {
-            val formatter = DateTimeFormatter.ofPattern(format)
-            nowDateTime.format(formatter)
-        }.toString()
+        return ZonedDateTime.now(ZoneId.systemDefault())
     }
 
     // 시작 시간과 끝 시간 차이 비교
