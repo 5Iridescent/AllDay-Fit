@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="exercise_record">운동기록</string>
+    <string name="week_goal">주간목표</string>
+    <string name="sunday">일</string>
+    <string name="monday">월</string>
+    <string name="tuesday">화</string>
+    <string name="wednesday">수</string>
+    <string name="thursday">목</string>
+    <string name="friday">금</string>
+    <string name="saturday">토</string>
+    <string name="exercise_start">운동하기</string>
+    <string name="exercise_finish">끝내기</string>
+    <string name="today">%s일</string>
+    <string name="fix_goal_list_btn">주간 목표 수정</string>
+
     <string name="setting_dark_mode">다크모드</string>
     <string name="setting_app_noti">앱 알림 설정</string>
     <string name="setting_guide">이용가이드</string>
@@ -25,7 +39,6 @@
     <string name="bmi">BMI</string>
     <string name="exercise_time">EXERCISE TIME</string>
     <string name="calorie_consumption">CALORIE CONSUMPTION</string>
-    <string name="exercise_status_week_goal">주간목표</string>
     <string name="exercise_status_user_state">나의 운동 상태</string>
     <string name="diet_record_dialog_title">식단기록</string>
     <string name="diet_add_finish">식단완료</string>
@@ -42,5 +55,4 @@
     <string name="user">유저</string>
     <string name="diet_record_add_btn_desc">식단 음식 추가</string>
     <string name="diet_record_close_btn_desc">식단 기록 추가 화면 닫기</string>
-    <string name="fix_goal_list_btn">주간 목표 수정</string>
 </resources>
