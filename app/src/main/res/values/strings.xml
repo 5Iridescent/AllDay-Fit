@@ -1,6 +1,22 @@
 <resources>
     <string name="app_name">AllDayFit</string>
     <!-- Sync Preferences -->
+    <!-- main fragment -->
+    <string name="exercise_record">운동기록</string>
+    <string name="week_goal">주간목표</string>
+    <string name="sunday">일</string>
+    <string name="monday">월</string>
+    <string name="tuesday">화</string>
+    <string name="wednesday">수</string>
+    <string name="thursday">목</string>
+    <string name="friday">금</string>
+    <string name="saturday">토</string>
+    <string name="exercise_start">운동하기</string>
+    <string name="exercise_finish">끝내기</string>
+    <string name="today">%s일</string>
+    <string name="fix_goal_list_btn">주간 목표 수정</string>
+
+
     <string name="sync_title">Sync email periodically</string>
     <string name="attachment_title">Download incoming attachments</string>
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
@@ -24,7 +40,6 @@
     <string name="community_tab_home">홈</string>
     <string name="community_tab_my_post">마이 게시물</string>
     <string name="community_fab_add_post">내 게시물 추가</string>
-    <string name="exercise_record">운동기록</string>
     <string name="exercise_time">exercise\n Time</string>
     <string name="slogan">Make your rootine</string>
     <string name="commity">커뮤니티</string>
@@ -38,13 +53,11 @@
     <string name="height">HEIGHT</string>
     <string name="bmi">BMI</string>
     <string name="calorie_consumption">CALORIE CONSUMPTION</string>
-    <string name="exercise_status_week_goal">주간목표</string>
     <string name="exercise_status_user_state">나의 운동 상태</string>
     <string name="setting_dark_mode">다크모드</string>
     <string name="setting_app_noti">앱 알림 설정</string>
     <string name="setting_guide">이용가이드</string>
-    <string name="exercise_start_txt">운동하기</string>
-    <string name="exercise_finish_txt">끝내기</string>
+
     <string name="setting_notice">공지사항</string>
     <string name="setting_mod_user">유저정보 수정</string>
     <string name="setting_all_app_notifi">앱 전체 알림</string>
@@ -93,7 +106,6 @@
     <string name="diet_record_close_btn_desc">식단 기록 추가 화면 닫기</string>
     <string name="count_ment_user">루트를 지정하시면 \n 루트에 맞춰서 \n 진행이 가능합니다.</string>
     <string name="count_frist_ment">Start with \n click</string>
-    <string name="fix_goal_list_btn">주간 목표 수정</string>
 
     <string name="google">Sign up with GooGle </string>
     <string name="default_web_client_id">1049105184524-o2gm24qi3j0pao9tlf7fhpl2r90o6oab.apps.googleusercontent.com</string>
