@@ -1,20 +1,20 @@
 package com.example.alldayfit.db
 
 import android.util.Log
+import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.db.model.FirebaseModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 
 class RealTimeRepositoryImpl() : RealTimeRepository {
 
     //    private val listener = object : ValueEventListener
-    private val userRef = getReference(RealTimeRepository.USERS)
-    private val mealRef = getReference(RealTimeRepository.DIET)
-    private val informationRef = getReference(RealTimeRepository.PHYSICAL)
-    private val exerciseRef = getReference(RealTimeRepository.EXERCISE)
-    private val postRef = getReference(RealTimeRepository.POST)
+    private val userRef = getUserReference(RealTimeRepository.USERS)
+    private val mealRef = getUserReference(RealTimeRepository.DIET)
+    private val informationRef = getUserReference(RealTimeRepository.PHYSICAL)
+    private val exerciseRef = getUserReference(RealTimeRepository.EXERCISE)
+    val postRef = getReference(RealTimeRepository.POST)
 
     /* 현 유저의 고유 user id를 가지고 user 테이블에 접근하여 데이터 가져오기 */
     override fun getUserData() {
@@ -22,7 +22,7 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     val userData = dataSnapshot.getValue(FirebaseModel.UserData::class.java)
-                    // 사용자 정보를 이용하여 무엇인가를 수행합니다.z`
+                    // 사용자 정보를 이용하여 무엇인가를 수행합니다.
                 } else {
                     // 데이터가 존재하지 않을 때의 처리
                     Log.d("firebase", "NO DATA")
@@ -117,24 +117,40 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
         })
     }
 
-    override fun retrievePosts() {
-        var query = postRef.orderByKey()
-        var lastItemId : String? = null
-        // 이전 페이지의 마지막 아이템을 시작점으로 지정
-        if (lastItemId != null) {
-            query = query.startAt(lastItemId)
+    override fun addPost(content: CommunityPostEntity): String? {
+        val postId = postRef.push().key
+        if (postId != null) {
+            postRef.child(postId).setValue(changeModel(content))
         }
-        query.limitToFirst(20).addListenerForSingleValueEvent(object : ValueEventListener {
+        return postId
+    }
+
+    override fun updatePost(content: CommunityPostEntity) {
+        val postId = content.postId
+        postRef.child(postId).setValue(changeModel(content))
+    }
+
+    override fun removePost(content: CommunityPostEntity) {
+        val postId = content.postId
+        postRef.child(postId).removeValue()
+    }
+
+    private var startAtKey: String? = null
+    override fun getPosts(id: String): MutableList<FirebaseModel.Post> {
+        val query = postRef.limitToLast(20)
+            .orderByChild(RealTimeRepository.POSTDATE)  // timestamp는 데이터의 타임스탬프 필드 이름입니다.
+        if (startAtKey != null) {
+            query.endAt(startAtKey)  // 특정 키부터 시작하는 경우에 사용합니다.
+        }
+        val dataList = mutableListOf<FirebaseModel.Post>()
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    // 데이터를 처리하고 마지막 아이템의 키를 저장
-                    for (childSnapshot in dataSnapshot.children) {
-                        val itemKey = childSnapshot.key
-                        lastItemId = itemKey.toString()
-
+                    for (data in dataSnapshot.children) {
+                        val item = data.getValue(FirebaseModel.Post::class.java)
+                        item?.let { dataList.add(it) }
                     }
-                } else {
-                    // 더 이상 데이터가 없음
+                    startAtKey = dataSnapshot.children.reversed().lastOrNull()?.key.toString()
                 }
             }
 
@@ -142,6 +158,7 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
                 // 에러 처리
             }
         })
+        return dataList
     }
 
     companion object {
