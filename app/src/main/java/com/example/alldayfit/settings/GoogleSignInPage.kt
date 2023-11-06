@@ -15,7 +15,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
-class SignInPage : AppCompatActivity() {
+class GoogleSignInPage : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var binding: SignInPageActivityBinding
@@ -62,7 +62,7 @@ class SignInPage : AppCompatActivity() {
                     firebaseAuthWithGoogle(account) // Google 로그인 정보로 Firebase 인증 시작
                 }
             } catch (e: ApiException) {
-                Log.e("GoogleSignIn", "Google sign in failed: ${e.statusCode}")
+                Log.e("GoogleSignIn", "Google sign in failed: ${e.message}")
                 // Google 로그인 실패 처리
                 Toast.makeText(this, "Google 로그인 실패", Toast.LENGTH_SHORT).show()
             }

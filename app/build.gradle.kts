@@ -75,6 +75,7 @@ dependencies {
     implementation("com.google.firebase:firebase-storage-ktx")
     implementation ("com.google.android.gms:play-services-auth:20.7.0")
     implementation ("com.google.firebase:firebase-auth-ktx:22.2.0")
+    implementation ("com.google.firebase:firebase-messaging:23.3.1")
 
     // Import Room Library
     val roomVersion = "2.6.0"

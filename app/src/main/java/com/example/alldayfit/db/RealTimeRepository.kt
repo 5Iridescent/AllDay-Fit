@@ -9,7 +9,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 interface RealTimeRepository {
-
+  
     fun getUserReference(path: String, id: String = userId): DatabaseReference {
         return database.reference.child(path).child(id)
     }
