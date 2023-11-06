@@ -8,7 +8,7 @@ class MainViewModelFactory: ViewModelProvider.Factory {
         if (modelClass.isAssignableFrom(MainViewModel::class.java)){
             return MainViewModel() as T
         }else{
-            throw IllegalArgumentException("Not found viewmodel class")
+            throw IllegalArgumentException("Not found view model class")
         }
     }
 }

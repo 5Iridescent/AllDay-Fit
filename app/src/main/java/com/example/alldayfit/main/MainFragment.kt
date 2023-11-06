@@ -11,9 +11,13 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.alldayfit.R
+import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.count.CountPage
 import com.example.alldayfit.databinding.MainFragmentBinding
 import com.example.alldayfit.databinding.MainWeeklyRecordItemBinding
+import com.example.alldayfit.db.RealTimeRepository
+import com.example.alldayfit.db.RealTimeRepositoryImpl
+import com.example.alldayfit.db.model.FirebaseModel
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -49,6 +53,8 @@ class MainFragment : Fragment() {
     )
     private val today: ZonedDateTime = ZonedDateTime.now(ZoneId.systemDefault())
 
+    private val wow = RealTimeRepositoryImpl.getInstance()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -77,7 +83,12 @@ class MainFragment : Fragment() {
             val textColor = if (i == currentDay) R.color.white else R.color.black
             val backgroundColor = if (i == currentDay) R.color.blue else R.color.white
             with(dayView) {
-                dayWrap.setBackgroundColor(ContextCompat.getColor(requireContext(), backgroundColor))
+                dayWrap.setBackgroundColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        backgroundColor
+                    )
+                )
                 dayTxt.setTextColor(ContextCompat.getColor(requireContext(), textColor))
                 weekTxt.setTextColor(ContextCompat.getColor(requireContext(), textColor))
             }
@@ -108,7 +119,6 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupView()
-
     }
 
     private fun setupView() = with(binding) {
@@ -129,10 +139,8 @@ class MainFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() = MainFragment()
         const val DAY_FORMAT = "dd"
         const val MONTH_FORMAT = "yyyy.MM"
     }
-
 
 }

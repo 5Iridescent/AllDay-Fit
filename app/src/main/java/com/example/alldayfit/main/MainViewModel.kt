@@ -134,9 +134,9 @@ class MainViewModel : ViewModel() {
         goalLiveData.value = updatedList
     }
 
-
     fun deletegoal(goal: Goal) {
         goalList.remove(goal)
         goalLiveData.value = goalList.toList()
     }
+
 }
