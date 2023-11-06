@@ -43,10 +43,11 @@ data class FirebaseModel(
 
     data class Post(
         val author: String,
-        val postingDate: String,
-        val image: String,
         val content: String,
+        val image: String,
+        val postingDate: String,
     )
+
 }
 
 //{
