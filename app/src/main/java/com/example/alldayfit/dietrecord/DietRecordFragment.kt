@@ -101,18 +101,18 @@ class DietRecordFragment : Fragment() {
 
     private fun setupView() = with(binding) {
         /* 식사(아침,점심,저녁,간식) 이미지 클릭 시 다이얼로그 표시 */
-        showDietAddDialog(breakfastView)
-        showDietAddDialog(lunchView)
-        showDietAddDialog(dinnerView)
-        showDietAddDialog(snackView)
+        breakfastView.showDietAddDialog()
+        lunchView.showDietAddDialog()
+        dinnerView.showDietAddDialog()
+        snackView.showDietAddDialog()
     }
 
     /* main_graph의 action을 활용해서 dialog 띄우기 */
-    private fun showDietAddDialog(view: DietRecordMealItemBinding) {
-        view.addMealView.setOnClickListener {
+    private fun DietRecordMealItemBinding.showDietAddDialog() {
+        this.addMealView.setOnClickListener {
             findNavController().navigate(
                 DietRecordFragmentDirections.actionDietRecordFragmentToDietRecordAddDialog(
-                    view.mealTxt.text.toString()
+                    this.mealTxt.text.toString()
                 )
             )
         }
