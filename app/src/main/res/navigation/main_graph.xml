@@ -38,8 +38,7 @@
         tools:layout="@layout/exercise_status_fragment">
         <action
             android:id="@+id/action_exerciseStatusFragment_to_exerciseStatusDailyEditDialog"
-            app:destination="@id/exerciseStatusDailyEditDialog"
-            app:popUpToInclusive="false" />
+            app:destination="@id/exerciseStatusDailyEditDialog" />
         <action
             android:id="@+id/action_exerciseStatusFragment_to_exerciseStatusAddGoalDialog"
             app:destination="@id/exerciseStatusAddGoalDialog" />
