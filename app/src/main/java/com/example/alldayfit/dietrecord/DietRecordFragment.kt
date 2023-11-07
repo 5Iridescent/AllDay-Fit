@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.alldayfit.R
 import com.example.alldayfit.databinding.DietRecordFragmentBinding
 import com.example.alldayfit.databinding.DietRecordMealItemBinding
+import com.example.alldayfit.main.MainViewModel
+import com.example.alldayfit.main.MainViewModelFactory
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData

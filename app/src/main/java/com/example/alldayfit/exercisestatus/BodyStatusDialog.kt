@@ -34,9 +34,9 @@ class BodyStatusDialog : DialogFragment() {
             val weight = binding.etWeight.text.toString()
             val height = binding.etWeight.text.toString()
 
-            val statusEdit = BodyStatusEdit(weight, height)
+//            val statusEdit = BodyStatusEdit(weight, height)
             // ViewModel을 통해 데이터 업데이트
-            viewModel.setBodyStatus(statusEdit)
+//            viewModel.setBodyStatus(statusEdit)
             dismiss()
         }
 
