@@ -21,6 +21,12 @@ class DietRecordFragment : Fragment() {
     private var _binding: DietRecordFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var dietRecordChart: BarChart
+    private val viewModel : DietRecordViewModel by lazy {
+        ViewModelProvider(
+            this,
+            DietRecordViewModelFactory()
+        )[DietRecordViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
