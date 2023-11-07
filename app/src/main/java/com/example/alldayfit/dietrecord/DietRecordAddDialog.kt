@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -29,6 +30,13 @@ class DietRecordAddDialog : DialogFragment() {
     private val args: DietRecordAddDialogArgs by navArgs()
     private val mealType: String by lazy { args.mealType }
     private val PICK_IMAGE_REQUEST = 1
+
+    private val viewModel: DietRecordDialogViewModel by lazy {
+        ViewModelProvider(
+            this,
+            DietRecordDialogViewModelFactory()
+        )[DietRecordDialogViewModel::class.java]
+    }
 
     // adapter data list
     private val dietRecordsList: MutableList<String> = mutableListOf()
@@ -45,6 +53,7 @@ class DietRecordAddDialog : DialogFragment() {
         initView()
         return binding.root
     }
+
     /* dialog design, data 초기 설정 */
     private fun initView() = with(binding) {
         mealText.text = mealType
