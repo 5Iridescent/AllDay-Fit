@@ -5,10 +5,6 @@ import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.db.model.FirebaseModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.example.alldayfit.db.model.FirebaseModel
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 
 class RealTimeRepositoryImpl() : RealTimeRepository {
