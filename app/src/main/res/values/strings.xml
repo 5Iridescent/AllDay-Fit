@@ -16,6 +16,11 @@
     <string name="today">%s일</string>
     <string name="fix_goal_list_btn">주간 목표 수정</string>
 
+    <!-- exercise fragment -->
+    <string name="weight_value">%dKG</string>
+    <string name="height_value">%dCM</string>
+
+
 
     <string name="sync_title">Sync email periodically</string>
     <string name="attachment_title">Download incoming attachments</string>
@@ -113,4 +118,7 @@
 
     <string name="google">Sign up with GooGle </string>
     <string name="default_web_client_id">11976146148-omnd8puu3ithu4bspropaf2tehgeffc9.apps.googleusercontent.com</string>
+    <string name="gender">Gender</string>
+    <string name="gender_man">남자</string>
+    <string name="gender_woman">여자</string>
 </resources>
