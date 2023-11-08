@@ -14,7 +14,7 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 class MainViewModel : ViewModel() {
-    private val realtimeDB : RealTimeRepository = RealTimeRepositoryImpl()
+    private val realtimeDB: RealTimeRepository = RealTimeRepositoryImpl()
     val goalList = mutableListOf<Goal>()
     val goalLiveData = MutableLiveData<List<Goal>>()
 
@@ -25,38 +25,10 @@ class MainViewModel : ViewModel() {
     private lateinit var startTime: ZonedDateTime
     private lateinit var endTime: ZonedDateTime
 
-    fun togglegoal(goal: Goal) {
-        goal.goalckeck = !goal.goalckeck
-        goalLiveData.value = goalList
-    private val _exerciseBtnTxt: MutableLiveData<Int> = MutableLiveData()
-    val exerciseBtnTxt: LiveData<Int> get() = _exerciseBtnTxt
-
-    fun updateExerciseTime(){
     // ViewModel 초기 값 설정
     init {
         _exerciseBtnTxt.value = R.string.exercise_start
     }
-
-
-    fun toggleExerciseBtn() {
-        val currentTxt = exerciseBtnTxt.value
-        if (currentTxt == R.string.exercise_start) {
-            _exerciseBtnTxt.value = R.string.exercise_finish
-            startTime = getCurrentLocalTime()
-        } else {
-            _exerciseBtnTxt.value = R.string.exercise_start
-            endTime = getCurrentLocalTime()
-            val elapsedTime =
-                elapsedTimeInMinutes(startTime, endTime)
-        }
-    }
-    }
-
-    // ViewModel 초기 값 설정
-    init {
-        _exerciseBtnTxt.value = R.string.exercise_start
-    }
-
 
     fun toggleExerciseBtn() {
         val currentTxt = exerciseBtnTxt.value
