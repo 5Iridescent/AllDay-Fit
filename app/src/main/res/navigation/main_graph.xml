@@ -9,7 +9,11 @@
         android:id="@+id/mainFragment"
         android:name="com.example.alldayfit.main.MainFragment"
         android:label="main_fragment"
-        tools:layout="@layout/main_fragment" />
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_exerciseStatusAddGoalDialog"
+            app:destination="@id/exerciseStatusAddGoalDialog" />
+    </fragment>
 
     <fragment
         android:id="@+id/dietRecordFragment"
@@ -39,9 +43,6 @@
         <action
             android:id="@+id/action_exerciseStatusFragment_to_exerciseStatusDailyEditDialog"
             app:destination="@id/exerciseStatusDailyEditDialog" />
-        <action
-            android:id="@+id/action_exerciseStatusFragment_to_exerciseStatusAddGoalDialog"
-            app:destination="@id/exerciseStatusAddGoalDialog" />
     </fragment>
     <dialog
         android:id="@+id/exerciseStatusAddGoalDialog"
@@ -50,7 +51,7 @@
         tools:layout="@layout/main_add_goal_dialog" />
     <dialog
         android:id="@+id/exerciseStatusDailyEditDialog"
-        android:name="com.example.alldayfit.exercisestatus.ExerciseStatusDailyEditDialog"
+        android:name="com.example.alldayfit.exercisestatus.ExerciseBodyStatusEditDialog"
         android:label="exercise_status_daily_edit_dialog"
         tools:layout="@layout/exercise_status_daily_edit_dialog" />
 
