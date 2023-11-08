@@ -1,17 +1,15 @@
 package com.example.alldayfit.exercisestatus
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.alldayfit.databinding.ExerciseStatusDailyEditDialogBinding
 
-class ExerciseStatusDailyEditDialog : DialogFragment() {
+class ExerciseBodyStatusEditDialog : DialogFragment() {
     private var _binding: ExerciseStatusDailyEditDialogBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: BodyStatusViewModel
@@ -20,15 +18,15 @@ class ExerciseStatusDailyEditDialog : DialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = ExerciseStatusDailyEditDialogBinding.inflate(inflater, container, false)
-        initView()
         viewModel = ViewModelProvider(requireActivity())[BodyStatusViewModel::class.java]
+        initView()
         return binding.root
     }
 
     /* dialog design, data 초기 설정 */
     private fun initView() = with(binding) {
-        etHeight.setText(viewModel.bodyStatus.value?.height)
-        etWeight.setText(viewModel.bodyStatus.value?.weight)
+        etHeight.setText(viewModel.getHeight().toString())
+        etWeight.setText(viewModel.getWeight().toString())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,45 +35,25 @@ class ExerciseStatusDailyEditDialog : DialogFragment() {
     }
 
     private fun setupView() = with(binding) {
-        etHeight.addTextChangedListener {
-            object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                }
-
-                override fun onTextChanged(h: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    viewModel.updateBodyHeight(h.toString())
-                }
-
-                override fun afterTextChanged(p0: Editable?) {
-                }
-            }
-        }
-        etWeight.addTextChangedListener {
-            object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                }
-
-                override fun onTextChanged(w: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    viewModel.updateBodyWeight(w.toString())
-                }
-
-                override fun afterTextChanged(p0: Editable?) {
-                }
-            }
-        }
         closeBtn.setOnClickListener {
             dismiss()
         }
         correctionComplete.setOnClickListener {
-//            val height =
-//                setFragmentResult(EDIT_PI, bundleOf(EDIT_PI_HEIGHT to))
-//            val weight = binding.statusWeightView.statusMetricsInputTxt.text.toString()
-//            val height = binding.statusHeightView.statusMetricsInputTxt.text.toString()
-
-//            val statusEdit = BodyStatusEdit(weight, height)
+            val height = etHeight.text
+            val weight = etWeight.text
+            if (height.isNullOrEmpty() || weight.isNullOrEmpty()) {
+                return@setOnClickListener
+            }
+            try {
+                // 문자열을 정수로 변환
+                viewModel.updateBodyStatus(height.toString().toInt(), weight.toString().toInt())
+            } catch (_: NumberFormatException) {
+                Toast.makeText(requireContext(), "유효한 값을 입력해주세요", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             // ViewModel을 통해 데이터 업데이트
-//            viewModel.setBodyStatus(statusEdit)
             dismiss()
         }
     }
+
 }
