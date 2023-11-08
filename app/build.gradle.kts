@@ -9,6 +9,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        create("release") {
+            storeFile = file("C:\\Users\\hgymi\\Private\\android_key\\AllDayFitKey.jks")
+            storePassword = "gpfckd"
+            keyAlias = "key0"
+            keyPassword = "gpfckd"
+        }
+    }
     namespace = "com.example.alldayfit"
     compileSdk = 34
 
@@ -19,18 +27,19 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.alldayfit"
+        applicationId = "nrplh.Iridescent.alldayfit"
         minSdk = 27
         targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 9
+        versionName = "0.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig = signingConfigs.getByName("release")
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -64,7 +73,7 @@ dependencies {
     // The compose calendar library
     implementation("com.kizitonwose.calendar:compose:2.4.0")
     // Import the Firebase BoM
-    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation("com.google.firebase:firebase-analytics-ktx")
     // Add the dependencies for any other desired Firebase products
@@ -96,7 +105,7 @@ dependencies {
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$roomVersion")
     // navigation library
-    val navVersion = "2.7.4"
+    val navVersion = "2.7.5"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
     // Feature module Support
@@ -115,5 +124,5 @@ dependencies {
     annotationProcessor ("com.github.bumptech.glide:compiler:4.13.1")
 
     //coil
-    implementation ("io.coil-kt:coil:1.4.0")
+    implementation ("io.coil-kt:coil:2.5.0")
 }
