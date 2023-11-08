@@ -36,19 +36,13 @@ class ExerciseStatusFragment : Fragment() {
     /* fragment design, data 초기 설정 */
     private fun initView() = with(binding) {
         /*  아이템 text 초기 설정*/
-        statusWeightView.statusTypeTxt.text = getString(R.string.weight)
-        statusHeightView.statusTypeTxt.text = getString(R.string.height)
-        statusBmiView.statusTypeTxt.text = getString(R.string.bmi)
-        statusExerciseTimeView.statusTypeTxt.text = getString(R.string.exercise_time)
-        statusCalorieConsumptionView.statusTypeTxt.text = getString(R.string.calorie_consumption)
-        statusCalorieConsumptionView.statusTypeTxt.textSize = 13F
     }
 
     private fun initViewModel() = with(viewModel) {
         bodyStatus.observe(viewLifecycleOwner) { bodyStatus ->
             // 라이브 데이터 변경 감지
-            binding.statusWeightView.statusMetricsTxt.text = getString(R.string.weight_value, bodyStatus.weight)
-            binding.statusHeightView.statusMetricsTxt.text = getString(R.string.height_value, bodyStatus.height)
+            binding.statusWeightView.text = getString(R.string.weight_value, bodyStatus.weight)
+            binding.statusHeightView.text = getString(R.string.height_value, bodyStatus.height)
         }
     }
 
