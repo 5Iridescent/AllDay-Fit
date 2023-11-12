@@ -11,7 +11,7 @@ import com.example.alldayfit.main.model.Goal
 import com.example.alldayfit.main.MainViewModel
 import java.lang.RuntimeException
 
-class GoalAdapter(private val viewModel: MainViewModel) :
+class GoalAdapter() :
     ListAdapter<Goal, RecyclerView.ViewHolder>(diffUtil) {
 
 
@@ -45,7 +45,7 @@ class GoalAdapter(private val viewModel: MainViewModel) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Goal) {
             binding.apply {
-                goal.setText(data.goals)
+                goal.text = data.goals
                 checkbox.isChecked = data.goalckeck
             }
         }
