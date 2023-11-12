@@ -25,6 +25,7 @@ import com.doinglab.foodlens2.sdk.errors.BaseError
 import com.doinglab.foodlens2.sdk.model.RecognitionResult
 import com.example.alldayfit.databinding.DietRecordAddDialogBinding
 import com.example.alldayfit.dietrecord.adapter.DietRecordAdapter
+import com.example.alldayfit.utils.Util
 import java.io.File
 
 class DietRecordAddDialog : DialogFragment() {
@@ -156,9 +157,9 @@ class DietRecordAddDialog : DialogFragment() {
             val imageUri: Uri = data.data!!
             val newImageUri = getRealPathFromURI(imageUri)
 
-            val byteData = Utils.readContentIntoByteArray(File(newImageUri))
-
             //FoodLens 서비스 사용
+            val byteData = Util.readContentIntoByteArray(File(newImageUri))
+
             foodLensService.predict(byteData, object : RecognitionResultHandler {
                 override fun onSuccess(result: RecognitionResult?) {
                     Log.d("12",result?.toJSONString() ?: "")
