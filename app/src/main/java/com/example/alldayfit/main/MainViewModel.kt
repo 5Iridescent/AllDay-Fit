@@ -17,6 +17,7 @@ class MainViewModel : ViewModel() {
     private val realtimeDB: RealTimeRepository = RealTimeRepositoryImpl()
     val goalList = mutableListOf<Goal>()
     val goalLiveData = MutableLiveData<List<Goal>>()
+class MainViewModel(private val database: RealTimeRepository) : ViewModel() {
 
     private val _exerciseBtnTxt: MutableLiveData<Int> = MutableLiveData()
     val exerciseBtnTxt: LiveData<Int> get() = _exerciseBtnTxt
