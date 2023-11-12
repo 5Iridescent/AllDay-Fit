@@ -2,7 +2,6 @@ package com.example.alldayfit.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,14 +9,15 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import com.example.alldayfit.R
-import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.count.CountPage
 import com.example.alldayfit.databinding.MainFragmentBinding
 import com.example.alldayfit.databinding.MainWeeklyRecordItemBinding
-import com.example.alldayfit.db.RealTimeRepository
 import com.example.alldayfit.db.RealTimeRepositoryImpl
-import com.example.alldayfit.db.model.FirebaseModel
+import com.example.alldayfit.dietrecord.DietRecordFragmentDirections
+import com.example.alldayfit.main.adapter.GoalAdapter
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -31,6 +31,7 @@ class MainFragment : Fragment() {
             MainViewModelFactory()
         )[MainViewModel::class.java]
     }
+    private val goalAdapter by lazy { GoalAdapter() }
     private val days: List<MainWeeklyRecordItemBinding> by lazy {
         listOf(
             binding.sun,
@@ -53,8 +54,6 @@ class MainFragment : Fragment() {
     )
     private val today: ZonedDateTime = ZonedDateTime.now(ZoneId.systemDefault())
 
-    private val wow = RealTimeRepositoryImpl.getInstance()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -66,33 +65,28 @@ class MainFragment : Fragment() {
 
     /* fragment design, data 초기 설정 */
     private fun initView() = with(binding) {
-        // 이번주 요일 text 설정
-        for (i in days) {
-            i.weekTxt.text = getString(weekDays[days.indexOf(i)])
-        }
-        // 이번 달 month text 설정
         yearDateTxt.text = today.toDateFormat(MONTH_FORMAT)
         val startDay = getStartDay()
+        val currentWeek = today.dayOfWeek.value % 7
         for (i in days.indices) {
             val day = startDay.plusDays(i.toLong())
-            days[i].dayTxt.text = getString(R.string.today, day.toDateFormat(DAY_FORMAT))
-        }
-        val currentDay = today.dayOfWeek.value % 7
-        for (i in days.indices) {
-            val dayView = days[i]
-            val textColor = if (i == currentDay) R.color.white else R.color.black
-            val backgroundColor = if (i == currentDay) R.color.blue else R.color.white
-            with(dayView) {
+            val textColor =
+                if (i == currentWeek) R.color.white else if (i == 0) R.color.red else if (i == 6) R.color.navy else R.color.black
+            val backgroundColor = if (i == currentWeek) R.color.dark_blue else R.color.white
+            days[i].apply {
+                weekTxt.text = getString(weekDays[i])
                 dayWrap.setBackgroundColor(
                     ContextCompat.getColor(
                         requireContext(),
                         backgroundColor
                     )
                 )
+                dayTxt.text = getString(R.string.today, day.toDateFormat(DAY_FORMAT))
                 dayTxt.setTextColor(ContextCompat.getColor(requireContext(), textColor))
                 weekTxt.setTextColor(ContextCompat.getColor(requireContext(), textColor))
             }
         }
+        weekGoalList.adapter = goalAdapter
     }
 
     private fun initViewModel() {
@@ -127,10 +121,17 @@ class MainFragment : Fragment() {
             val intent = Intent(context, CountPage::class.java)
             startActivity(intent)
         }
+        weekGoalFixBtn.setOnClickListener {
+            showDialog(MainFragmentDirections.actionMainFragmentToExerciseStatusAddGoalDialog())
+        }
     }
 
     private fun showToast(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showDialog(action: NavDirections) {
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {
