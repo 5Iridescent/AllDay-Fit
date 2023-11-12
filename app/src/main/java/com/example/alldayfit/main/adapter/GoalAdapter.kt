@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.alldayfit.databinding.DietRecordAddItemBinding
 import com.example.alldayfit.databinding.MainGoalItemBinding
 import com.example.alldayfit.main.model.Goal
-import com.example.alldayfit.main.MainViewModel
-import java.lang.RuntimeException
 
 class GoalAdapter() :
     ListAdapter<Goal, RecyclerView.ViewHolder>(diffUtil) {
@@ -58,7 +56,7 @@ class GoalAdapter() :
                 mealEdit.setText(data.goals)
             }
             binding.btnDelete.setOnClickListener {
-                viewModel.deletegoal(data)
+//                viewModel.deletegoal(data)
             }
         }
     }

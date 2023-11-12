@@ -21,7 +21,7 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
             MainViewModelFactory()
         )[MainViewModel::class.java]
     }
-    private val adapter: GoalAdapter by lazy { GoalAdapter(viewModel) }
+    private val adapter: GoalAdapter by lazy { GoalAdapter() }
     private lateinit var goal: Goal
 
     override fun onCreateView(
@@ -43,9 +43,9 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
     }
 
     private fun initViewModel() = with(viewModel) {
-        goalLiveData.observe(viewLifecycleOwner) { data ->
-            adapter.addGoal(data)
-        }
+//        goalLiveData.observe(viewLifecycleOwner) { data ->
+//            adapter.addGoal(data)
+//        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,7 +57,7 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
         // exercise 주간 목표 마치는 버튼
         finishBtn.setOnClickListener {
             goal = Goal(binding.goalEdit.text.toString(), false, Goal.POST_POSITION)
-            viewModel.changeDialogType(goal)
+//            viewModel.changeDialogType(goal)
             dismiss()
         }
         // dialog 닫는 버튼
@@ -69,7 +69,7 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
                 return@setOnClickListener
             }
             goal = Goal(goalEdit.text.toString(), false, Goal.POST_POSITION)
-            viewModel.setGoalList(goal)
+//            viewModel.setGoalList(goal)
             goalEdit.text.clear()
         }
     }
