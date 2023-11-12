@@ -3,9 +3,12 @@ package com.example.alldayfit.db
 import android.util.Log
 import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.db.model.FirebaseModel
+import com.example.alldayfit.main.model.DailyExercise
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class RealTimeRepositoryImpl() : RealTimeRepository {
 
@@ -54,6 +57,32 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
                 // 에러
             }
         })
+    }
+
+    override fun fetchWeekData(): MutableList<DailyExercise> {
+        val query = exerciseRef.orderByChild(RealTimeRepository.DATE).limitToLast(7)
+        val dataList = mutableListOf<DailyExercise>()
+        query.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (dataSnapshot in snapshot.children) {
+                    val dbData = dataSnapshot.getValue(FirebaseModel.ExerciseRecord::class.java)
+                    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                    dbData?.let {
+                        dataList.add(
+                            DailyExercise(
+                                it.totalTime,
+                                LocalDate.parse(it.logDate, formatter)
+                            )
+                        )
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                println("Error fetching data: $error")
+            }
+        })
+        return dataList
     }
 
     //
