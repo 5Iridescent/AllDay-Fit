@@ -1,114 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/none"
+    android:padding="10dp"
     tools:context=".main.ExerciseStatusAddGoalDialog">
 
-    <View
-        android:id="@+id/goal_list_deco"
-        android:layout_width="160dp"
-        android:layout_height="20dp"
-        android:background="@drawable/black_stroke_gray_back_shape"
-        android:translationZ="1dp"
-        app:layout_constraintEnd_toEndOf="@id/goal_list_wrap"
-        app:layout_constraintStart_toStartOf="@id/goal_list_wrap"
+    <ImageButton
+        android:id="@+id/close_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/none"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/goal_list_wrap"
-        android:layout_width="360dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/orange"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <TextView
+        android:id="@+id/dialog_title"
+        style="@style/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/week_goal"
+        app:layout_constraintBottom_toBottomOf="@id/close_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/goal_list_deco">
-
-        <android.widget.Button
-            android:id="@+id/finish_btn"
-            android:layout_width="170dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/black_stroke_white_back_shape"
-            android:text="@string/edit_finish"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/goal_edit" />
+        app:layout_constraintTop_toTopOf="@id/close_btn" />
 
 
-        <LinearLayout
-            android:id="@+id/week_goal_wrap"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/white"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="5dp"
-            app:layout_constraintBottom_toTopOf="@id/goal_edit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/week_goal"
-                android:textSize="@dimen/text_size_medium" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/goal_listview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        app:layout_constraintBottom_toTopOf="@id/goal_edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_title" />
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/goal_listview"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+    <EditText
+        android:id="@+id/goal_edit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/gray_stroke_white_back_shape"
+        android:gravity="center_vertical"
+        android:hint="@string/diet_record_add_edit_hint"
+        android:minHeight="50dp"
+        android:paddingHorizontal="10dp"
+        android:textSize="@dimen/text_size_very_small"
+        app:layout_constraintBottom_toTopOf="@id/finish_btn"
+        app:layout_constraintDimensionRatio="7:1"
+        app:layout_constraintEnd_toEndOf="@id/close_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/goal_listview" />
 
-        </LinearLayout>
+    <ImageButton
+        android:id="@+id/add_goal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/none"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_add"
+        android:translationZ="1dp"
+        app:layout_constraintBottom_toBottomOf="@id/goal_edit"
+        app:layout_constraintEnd_toEndOf="@id/goal_edit"
+        app:layout_constraintTop_toTopOf="@id/goal_edit"
+        app:tint="@color/black" />
 
-        <ImageButton
-            android:id="@+id/close_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/none"
-            android:src="@drawable/ic_close"
-            android:minHeight="48dp"
-            android:minWidth="48dp"
-            app:layout_constraintEnd_toEndOf="@id/week_goal_wrap"
-            app:layout_constraintTop_toTopOf="@id/week_goal_wrap" />
-
-        <ImageButton
-            android:id="@+id/add_goal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="13dp"
-            android:background="@color/none"
-            android:src="@drawable/ic_add"
-            android:translationZ="1dp"
-            app:layout_constraintBottom_toBottomOf="@id/goal_edit"
-            app:layout_constraintEnd_toEndOf="@id/goal_edit"
-            app:layout_constraintTop_toTopOf="@id/goal_edit"
-            app:tint="@color/black" />
-
-        <EditText
-            android:id="@+id/goal_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/gray_stroke_white_back_shape"
-            android:gravity="center_vertical"
-            android:minHeight="50dp"
-            android:paddingHorizontal="10dp"
-            android:textSize="@dimen/text_size_very_small"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/week_goal_wrap" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <android.widget.Button
+        android:id="@+id/finish_btn"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="@drawable/black_stroke_white_back_shape"
+        android:text="@string/edit_finish"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="5:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/goal_edit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

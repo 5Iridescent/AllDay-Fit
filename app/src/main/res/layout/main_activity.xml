@@ -20,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:fontFamily="@font/i_am_a_player"
             android:text="@string/app_name"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_small" />
@@ -43,7 +44,6 @@
         android:layout_height="wrap_content"
         android:theme="@style/Widget.BottomNavigationView"
         app:itemBackground="@color/blue"
-
         app:itemIconTint="@drawable/menu_click_color"
         app:itemTextAppearanceActiveBoldEnabled="true"
         app:itemTextColor="@drawable/menu_click_color"

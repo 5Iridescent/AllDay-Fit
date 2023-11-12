@@ -10,25 +10,22 @@
 
     <TextView
         android:id="@+id/tv_newpost"
+        style="@style/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginHorizontal="90dp"
-        android:text="게시글 작성"
-        android:textSize="@dimen/text_size_very_large"
-        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:text="@string/post_dialog_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_title"
+        style="@style/subtitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="15dp"
         android:text="@string/community_newpost_tv_title"
-        android:textSize="@dimen/text_size_small"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_newpost" />
 
@@ -36,22 +33,23 @@
         android:id="@+id/et_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/light_blue"
         android:layout_marginTop="10dp"
+        android:inputType="text"
+        android:background="@color/light_blue"
         android:hint="@string/community_newpost_title_hint"
-        android:textSize="@dimen/text_size_very_small"
         android:minHeight="50dp"
+        android:textSize="@dimen/text_size_very_small"
         app:layout_constraintEnd_toEndOf="@id/btn_close"
         app:layout_constraintStart_toStartOf="@id/tv_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
     <TextView
         android:id="@+id/tv_info"
+        style="@style/subtitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:text="@string/community_newpost_tv_info"
-        android:textSize="@dimen/text_size_small"
         app:layout_constraintStart_toStartOf="@id/tv_title"
         app:layout_constraintTop_toBottomOf="@+id/et_title" />
 
@@ -66,8 +64,8 @@
         android:gravity="top"
         android:hint="@string/community_newpost_tv_info_hint"
         android:inputType="text"
-        android:textSize="@dimen/text_size_very_small"
         android:minHeight="260dp"
+        android:textSize="@dimen/text_size_very_small"
         app:layout_constraintBottom_toTopOf="@id/btn_write"
         app:layout_constraintEnd_toEndOf="@id/btn_close"
         app:layout_constraintStart_toStartOf="@id/tv_title"
@@ -87,12 +85,12 @@
 
     <android.widget.Button
         android:id="@+id/btn_write"
+        style="@style/buttonText"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/button_radius"
         android:text="@string/community_newpost_btn_write"
         android:textColor="@color/white"
-        android:textSize="@dimen/text_size_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="3:1"
         app:layout_constraintEnd_toStartOf="@id/btn_cancel"
@@ -101,14 +99,14 @@
 
     <android.widget.Button
         android:id="@+id/btn_cancel"
+        style="@style/buttonText"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:background="@drawable/button_radius"
+        android:backgroundTint="@color/gray"
         android:text="@string/community_newpost_btn_cancel"
         android:textColor="@color/black"
-        android:backgroundTint="@color/gray"
-        android:textSize="@dimen/text_size_small"
-        android:layout_marginStart="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/btn_write"
         app:layout_constraintDimensionRatio="3:1"
         app:layout_constraintEnd_toEndOf="parent"
