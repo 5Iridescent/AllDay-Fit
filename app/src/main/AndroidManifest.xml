@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
+    <!--FoodLens-->
+    <meta-data android:name="com.doinglab.foodlens.sdk.apptoken" android:value="@string/foodlens_app_token"/>
+    <meta-data android:name="com.doinglab.foodlens.sdk.companytoken" android:value="@string/foodlens_company_token"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,7 +19,7 @@
         android:theme="@style/Theme.AllDayFit"
         tools:targetApi="31">
         <activity
-            android:name=".settings.SignInPage"
+            android:name=".settings.GoogleSignInPage"
             android:exported="true" />
         <activity
             android:name=".count.CountPage"
