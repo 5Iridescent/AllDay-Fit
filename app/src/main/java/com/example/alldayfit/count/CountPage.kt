@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.SystemClock
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -62,18 +63,13 @@ class CountPage : AppCompatActivity() {
 
         // 종료 버튼을 누르면 타이머 종료
         mBinding.btnFinish.setOnClickListener {
-            if (!timerRunning) { // 타이머가 진행 중일 때만 실행
-                mBinding.rvCount.visibility = View.VISIBLE
-
-                // 종료할 때 마지막 타이머 기록 저장
-                val exerciseRecord = ExerciseRecord(mBinding.timer.text.toString())
-                exerciseRecords.add(exerciseRecord)
-                adapter.notifyDataSetChanged()
-
-                finishView()
-            } else {
+            saveRecyclerView()
+            if(!timerRunning){
+                saveRecyclerView()
                 finishView()
             }
+                mBinding.rvCount.visibility = View.VISIBLE
+                finishView()
         }
 
         //시간을 00:00:00 으로 보이게 하는 코드
@@ -143,7 +139,8 @@ class CountPage : AppCompatActivity() {
 
     private fun startCountDown() {
         mBinding.rest.visibility = View.VISIBLE
-        mBinding.count.setImageResource(R.drawable.circle_orange_back_shape)
+        mBinding.progressbar.visibility = View.VISIBLE
+        mBinding.count.visibility = View.INVISIBLE
         mBinding.rest.setTextColor(ContextCompat.getColor(this, R.color.orange))
         mBinding.timer.setTextColor(ContextCompat.getColor(this, R.color.orange))
 
@@ -156,6 +153,9 @@ class CountPage : AppCompatActivity() {
                 // 남은 시간을 HH:mm:ss 형식으로 변환
                 val formattedTime = formatTime(millisUntilFinished)
                 mBinding.timer.text = formattedTime
+
+                val progress = millisUntilFinished.toInt()
+                mBinding.progressbar.progress = progress
             }
 
             override fun onFinish() {
@@ -171,6 +171,9 @@ class CountPage : AppCompatActivity() {
                 mBinding.rest.visibility = View.INVISIBLE
                 mBinding.count.setImageResource(R.drawable.circle_blue_back_shape)
                 mBinding.timer.setTextColor(ContextCompat.getColor(this@CountPage, R.color.blue))
+
+                mBinding.count.visibility = View.VISIBLE
+                mBinding.progressbar.visibility = View.INVISIBLE
             }
         }
         countDownTimer.start()
@@ -193,8 +196,21 @@ class CountPage : AppCompatActivity() {
         // 스톱워치 종료 후 다시 클릭해도 반응 없게하는 코드
         mBinding.btnFinish.isEnabled = false
         mBinding.rest.visibility = View.GONE
-        mBinding.setRootine.visibility = View.GONE
         mBinding.btnMoreExercise.visibility = View.VISIBLE
         mBinding.btnFinishExercise.visibility = View.VISIBLE
+        mBinding.progressbar.visibility = View.INVISIBLE
+        mBinding.btnRest.visibility = View.INVISIBLE
+        mBinding.btnRest.isEnabled = false
+        mBinding.btnStart.isEnabled = false
+        mBinding.btnStart.visibility = View.VISIBLE
+        mBinding.count.visibility = View.VISIBLE
+    }
+
+    private fun saveRecyclerView(){
+        mBinding.rvCount.visibility = View.VISIBLE
+        // 종료할 때 마지막 타이머 기록 저장
+        val exerciseRecord = ExerciseRecord(mBinding.timer.text.toString())
+        exerciseRecords.add(exerciseRecord)
+        adapter.notifyDataSetChanged()
     }
 }

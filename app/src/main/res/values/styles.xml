@@ -55,6 +55,10 @@
 
     <style name="buttonText">
         <item name="android:textSize">@dimen/text_size_small</item>
+      
+    <style name="CircularProgressBar">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/progress_circular</item>
     </style>
 
 </resources>
