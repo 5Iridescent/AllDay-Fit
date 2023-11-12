@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.doinglab.foodlens2.sdk.FoodLens
+import com.doinglab.foodlens2.sdk.RecognitionResultHandler
+import com.doinglab.foodlens2.sdk.errors.BaseError
+import com.doinglab.foodlens2.sdk.model.RecognitionResult
 import com.example.alldayfit.databinding.DietRecordAddDialogBinding
 import com.example.alldayfit.dietrecord.adapter.DietRecordAdapter
 import java.io.File
@@ -29,6 +34,10 @@ class DietRecordAddDialog : DialogFragment() {
     private val args: DietRecordAddDialogArgs by navArgs()
     private val mealType: String by lazy { args.mealType }
     private val PICK_IMAGE_REQUEST = 1
+
+    private val foodLensService by lazy {
+        FoodLens.createFoodLensService(requireActivity())
+    }
 
     private val viewModel: DietRecordDialogViewModel by lazy {
         ViewModelProvider(
@@ -146,6 +155,19 @@ class DietRecordAddDialog : DialogFragment() {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
             val imageUri: Uri = data.data!!
             val newImageUri = getRealPathFromURI(imageUri)
+
+            val byteData = Utils.readContentIntoByteArray(File(newImageUri))
+
+            //FoodLens 서비스 사용
+            foodLensService.predict(byteData, object : RecognitionResultHandler {
+                override fun onSuccess(result: RecognitionResult?) {
+                    Log.d("12",result?.toJSONString() ?: "")
+                }
+
+                override fun onError(errorReason: BaseError?) {
+                    Log.d("13",errorReason.toString() ?: "")
+                }
+            })
 
             // Glide
             Glide.with(requireContext())
