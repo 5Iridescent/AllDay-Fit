@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.alldayfit.main.MainViewModel
 
 class DietRecordViewModelFactory : ViewModelProvider.Factory {
+
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(DietRecordViewModel::class.java)){
             return DietRecordViewModel() as T

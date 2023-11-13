@@ -13,6 +13,7 @@
         app:tabIndicatorHeight="2dp"
         app:tabTextColor="@color/white"
         app:tabSelectedTextColor="@color/blue"
+        app:tabIndicatorHeight="3dp"
         android:contentDescription="@string/community_main_tab_desc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

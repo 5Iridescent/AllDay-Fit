@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:paddingTop="15dp"
     android:padding="10dp"
-    android:background="@color/light_blue"
     tools:context=".settings.ui.SettingGuideFragment">
 
     <TextView

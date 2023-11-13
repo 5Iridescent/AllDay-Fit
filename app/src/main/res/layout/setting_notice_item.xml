@@ -7,11 +7,10 @@
 
     <TextView
         android:id="@+id/notice_title"
+        style="@style/subtitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="공지사항"
-        android:textSize="@dimen/text_size_medium"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

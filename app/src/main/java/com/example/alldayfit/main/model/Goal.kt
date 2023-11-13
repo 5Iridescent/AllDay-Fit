@@ -10,4 +10,3 @@ data class Goal(
         const val DIALOG_POSITION = 1
     }
 }
-

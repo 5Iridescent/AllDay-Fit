@@ -15,7 +15,7 @@
         android:theme="@style/Theme.AllDayFit"
         tools:targetApi="31">
         <activity
-            android:name=".settings.SignInPage"
+            android:name=".settings.GoogleSignInPage"
             android:exported="true" />
         <activity
             android:name=".count.CountPage"

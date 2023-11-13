@@ -50,7 +50,6 @@
     <string name="mod_login_info">로그인 정보</string>
     <string name="mod_exercise_locate">운동 장소 설정</string>
     <string name="mod_exercise_time">운동 시간 설정</string>
-    <string name="main_exercise_time">exercise\ntime</string>
     <string name="calendar">달력</string>
     <string name="user">유저</string>
     <string name="diet_record_add_btn_desc">식단 음식 추가</string>
@@ -58,4 +57,5 @@
     <string name="gender">Gender</string>
     <string name="gender_man">남자</string>
     <string name="gender_woman">여자</string>
+    <string name="post_dialog_title">게시글 작성</string>
 </resources>

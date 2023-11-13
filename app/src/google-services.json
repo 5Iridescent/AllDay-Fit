@@ -42,6 +42,43 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11976146148:android:b2b103b13a6903c81040f1",
+        "android_client_info": {
+          "package_name": "nrplh.Iridescent.alldayfit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11976146148-lfelcpe48971rn1qlu55jf4cn2fegblc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nrplh.Iridescent.alldayfit",
+            "certificate_hash": "33302018e346e5781350f2f602d5a0d7bf16764f"
+          }
+        },
+        {
+          "client_id": "11976146148-omnd8puu3ithu4bspropaf2tehgeffc9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvW4ghcPPzusMoLUh5MZC74s4oJhr5c-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11976146148-omnd8puu3ithu4bspropaf2tehgeffc9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

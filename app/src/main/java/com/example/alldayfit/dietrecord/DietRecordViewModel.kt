@@ -10,6 +10,4 @@ class DietRecordViewModel : ViewModel(){
     private val _list: MutableLiveData<List<String>> = MutableLiveData()
     val list: LiveData<List<String>> get() = _list
 
-    
-
 }

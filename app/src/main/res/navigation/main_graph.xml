@@ -9,11 +9,16 @@
         android:id="@+id/mainFragment"
         android:name="com.example.alldayfit.main.MainFragment"
         android:label="main_fragment"
-        tools:layout="@layout/main_fragment" >
+        tools:layout="@layout/main_fragment">
         <action
             android:id="@+id/action_mainFragment_to_exerciseStatusAddGoalDialog"
             app:destination="@id/exerciseStatusAddGoalDialog" />
     </fragment>
+    <dialog
+        android:id="@+id/exerciseStatusAddGoalDialog"
+        android:name="com.example.alldayfit.main.ExerciseStatusAddGoalDialog"
+        android:label="exercise_status_add_goal_dialog"
+        tools:layout="@layout/main_add_goal_dialog" />
 
     <fragment
         android:id="@+id/dietRecordFragment"
@@ -22,8 +27,7 @@
         tools:layout="@layout/diet_record_fragment">
         <action
             android:id="@+id/action_dietRecordFragment_to_dietRecordAddDialog"
-            app:destination="@id/dietRecordAddDialog">
-        </action>
+            app:destination="@id/dietRecordAddDialog" />
     </fragment>
     <dialog
         android:id="@+id/dietRecordAddDialog"
@@ -32,7 +36,7 @@
         tools:layout="@layout/diet_record_add_dialog">
         <argument
             android:name="mealType"
-            app:argType="string"/>
+            app:argType="string" />
     </dialog>
 
     <fragment
@@ -44,11 +48,7 @@
             android:id="@+id/action_exerciseStatusFragment_to_exerciseStatusDailyEditDialog"
             app:destination="@id/exerciseStatusDailyEditDialog" />
     </fragment>
-    <dialog
-        android:id="@+id/exerciseStatusAddGoalDialog"
-        android:name="com.example.alldayfit.main.ExerciseStatusAddGoalDialog"
-        android:label="exercise_status_add_goal_dialog"
-        tools:layout="@layout/main_add_goal_dialog" />
+
     <dialog
         android:id="@+id/exerciseStatusDailyEditDialog"
         android:name="com.example.alldayfit.exercisestatus.ExerciseBodyStatusEditDialog"
@@ -65,7 +65,7 @@
         android:id="@+id/settingMainFragment"
         android:name="com.example.alldayfit.settings.ui.SettingMainFragment"
         android:label="setting_main_fragment"
-        tools:layout="@layout/setting_main_fragment" >
+        tools:layout="@layout/setting_main_fragment">
         <action
             android:id="@+id/action_settingMainFragment_to_settingAppNotifiFragment"
             app:destination="@id/settingAppNotifiFragment" />

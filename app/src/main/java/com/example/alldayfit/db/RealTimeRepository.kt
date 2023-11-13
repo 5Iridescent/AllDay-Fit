@@ -3,6 +3,7 @@ package com.example.alldayfit.db
 import androidx.lifecycle.MutableLiveData
 import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.db.model.FirebaseModel
+import com.example.alldayfit.main.model.DailyExercise
 import com.example.alldayfit.utils.Util
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -10,7 +11,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 interface RealTimeRepository {
-  
+
     fun getUserReference(path: String, id: String = userId): DatabaseReference {
         return database.reference.child(path).child(id)
     }
@@ -28,12 +29,14 @@ interface RealTimeRepository {
     fun getUserData()
 
     fun addExercise(data: FirebaseModel.ExerciseRecord)
+    fun fetchWeekData(): MutableList<DailyExercise>
 
     fun addMealAll(data: FirebaseModel.DietRecord)
 
     fun addMealOne(mealType: String, data: FirebaseModel.DietRecord)
 
     fun isPresenceDataExercise(date: String)
+
     // community
     fun addPost(content: CommunityPostEntity): String?
     fun updatePost(content: CommunityPostEntity)
@@ -58,4 +61,5 @@ interface RealTimeRepository {
         const val DATE = "LogDate"
         const val POSTDATE = "postingDate"
     }
+
 }

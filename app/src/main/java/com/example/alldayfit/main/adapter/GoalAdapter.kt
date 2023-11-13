@@ -8,10 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.alldayfit.databinding.DietRecordAddItemBinding
 import com.example.alldayfit.databinding.MainGoalItemBinding
 import com.example.alldayfit.main.model.Goal
-import com.example.alldayfit.main.MainViewModel
-import java.lang.RuntimeException
 
-class GoalAdapter(private val viewModel: MainViewModel) :
+class GoalAdapter() :
     ListAdapter<Goal, RecyclerView.ViewHolder>(diffUtil) {
 
 
@@ -45,7 +43,7 @@ class GoalAdapter(private val viewModel: MainViewModel) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Goal) {
             binding.apply {
-                goal.setText(data.goals)
+                goal.text = data.goals
                 checkbox.isChecked = data.goalckeck
             }
         }
@@ -58,7 +56,7 @@ class GoalAdapter(private val viewModel: MainViewModel) :
                 mealEdit.setText(data.goals)
             }
             binding.btnDelete.setOnClickListener {
-                viewModel.deletegoal(data)
+//                viewModel.deletegoal(data)
             }
         }
     }

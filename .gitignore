@@ -33,6 +33,9 @@ render.experimental.xml
 # Android Profiling
 *.hprof
 
+# debug realease file
+app/release
+
 ### Mac OS ###
 # General
 .DS_Store

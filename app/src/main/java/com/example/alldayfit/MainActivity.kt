@@ -1,59 +1,43 @@
 package com.example.alldayfit
 
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.TypefaceSpan
 import android.view.Menu
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ReportFragment.Companion.reportFragment
-import androidx.navigation.findNavController
+import androidx.core.content.res.ResourcesCompat
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupWithNavController
-import com.example.alldayfit.community.CommunityHomeFragment
-import com.example.alldayfit.community.CommunityMainFragment
-import com.example.alldayfit.databinding.ExerciseStatusFragmentBinding
 import com.example.alldayfit.databinding.MainActivityBinding
-import com.example.alldayfit.db.RealTimeRepository
-import com.example.alldayfit.dietrecord.DietRecordFragment
-import com.example.alldayfit.exercisestatus.ExerciseStatusFragment
-import com.example.alldayfit.main.MainFragment
-import com.example.alldayfit.settings.ui.SettingMainFragment
 import com.google.firebase.FirebaseApp
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var mBinding: MainActivityBinding
+    private lateinit var binding: MainActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = MainActivityBinding.inflate(layoutInflater)
-        val view = mBinding.root
-        initNavigationBar()
-        setCustomToolbar()
-        setContentView(view)
+        binding = MainActivityBinding.inflate(layoutInflater)
+        initView()
+        setContentView(binding.root)
     }
 
-    /* bottom navigation click event - 클릭 */
-    private fun initNavigationBar() {
+    private fun initView() = with(binding) {
+        /* bottom navigation click event - 클릭 */
         val navHostFragment =
-            supportFragmentManager.findFragmentById(mBinding.mainFrame.id) as NavHostFragment
+            supportFragmentManager.findFragmentById(mainFrame.id) as NavHostFragment
         val navController = navHostFragment.navController // 기본 선택 아이템
-        var lastSelectedItemId = R.id.mainFragment
-        mBinding.mainNav.setOnItemSelectedListener { item ->
+        mainNav.setOnItemSelectedListener { item ->
             navController.navigate(item.itemId) // 아이템 선택
-            lastSelectedItemId = item.itemId
             true
         }
-        mBinding.mainNav.selectedItemId = R.id.mainFragment
-    }
-
-    // 툴바 메뉴 버튼을 설정- menu에 있는 item을 연결하는 부분
-    fun setCustomToolbar() {
-        val toolbar = mBinding.mainToolbar
-        setSupportActionBar(toolbar)
+        mainNav.selectedItemId = R.id.mainFragment
+        // 툴바 메뉴 버튼을 설정- menu에 있는 item을 연결하는 부분
+        setSupportActionBar(mainToolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        val mTitle = mBinding.toolbarTitle
-        mTitle.text = "All_DayFit"
+        supportActionBar?.title = getString(R.string.app_title)
+        supportActionBar?.title = title
+        toolbarTitle.text = getString(R.string.app_title)
     }
 
     // 툴바 메뉴 버튼을 설정- menu에 있는 item을 연결하는 부분
