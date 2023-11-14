@@ -1,4 +1,4 @@
-package com.example.alldayfit.settings.ui
+package com.example.alldayfit.settings.model
 
 data class SettingNoticeItem(
     val noticeTitle: String,

@@ -32,19 +32,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.title = getString(R.string.app_title)
         supportActionBar?.title = title
-        supportActionBar?.setDisplayHomeAsUpEnabled(false)
         toolbarTitle.text = getString(R.string.app_title)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                navController.popBackStack()
-                true
-            }
-
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

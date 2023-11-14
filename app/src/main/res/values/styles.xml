@@ -63,4 +63,8 @@
         <item name="android:progressDrawable">@drawable/progress_gradation</item>
     </style>
 
+    <style name="ToolbarColoredBackArrow" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+
 </resources>
