@@ -50,7 +50,7 @@
         android:layout_marginBottom="30dp"
         android:background="@drawable/gray_stroke_white_back_shape"
         android:gravity="center_vertical"
-        android:hint="@string/diet_record_add_edit_hint"
+        android:hint="@string/exercise_goal_add_edit_hint"
         android:minHeight="50dp"
         android:paddingHorizontal="10dp"
         android:textSize="@dimen/text_size_very_small"
@@ -76,8 +76,9 @@
 
     <android.widget.Button
         android:id="@+id/finish_btn"
+        style="@style/buttonText"
         android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/black_stroke_white_back_shape"
         android:text="@string/edit_finish"
         app:layout_constraintBottom_toBottomOf="parent"

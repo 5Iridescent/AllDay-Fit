@@ -12,11 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.example.alldayfit.R
-import com.example.alldayfit.count.CountPage
+import com.example.alldayfit.count.CountActivity
 import com.example.alldayfit.databinding.MainFragmentBinding
 import com.example.alldayfit.databinding.MainWeeklyRecordItemBinding
-
-import com.example.alldayfit.dietrecord.DietRecordFragmentDirections
 import com.example.alldayfit.main.adapter.GoalAdapter
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -118,7 +116,7 @@ class MainFragment : Fragment() {
     private fun setupView() = with(binding) {
         exerciseBtn.setOnClickListener {
             viewModel.toggleExerciseBtn()
-            val intent = Intent(context, CountPage::class.java)
+            val intent = Intent(context, CountActivity::class.java)
             startActivity(intent)
         }
         weekGoalFixBtn.setOnClickListener {

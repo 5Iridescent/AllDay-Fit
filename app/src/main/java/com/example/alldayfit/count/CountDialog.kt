@@ -4,17 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import androidx.fragment.app.DialogFragment
-import com.example.alldayfit.R
 import com.example.alldayfit.databinding.CountAddDialogBinding
-import com.example.alldayfit.databinding.ExerciseStatusDailyEditDialogBinding
-import com.example.alldayfit.exercisestatus.BodyStatusViewModel
 
-private var _binding: CountAddDialogBinding? = null
-private val binding get() = _binding!!
-private lateinit var viewModel: CountViewmodel
 class CountDialog : DialogFragment() {
+    private var _binding: CountAddDialogBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var viewModel: CountViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

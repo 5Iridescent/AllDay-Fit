@@ -18,8 +18,8 @@
             android:name=".settings.GoogleSignInPage"
             android:exported="false"/>
         <activity
-            android:name=".count.CountPage"
-            android:exported="false"/>
+            android:name=".count.CountActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false"/>

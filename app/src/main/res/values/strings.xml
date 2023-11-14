@@ -22,6 +22,9 @@
     <string name="today">%s일</string>
     <string name="fix_goal_list_btn">주간 목표 수정</string>
 
+    <!-- goal  fragment -->
+    <string name="exercise_goal_add_edit_hint">목표를 추가해주세요.</string>
+
     <!-- exercise fragment -->
     <string name="weight">WEIGHT</string>
     <string name="weight_value">%dKG</string>
@@ -86,7 +89,6 @@
     <string name="subtract_day_btn_desc">select the day before</string>
     <string name="add_day_btn_desc">select the day next</string>
     <string name="calorie_consumption">CALORIE\nCONSUMPTION</string>
-    <string name="exercise_status_week_goal">주간목표</string>
     <string name="exercise_status_user_state">나의 운동 상태</string>
     <string name="setting_dark_mode">다크모드</string>
     <string name="setting_app_noti">앱 알림 설정</string>
@@ -125,9 +127,12 @@
     <!-- countdown activity -->
     <string name="count_ment_user">루트를 지정하시면\n루트에 맞춰서\n진행이 가능합니다.</string>
     <string name="count_frist_ment">Start with\nclick</string>
-    <string name="count_finish_ment">오늘도 \n 맛있다</string>
+    <string name="count_finish_ment">오늘도\n맛있다</string>
     <string name="btn_more_exercise">운동 더하기</string>
     <string name="btn_finish_exercise">운동 끝내기</string>
+    <string name="end">종료</string>
+    <string name="start">시작</string>
+    <string name="rest">휴식</string>
 
     <!-- login activity -->
     <string name="emailSign">Email Sign Up</string>
@@ -147,5 +152,6 @@
     <!-- Sync Preferences -->
     <string name="edit_finish">수정</string>
     <string name="user">유저</string>
+
     <string name="community_edit">수정</string>
 </resources>

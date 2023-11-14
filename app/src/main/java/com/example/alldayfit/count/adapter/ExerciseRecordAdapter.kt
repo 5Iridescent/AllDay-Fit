@@ -1,17 +1,13 @@
-import android.util.Log
+package com.example.alldayfit.count
+
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.util.TimeUtils.formatDuration
 import androidx.recyclerview.widget.RecyclerView
-import com.example.alldayfit.count.ExerciseRecord
+import com.example.alldayfit.count.model.ExerciseRecord
 import com.example.alldayfit.databinding.CountItemBinding
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 class ExerciseRecordAdapter(private val records: List<ExerciseRecord>) :
-RecyclerView.Adapter<ExerciseRecordAdapter.ViewHolder>() {
+    RecyclerView.Adapter<ExerciseRecordAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: CountItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -33,6 +29,7 @@ RecyclerView.Adapter<ExerciseRecordAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = getItemId(position)
         holder.bind(records[position])
     }
 
