@@ -11,8 +11,6 @@ import com.example.alldayfit.main.model.Goal
 
 class GoalAdapter() :
     ListAdapter<Goal, RecyclerView.ViewHolder>(diffUtil) {
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return when (viewType) {

@@ -18,7 +18,7 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(
             this,
-//            MainViewModelFactory()
+            MainViewModelFactory()
         )[MainViewModel::class.java]
     }
     private val adapter: GoalAdapter by lazy { GoalAdapter() }

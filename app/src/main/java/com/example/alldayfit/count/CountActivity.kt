@@ -73,7 +73,6 @@ class CountActivity : AppCompatActivity() {
             routineSetBtn.visibility = View.GONE
             textView.visibility = View.INVISIBLE
             timer.visibility = View.VISIBLE
-            rest.visibility = View.VISIBLE
         } else {
             textView.visibility = View.VISIBLE
             timer.visibility = View.INVISIBLE
@@ -215,6 +214,7 @@ class CountActivity : AppCompatActivity() {
                 // 남은 시간을 HH:mm:ss 형식으로 변환
                 if (viewModel.isRunning.value == false) {
                     onFinish()
+                    return
                 }
                 val formattedTime = formatTime(millisUntilFinished)
                 val progress = millisUntilFinished.toInt() - 1000
@@ -253,9 +253,10 @@ class CountActivity : AppCompatActivity() {
 //                binding.progressbar.setImageResource(R.drawable.circle_blue_back_shape) //Todo 무지개 테두리로 변경
         // 스톱워치 종료 후 다시 클릭해도 반응 없게하는 코드
         binding.endBtn.isEnabled = false
+        binding.timer.stop()
+        binding.startBtn.isEnabled = false
         binding.moreExerciseBtn.visibility = View.VISIBLE
         binding.finishExerciseBtn.visibility = View.VISIBLE
-        binding.startBtn.isEnabled = false
     }
 
     companion object {
