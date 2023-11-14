@@ -4,6 +4,7 @@ import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.db.model.FirebaseModel
 import com.example.alldayfit.main.model.DailyExercise
 import com.example.alldayfit.utils.Util
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -11,7 +12,7 @@ import com.google.firebase.ktx.Firebase
 
 interface RealTimeRepository {
 
-    fun getUserReference(path: String, id: String = userId): DatabaseReference {
+    fun getUserReference(path: String, id: String = userId!!): DatabaseReference {
         return database.reference.child(path).child(id)
     }
 
@@ -19,8 +20,8 @@ interface RealTimeRepository {
         return database.reference.child(path)
     }
 
-    private val userId: String
-        get() = "NTqKsmydkVOE9fWxxTolGDSkL7p2"
+    private val userId: String?
+        get() = FirebaseAuth.getInstance().uid
     private val database: FirebaseDatabase
         get() = Firebase.database(Util.realtime_database)
 
@@ -38,10 +39,10 @@ interface RealTimeRepository {
     fun addPost(content: CommunityPostEntity): String?
     fun updatePost(content: CommunityPostEntity)
     fun removePost(content: CommunityPostEntity)
-    fun getPosts(id: String = userId): MutableList<FirebaseModel.Post>
+    fun getPosts(id: String = userId!!): MutableList<FirebaseModel.Post>
     fun changeModel(content: CommunityPostEntity): FirebaseModel.Post {
         return FirebaseModel.Post(
-            userId,
+            userId!!,
             content.title,
             content.postingDate,
             content.nickname,

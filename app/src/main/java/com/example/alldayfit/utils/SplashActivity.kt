@@ -4,23 +4,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.airbnb.lottie.LottieAnimationView
-import com.example.alldayfit.MainActivity
-import com.example.alldayfit.R
+import com.example.alldayfit.databinding.SplashActivityBinding
+import com.example.alldayfit.settings.login.GoogleSignInPage
 
 class SplashActivity : AppCompatActivity() {
+    private lateinit var binding : SplashActivityBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.splash_activity)
-        val lodingImage = findViewById(R.id.splash_image) as LottieAnimationView
-
-        lodingImage.playAnimation()
+        binding = SplashActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.splashImage.playAnimation()
 
         val handler = Handler()
         handler.postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, GoogleSignInPage::class.java)
             startActivity(intent)
             finish()
-        }, 3000)
+        }, 2000)
     }
 }
