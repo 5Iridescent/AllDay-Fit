@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/community_content"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:maxHeight="3000dp"
-    android:padding="10dp"
-    android:id="@+id/community_content">
+    android:padding="10dp">
 
     <ImageView
         android:id="@+id/ic_user"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="5dp"
-        android:clipToOutline="true"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:maxWidth="30dp"
         android:maxHeight="30dp"
         android:src="@drawable/ic_user"
         app:layout_constraintDimensionRatio="1.2"
         app:layout_constraintEnd_toStartOf="@id/tv_nickname"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/user" />
 
     <TextView
         android:id="@+id/tv_nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:text="닉네임"
         android:textSize="@dimen/text_size_very_small"
         app:layout_constraintBottom_toBottomOf="@id/ic_user"
         app:layout_constraintStart_toEndOf="@id/ic_user"
@@ -37,9 +36,9 @@
         android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
         android:text="@string/community_tv_date"
         android:textAlignment="textStart"
-        android:layout_marginEnd="15dp"
         android:textSize="@dimen/text_size_very_small"
         app:layout_constraintBottom_toBottomOf="@+id/ic_user"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,10 +49,9 @@
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:text="글제목"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:maxLines="1"
         android:textSize="@dimen/text_size_medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ic_user" />
@@ -62,21 +60,20 @@
         android:id="@+id/tv_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:ellipsize="end"
         android:maxLines="2"
-        android:layout_marginStart="10dp"
-        android:text="글의 내용을 적어두기"
         android:textSize="@dimen/text_size_small"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_delete"
+        app:layout_constraintEnd_toEndOf="@id/tv_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
     <android.widget.Button
         android:id="@+id/btn_amen"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="250dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
         android:background="@drawable/button_radius"
         android:backgroundTint="@color/dark_blue"
         android:text="@string/community_btn_amend"
@@ -86,15 +83,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="2:1"
         app:layout_constraintEnd_toStartOf="@id/btn_delete"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_info" />
 
     <android.widget.Button
         android:id="@+id/btn_delete"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
         android:background="@drawable/button_radius2"
         android:backgroundTint="@color/gray"
         android:text="@string/community_btn_delete"
@@ -102,7 +97,6 @@
         app:layout_constraintBottom_toBottomOf="@id/btn_amen"
         app:layout_constraintDimensionRatio="2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_amen"
         app:layout_constraintTop_toTopOf="@id/btn_amen" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

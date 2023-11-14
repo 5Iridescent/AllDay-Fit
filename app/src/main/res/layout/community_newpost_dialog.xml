@@ -40,7 +40,8 @@
         android:textSize="@dimen/text_size_very_small"
         app:layout_constraintEnd_toEndOf="@id/btn_close"
         app:layout_constraintStart_toStartOf="@id/tv_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/tv_info"
@@ -68,7 +69,8 @@
         app:layout_constraintBottom_toTopOf="@id/btn_write"
         app:layout_constraintEnd_toEndOf="@id/btn_close"
         app:layout_constraintStart_toStartOf="@id/tv_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_info" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_info"
+        android:importantForAutofill="no" />
 
     <ImageButton
         android:id="@+id/btn_close"

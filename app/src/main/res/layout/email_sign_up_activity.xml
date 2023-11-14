@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@id/editTextName" />
 
     <EditText
-        android:paddingLeft="20dp"
+        android:paddingHorizontal="20dp"
         android:id="@+id/editTextNickname"
         android:layout_width="379dp"
         android:background="@drawable/btn_google"
@@ -71,7 +71,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="12dp"
         android:layout_marginRight="16dp"
-        android:hint="닉네임을 입력하세요"
+        android:hint="@string/add_user_nickname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextPassword" />
@@ -83,7 +83,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
-        android:text="회원가입"
+        android:text="@string/sign_up"
         android:background="@drawable/round_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -91,8 +91,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:text="Google"
+            android:textSize="20sp"
             android:layout_marginEnd="20dp" />
 
     </LinearLayout>
@@ -167,7 +166,7 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:background="@drawable/button_radius"
-            android:text="수정"
+            android:text="@string/community_edit"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_small" />
 
@@ -181,7 +180,7 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:background="@drawable/button_radius"
-            android:text="취소"
+            android:text="@string/cancel"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_small" />
     </LinearLayout>

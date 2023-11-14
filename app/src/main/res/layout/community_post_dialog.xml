@@ -15,14 +15,14 @@
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="@id/tv_title"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_user2" />
+        app:srcCompat="@drawable/ic_user2"
+        android:contentDescription="@string/user" />
 
     <TextView
         android:id="@+id/tv_nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="쫄튀"
         android:textSize="@dimen/text_size_very_small"
         app:layout_constraintBottom_toBottomOf="@id/ic_user"
         app:layout_constraintStart_toEndOf="@id/ic_user"
@@ -33,7 +33,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="글 제목"
         android:textSize="@dimen/text_size_medium"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,6 +86,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_nickname"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_close" />
+        app:srcCompat="@drawable/ic_close"
+        android:contentDescription="@string/cancel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

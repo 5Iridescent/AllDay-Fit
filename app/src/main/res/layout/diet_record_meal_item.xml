@@ -34,6 +34,7 @@
         android:clickable="true"
         android:focusable="true"
         android:adjustViewBounds="true"
-        android:scaleType="centerInside" />
+        android:scaleType="centerInside"
+        android:contentDescription="@string/add_meal_image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
