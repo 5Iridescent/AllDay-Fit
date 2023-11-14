@@ -40,17 +40,19 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/main_nav"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Widget.Material3.BottomNavigationView"
+        android:theme="@style/Widget.BottomNavigationView"
         app:itemIconTint="@drawable/menu_click_color"
         app:itemTextAppearanceActiveBoldEnabled="true"
         app:itemTextColor="@drawable/menu_click_color"
         app:itemActiveIndicatorStyle="@color/white"
+        android:elevation="10dp"
+
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/main_bottomappbar_menu" />
+        app:menu="@menu/main_bottom_appbar_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

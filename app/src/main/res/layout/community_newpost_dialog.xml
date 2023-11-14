@@ -84,9 +84,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_close" />
 
-    <z
+    <android.widget.Button
         android:id="@+id/btn_write"
-
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_radius"

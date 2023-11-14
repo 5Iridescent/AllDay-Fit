@@ -24,8 +24,8 @@ class SettingMainFragment : Fragment() {
 
     private fun initView() = with(binding) {
         appNotifiSetting.setOnClickListener { showDialog(SettingMainFragmentDirections.actionSettingMainFragmentToSettingNoticeFragment()) }
-        settingGuide.setOnClickListener { showDialog(SettingMainFragmentDirections.actionSettingMainFragmentToSettingGuideFragment()) }
-        settingNotice.setOnClickListener { showDialog(SettingMainFragmentDirections.actionSettingMainFragmentToSettingAppNotifiFragment()) }
+        settingGuide.setOnClickListener { showDialog(SettingMainFragmentDirections.actionSettingMainFragmentToSettingAppNotifiFragment()) }
+        settingNotice.setOnClickListener { showDialog(SettingMainFragmentDirections.actionSettingMainFragmentToSettingGuideFragment()) }
         modUserInfo.setOnClickListener { showDialog(SettingMainFragmentDirections.actionSettingMainFragmentToSettingModUserFragment()) }
     }
 
