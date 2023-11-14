@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alldayfit.community.adapter.CommunityViewAdapter
@@ -24,13 +23,13 @@ class CommunityHomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = CommunityHomeFragmentBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(requireActivity()).get(CommunityViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity())[CommunityViewModel::class.java]
         adapter = CommunityViewAdapter(viewModel, childFragmentManager)
         binding.recyclerview.adapter = adapter
         binding.recyclerview.layoutManager = LinearLayoutManager(context)
-        viewModel.communityLivedata.observe(viewLifecycleOwner, Observer { data ->
+        viewModel.communityLivedata.observe(viewLifecycleOwner) { data ->
             adapter.setData(data)
-        })
+        }
         //커뮤니티 라이브데이터 관찰
         return binding.root
     }

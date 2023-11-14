@@ -1,5 +1,6 @@
 package com.example.alldayfit.dietrecord.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,7 @@ class DietRecordAdapter(private val dietRecordsList: MutableList<String>) :
         return ViewHolder(view)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val dietRecord = dietRecordsList[position]
         holder.mealTextView.text = dietRecord

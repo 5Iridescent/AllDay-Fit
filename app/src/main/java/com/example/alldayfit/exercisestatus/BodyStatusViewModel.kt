@@ -20,10 +20,10 @@ class BodyStatusViewModel : ViewModel() {
     }
 
     fun getHeight(): Int {
-        return _bodyStatus.value?.height?.toInt() ?: 0
+        return _bodyStatus.value?.height ?: 0
     }
 
     fun getWeight(): Int {
-        return _bodyStatus.value?.weight?.toInt() ?: 0
+        return this._bodyStatus.value?.weight ?: 0
     }
 }

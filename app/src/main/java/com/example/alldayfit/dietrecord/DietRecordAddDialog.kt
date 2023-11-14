@@ -1,6 +1,7 @@
 package com.example.alldayfit.dietrecord
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -24,7 +25,7 @@ import java.io.File
 
 class DietRecordAddDialog : DialogFragment() {
     private val sharedViewModel: SharedViewModel by lazy {
-        ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+        ViewModelProvider(requireActivity())[SharedViewModel::class.java]
     }
 
     private var _binding: DietRecordAddDialogBinding? = null
@@ -33,13 +34,6 @@ class DietRecordAddDialog : DialogFragment() {
     private val args: DietRecordAddDialogArgs by navArgs()
     private val mealType: String by lazy { args.mealType }
     private val PICK_IMAGE_REQUEST = 1
-
-    private val viewModel: DietRecordDialogViewModel by lazy {
-        ViewModelProvider(
-            this,
-            DietRecordDialogViewModelFactory()
-        )[DietRecordDialogViewModel::class.java]
-    }
 
     // adapter data list
     private val dietRecordsList: MutableList<String> = mutableListOf()
@@ -92,35 +86,38 @@ class DietRecordAddDialog : DialogFragment() {
                     Manifest.permission.READ_MEDIA_IMAGES,
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
-                (ActivityCompat.requestPermissions(
-                    requireActivity(),
-                    arrayOf(
-                        Manifest.permission.READ_MEDIA_IMAGES,
-                    ),
-                    1
-                )
-                        )
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    (ActivityCompat.requestPermissions(
+                        requireActivity(),
+                        arrayOf(
+                            Manifest.permission.READ_MEDIA_IMAGES,
+                        ),
+                        1
+                    )
+                            )
+                }
             } else {
                 openGallery()
             }
         }
     }
 
-    private fun openGallery() {
-        try {
-            val intent =
-                Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            intent.type = "image/*"
-            startActivityForResult(intent, PICK_IMAGE_REQUEST)
-        } catch (e: Exception) {
-            // 갤러리 열기 중에 문제 발생 시 처리
-            e.printStackTrace()
-            Toast.makeText(requireContext(), "갤러리를 열 수 없습니다.", Toast.LENGTH_SHORT).show()
+    @SuppressLint("IntentReset")
+        private fun openGallery() {
+            try {
+                val intent =
+                    Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                intent.type = "image/*"
+                startActivityForResult(intent, PICK_IMAGE_REQUEST)
+            } catch (e: Exception) {
+                // 갤러리 열기 중에 문제 발생 시 처리
+                e.printStackTrace()
+                Toast.makeText(requireContext(), "갤러리를 열 수 없습니다.", Toast.LENGTH_SHORT).show()
+            }
         }
-    }
 
     // 상대경로를 절대경로로 바꿔주는 코드
-    fun getRealPathFromURI(uri: Uri): String {
+    private fun getRealPathFromURI(uri: Uri): String {
         val buildName = Build.MANUFACTURER
         if (buildName.equals("Xiami")) {
             return uri.path!!
@@ -144,6 +141,7 @@ class DietRecordAddDialog : DialogFragment() {
     }
 
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
@@ -161,6 +159,7 @@ class DietRecordAddDialog : DialogFragment() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun addMealText() {
         val dietRecord = binding.mealEdit.text.toString()
         //editText가 빈칸일 때 toast 메세지 띄우고 식단 추가 되지 않음

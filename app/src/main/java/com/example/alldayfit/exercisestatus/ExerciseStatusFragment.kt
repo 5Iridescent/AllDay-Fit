@@ -32,7 +32,7 @@ class ExerciseStatusFragment : Fragment() {
     }
 
     /* fragment design, data 초기 설정 */
-    private fun initView() = with(binding) {
+    private fun initView() {
         /*  아이템 text 초기 설정*/
     }
 
@@ -66,6 +66,4 @@ class ExerciseStatusFragment : Fragment() {
         findNavController().navigate(action)
     }
 
-    companion object {
-    }
 }

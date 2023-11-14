@@ -40,7 +40,5 @@ class SettingMainFragment : Fragment() {
         findNavController().navigate(action)
     }
 
-    companion object {
-        fun newInstance() = SettingMainFragment()
-    }
+
 }

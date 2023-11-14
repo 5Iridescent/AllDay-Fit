@@ -16,7 +16,7 @@ import java.util.Locale
 
 class CommunityViewModel : ViewModel() {
 
-    var communityEditlist = mutableListOf<CommunityPostEntity>()
+    private var communityEditlist = mutableListOf<CommunityPostEntity>()
 
     //추가와 데이터 제거를 위한 리스트
     var communityLivedata = MutableLiveData<List<CommunityPostEntity>>()
@@ -28,10 +28,9 @@ class CommunityViewModel : ViewModel() {
     var selectedCommunityModel = MutableLiveData<CommunityPostEntity>()
 
     //확인 데이터를 보기 위한 라이브데이터
-    var changeCommet = MutableLiveData<CommunityPostEntity>()
+    private var changeCommet = MutableLiveData<CommunityPostEntity>()
 
-    //    var repo = RealTimeRepositoryImpl()
-    private var onDataChangedCallback: ((List<CommunityPostEntity>) -> Unit)? = null
+
 
 
     fun addcomment(entity: CommunityPostEntity) {
@@ -42,12 +41,11 @@ class CommunityViewModel : ViewModel() {
     //코멘트를 작성하였을 때
 
     fun currentDate(): String {
-        val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
-        return currentDate
+        return SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
     }
 
     //현재 날짜 주입
-    fun deletecomment(entity: CommunityPostEntity) {
+    private fun deletecomment(entity: CommunityPostEntity) {
         communityEditlist.remove(entity)
         communityLivedata.value = communityEditlist
         communitymydata.value = communityEditlist

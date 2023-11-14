@@ -1,5 +1,6 @@
 package com.example.alldayfit.count.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -8,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.alldayfit.count.model.Count
 import com.example.alldayfit.databinding.CountItemBinding
 
-class ExerciseRecordAdapter() :
+class ExerciseRecordAdapter :
     ListAdapter<Count, ExerciseRecordAdapter.ViewHolder>(
         object : DiffUtil.ItemCallback<Count>() {
             override fun areItemsTheSame(oldItem: Count, newItem: Count): Boolean {
@@ -25,11 +26,12 @@ class ExerciseRecordAdapter() :
     class ViewHolder(private val binding: CountItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        @SuppressLint("SetTextI18n")
         fun bind(item: Count) {
             binding.exerciseTitele.text = item.name
             if (item.set == 0 && item.count == 0) {
                 binding.set.text = ""
-            } else if (item.set == 0 && item.count != 0) {
+            } else if (item.set == 0) {
                 binding.set.text = "${item.count} m"
             } else {
                 binding.set.text = "${item.set}세트 ${item.count}회"

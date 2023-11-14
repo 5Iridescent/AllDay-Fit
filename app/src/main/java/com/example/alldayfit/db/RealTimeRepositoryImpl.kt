@@ -15,8 +15,7 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
     //    private val listener = object : ValueEventListener
     private val userRef = getUserReference(RealTimeRepository.USERS)
     private val mealRef = getUserReference(RealTimeRepository.DIET)
-    private val physicalRef = getUserReference(RealTimeRepository.PHYSICAL)
-    private val userInfoRef = getUserReference(RealTimeRepository.INFORMATION)
+
     private val exerciseRef = getUserReference(RealTimeRepository.EXERCISE)
     private val postRef = getReference(RealTimeRepository.POST)
 

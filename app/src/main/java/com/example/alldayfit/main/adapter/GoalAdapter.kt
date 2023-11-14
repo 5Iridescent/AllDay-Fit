@@ -9,7 +9,7 @@ import com.example.alldayfit.databinding.DietRecordAddItemBinding
 import com.example.alldayfit.databinding.MainGoalItemBinding
 import com.example.alldayfit.main.model.Goal
 
-class GoalAdapter() :
+class GoalAdapter :
     ListAdapter<Goal, RecyclerView.ViewHolder>(diffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -63,11 +63,6 @@ class GoalAdapter() :
     // 아이템 타입 리턴
     override fun getItemViewType(position: Int): Int {
         return getItem(position).type
-    }
-
-    fun addGoal(newData: List<Goal>) {
-        super.submitList(newData)
-        notifyDataSetChanged()
     }
 
     companion object {

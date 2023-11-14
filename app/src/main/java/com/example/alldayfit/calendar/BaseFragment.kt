@@ -25,7 +25,7 @@ abstract class BaseFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes) {
     abstract val titleRes: Int?
 
     // Activity의 툴바를 가져오기 위한 프로퍼티입니다.
-    val activityToolbar: Toolbar
+    private val activityToolbar: Toolbar
         get() = (requireActivity() as CalendarActivity).binding.activityToolbar
 
     override fun onStart() {

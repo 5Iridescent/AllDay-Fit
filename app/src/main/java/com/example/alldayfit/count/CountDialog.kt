@@ -10,7 +10,6 @@ import com.example.alldayfit.databinding.CountAddDialogBinding
 class CountDialog : DialogFragment() {
     private var _binding: CountAddDialogBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: CountViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

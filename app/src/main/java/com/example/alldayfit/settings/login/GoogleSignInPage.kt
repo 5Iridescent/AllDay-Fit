@@ -1,4 +1,4 @@
-package com.example.alldayfit.settings
+package com.example.alldayfit.settings.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -56,14 +56,14 @@ class GoogleSignInPage : AppCompatActivity() {
     private fun signIn(email: String, password: String) {
 
         if (email.isNotEmpty() && password.isNotEmpty()) {
-            firebaseAuth?.signInWithEmailAndPassword(email, password)
-                ?.addOnCompleteListener(this) { task ->
+            firebaseAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(
                             baseContext, "로그인에 성공 하였습니다.",
                             Toast.LENGTH_SHORT
                         ).show()
-                        moveMainPage(firebaseAuth?.currentUser)
+                        moveMainPage(firebaseAuth.currentUser)
                     } else {
                         Toast.makeText(
                             baseContext, "로그인에 실패 하였습니다.",
@@ -75,7 +75,7 @@ class GoogleSignInPage : AppCompatActivity() {
     }
 
     // 유저정보 넘겨주고 메인 액티비티 호출
-    fun moveMainPage(user: FirebaseUser?) {
+    private fun moveMainPage(user: FirebaseUser?) {
         if (user != null) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()

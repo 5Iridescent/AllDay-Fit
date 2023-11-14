@@ -230,9 +230,4 @@ class CalendarFragment : BaseFragment(R.layout.calendar_fragment), HasToolbar, H
                 }
             }
     }
-
-
-    companion object {
-        fun newInstance() = CalendarFragment()
-    }
 }

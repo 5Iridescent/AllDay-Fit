@@ -1,5 +1,6 @@
 package com.example.alldayfit.community.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,7 +40,7 @@ class CommunityViewAdapter(
 
         init {
             binding.communityContent.setOnClickListener {
-                val data = currentList[adapterPosition] // 현재 항목에 대한 데이터를 가져옵니다.
+                val data = currentList[bindingAdapterPosition] // 현재 항목에 대한 데이터를 가져옵니다.
                 val communityPostDialog = CommunityPostDialog(viewModel)
                 viewModel.onContentClicked(data)
                 communityPostDialog.show(fragmentManager, "communityPostDialog")
@@ -47,6 +48,7 @@ class CommunityViewAdapter(
 
         }
 
+        @SuppressLint("SetTextI18n")
         fun bind(data: CommunityPostEntity) {
             binding.apply {
                 tvTitle.text = data.title
@@ -66,6 +68,7 @@ class CommunityViewAdapter(
         return currentList.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(user: List<CommunityPostEntity>) {
         notifyDataSetChanged()
         super.submitList(user)

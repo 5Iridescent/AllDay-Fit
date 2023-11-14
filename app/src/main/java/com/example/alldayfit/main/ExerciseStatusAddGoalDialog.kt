@@ -42,10 +42,10 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
         binding.goalListview.layoutManager = LinearLayoutManager(context)
     }
 
-    private fun initViewModel() = with(viewModel) {
-//        goalLiveData.observe(viewLifecycleOwner) { data ->
-//            adapter.addGoal(data)
-//        }
+    private fun initViewModel() {
+        //        goalLiveData.observe(viewLifecycleOwner) { data ->
+        //            adapter.addGoal(data)
+        //        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
