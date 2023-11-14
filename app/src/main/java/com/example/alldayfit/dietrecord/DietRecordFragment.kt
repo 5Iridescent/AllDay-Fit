@@ -1,18 +1,17 @@
 package com.example.alldayfit.dietrecord
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.alldayfit.R
 import com.example.alldayfit.databinding.DietRecordFragmentBinding
 import com.example.alldayfit.databinding.DietRecordMealItemBinding
-
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
@@ -27,7 +26,7 @@ class DietRecordFragment : Fragment() {
     private var _binding: DietRecordFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var dietRecordChart: BarChart
-    private val viewModel : DietRecordViewModel by lazy {
+    private val viewModel: DietRecordViewModel by lazy {
         ViewModelProvider(
             this,
             DietRecordViewModelFactory()

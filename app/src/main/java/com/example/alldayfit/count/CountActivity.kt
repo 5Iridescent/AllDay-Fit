@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.SystemClock
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alldayfit.R
 import com.example.alldayfit.count.adapter.ExerciseRecordAdapter
 import com.example.alldayfit.count.model.Count
-import com.example.alldayfit.count.model.ExerciseRecord
 import com.example.alldayfit.databinding.CountActivityBinding
 import java.time.ZoneId
 import java.time.ZonedDateTime

@@ -1,12 +1,11 @@
 package com.example.alldayfit.utils
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieAnimationView
 import com.example.alldayfit.MainActivity
-
 import com.example.alldayfit.R
 
 class SplashActivity : AppCompatActivity() {
@@ -23,6 +22,6 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
-        },3000)
+        }, 3000)
     }
 }

@@ -42,7 +42,7 @@ class CommunityEditDialog(private var viewModel: CommunityViewModel) : DialogFra
                     binding.etInfo.text.toString()
                 )
                 viewModel.changeComment(editComment)
-                    val newPostion = viewModel.getSelectedPosition()
+                val newPostion = viewModel.getSelectedPosition()
                 viewModel.updateItemInCommunityList(newPostion)
                 //커뮤니티 데이터 추가
                 dismiss()
@@ -58,6 +58,7 @@ class CommunityEditDialog(private var viewModel: CommunityViewModel) : DialogFra
         super.onDestroyView()
         _binding = null
     }
+
     fun exit() = with(binding) {
         btnClose.setOnClickListener {
             dismiss()

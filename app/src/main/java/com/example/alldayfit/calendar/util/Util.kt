@@ -10,8 +10,6 @@ import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.findViewTreeLifecycleOwner
 
 // View를 Visible 상태로 만드는 확장 함수입니다.
 fun View.makeVisible() {

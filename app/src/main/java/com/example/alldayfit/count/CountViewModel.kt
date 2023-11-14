@@ -3,7 +3,6 @@ package com.example.alldayfit.count
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.alldayfit.R
 import com.example.alldayfit.count.model.Count
 
 class CountViewModel() : ViewModel() {
@@ -20,7 +19,7 @@ class CountViewModel() : ViewModel() {
         initViewModel()
     }
 
-    private fun initViewModel(){
+    private fun initViewModel() {
         _isRunning.value = false
         _isCounting.value = false
     }
@@ -46,7 +45,7 @@ class CountViewModel() : ViewModel() {
         _routine.value = routineList
     }
 
-    fun clearRoutine(){
+    fun clearRoutine() {
         routineList.clear()
         _routine.value = routineList
     }

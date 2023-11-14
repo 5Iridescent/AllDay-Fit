@@ -1,17 +1,13 @@
 package com.example.alldayfit.community
 
 
+//import com.example.alldayfit.db.RealTimeRepositoryImpl
 import android.content.Context
 import android.view.LayoutInflater
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
 import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.databinding.CommunityCancleDialogBinding
-import com.example.alldayfit.databinding.CommunityPostDialogBinding
-//import com.example.alldayfit.db.RealTimeRepositoryImpl
-import com.example.alldayfit.db.model.FirebaseModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -34,9 +30,8 @@ class CommunityViewModel : ViewModel() {
     //확인 데이터를 보기 위한 라이브데이터
     var changeCommet = MutableLiveData<CommunityPostEntity>()
 
-//    var repo = RealTimeRepositoryImpl()
+    //    var repo = RealTimeRepositoryImpl()
     private var onDataChangedCallback: ((List<CommunityPostEntity>) -> Unit)? = null
-
 
 
     fun addcomment(entity: CommunityPostEntity) {

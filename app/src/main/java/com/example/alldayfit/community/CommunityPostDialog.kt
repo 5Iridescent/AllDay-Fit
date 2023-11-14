@@ -8,7 +8,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import com.example.alldayfit.databinding.CommunityPostDialogBinding
 
-class CommunityPostDialog(private var viewModel: CommunityViewModel): DialogFragment() {
+class CommunityPostDialog(private var viewModel: CommunityViewModel) : DialogFragment() {
     private var _binding: CommunityPostDialogBinding? = null
     private val binding get() = _binding!!
 
@@ -30,7 +30,7 @@ class CommunityPostDialog(private var viewModel: CommunityViewModel): DialogFrag
         return (view)
     }
 
-    fun exit ()= with(binding){
+    fun exit() = with(binding) {
         btnClose.setOnClickListener {
             dismiss()
         }

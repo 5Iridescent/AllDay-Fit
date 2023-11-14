@@ -10,8 +10,7 @@ import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.databinding.CommunityNewpostDialogBinding
 
 
-
-class CommunityNewPostDialog(private var viewModel: CommunityViewModel): DialogFragment() {
+class CommunityNewPostDialog(private var viewModel: CommunityViewModel) : DialogFragment() {
     private var _binding: CommunityNewpostDialogBinding? = null
     private val binding get() = _binding!!
 
@@ -25,7 +24,9 @@ class CommunityNewPostDialog(private var viewModel: CommunityViewModel): DialogF
             CommunityNewpostDialogBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.btnWrite.setOnClickListener {
-            if (binding.etTitle.text.toString().isEmpty()or binding.etInfo.text.toString().isEmpty()) {
+            if (binding.etTitle.text.toString().isEmpty() or binding.etInfo.text.toString()
+                    .isEmpty()
+            ) {
                 Toast.makeText(requireContext(), "내용을 입력해주세요.", Toast.LENGTH_SHORT).show()
             } else {
                 comment = CommunityPostEntity(
@@ -34,7 +35,7 @@ class CommunityNewPostDialog(private var viewModel: CommunityViewModel): DialogF
                     viewModel.currentDate(),
                     "Temporary nk",
                     binding.etInfo.text.toString()
-                    )
+                )
                 viewModel.addcomment(comment)
                 dismiss()
             }

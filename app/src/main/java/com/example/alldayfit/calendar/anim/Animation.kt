@@ -1,6 +1,5 @@
 package com.example.alldayfit.calendar.anim
 
-import android.view.animation.Animation
 import com.example.alldayfit.R
 
 val vertical = com.example.alldayfit.calendar.data.Animation(

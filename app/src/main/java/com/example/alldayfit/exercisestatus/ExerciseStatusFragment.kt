@@ -1,17 +1,15 @@
 package com.example.alldayfit.exercisestatus
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.setFragmentResultListener
-import com.example.alldayfit.R
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import com.example.alldayfit.R
 import com.example.alldayfit.databinding.ExerciseStatusFragmentBinding
-import com.example.alldayfit.dietrecord.DietRecordFragmentDirections
 
 
 class ExerciseStatusFragment : Fragment() {

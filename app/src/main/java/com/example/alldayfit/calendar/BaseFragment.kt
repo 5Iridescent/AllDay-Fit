@@ -1,12 +1,11 @@
 package com.example.alldayfit.calendar
 
-import com.example.alldayfit.R
-
 
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.example.alldayfit.R
 import com.example.alldayfit.calendar.util.makeGone
 import com.example.alldayfit.calendar.util.makeVisible
 

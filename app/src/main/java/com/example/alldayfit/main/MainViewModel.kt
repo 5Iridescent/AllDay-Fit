@@ -1,9 +1,8 @@
 package com.example.alldayfit.main
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.LiveData
-import com.example.alldayfit.R
 import com.example.alldayfit.db.RealTimeRepository
 import com.example.alldayfit.db.model.FirebaseModel
 import com.example.alldayfit.main.model.Goal

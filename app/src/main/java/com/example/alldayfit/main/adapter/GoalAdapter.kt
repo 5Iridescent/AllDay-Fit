@@ -33,12 +33,13 @@ class GoalAdapter() :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val currentItem = getItem(position)
-        when(currentItem.type){
+        when (currentItem.type) {
             Goal.POST_POSITION -> (holder as PostHolder).bind(currentItem)
             Goal.DIALOG_POSITION -> (holder as DailyHolder).bind(currentItem)
         }
 
     }
+
     inner class DailyHolder(val binding: MainGoalItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Goal) {

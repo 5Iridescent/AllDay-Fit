@@ -11,7 +11,6 @@ import com.example.alldayfit.calendar.adapter.CalendarViewOptionsAdapter
 import com.example.alldayfit.databinding.CalendarActivityBinding
 
 
-
 class CalendarActivity : AppCompatActivity() {
 
     internal lateinit var binding: CalendarActivityBinding

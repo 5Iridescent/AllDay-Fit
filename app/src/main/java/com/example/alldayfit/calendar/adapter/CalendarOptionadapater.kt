@@ -1,8 +1,6 @@
 package com.example.alldayfit.calendar.adapter
 
 import android.view.ViewGroup
-import androidx.annotation.AnimRes
-import androidx.annotation.StringRes
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alldayfit.R
 import com.example.alldayfit.calendar.CalendarFragment
@@ -10,9 +8,6 @@ import com.example.alldayfit.calendar.anim.horizontal
 import com.example.alldayfit.calendar.data.ExampleItem
 import com.example.alldayfit.calendar.util.layoutInflater
 import com.example.alldayfit.databinding.CalendarViewOptionsItemViewBinding
-
-
-
 
 
 class CalendarViewOptionsAdapter(val onClick: (ExampleItem) -> Unit) :
@@ -26,7 +21,7 @@ class CalendarViewOptionsAdapter(val onClick: (ExampleItem) -> Unit) :
             horizontal,
         ) { CalendarFragment() },
 
-    )
+        )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeOptionsViewHolder {
         return HomeOptionsViewHolder(

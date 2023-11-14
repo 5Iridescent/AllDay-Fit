@@ -25,7 +25,7 @@ class CommunityMyPostFragment : Fragment() {
     ): View {
         _binding = CommunityMypostFragmentBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(requireActivity()).get(CommunityViewModel::class.java)
-        adapter = CommunityMyPostAdapter(viewModel,childFragmentManager)
+        adapter = CommunityMyPostAdapter(viewModel, childFragmentManager)
         binding.recyclerview.adapter = adapter
         binding.recyclerview.layoutManager = LinearLayoutManager(context)
         viewModel.communitymydata.observe(viewLifecycleOwner, Observer { data ->

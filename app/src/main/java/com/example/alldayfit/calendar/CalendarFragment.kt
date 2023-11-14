@@ -112,7 +112,7 @@ import java.time.format.DateTimeFormatter
 //    }
 //}
 //
-class  CalendarFragment : BaseFragment(R.layout.calendar_fragment), HasToolbar, HasBackButton {
+class CalendarFragment : BaseFragment(R.layout.calendar_fragment), HasToolbar, HasBackButton {
 
     override val toolbar: Toolbar
         get() = binding.exTwoToolbar
@@ -201,10 +201,12 @@ class  CalendarFragment : BaseFragment(R.layout.calendar_fragment), HasToolbar, 
                             textView.setTextColorRes(R.color.white)
                             textView.setBackgroundResource(R.drawable.example_2_selected_bg)
                         }
+
                         today -> {
                             textView.setTextColorRes(R.color.red)
                             textView.background = null
                         }
+
                         else -> {
                             textView.setTextColorRes(R.color.black)
                             textView.background = null
@@ -227,10 +229,10 @@ class  CalendarFragment : BaseFragment(R.layout.calendar_fragment), HasToolbar, 
                     container.textView.text = displayText
                 }
             }
-}
+    }
 
 
-    companion object{
+    companion object {
         fun newInstance() = CalendarFragment()
     }
 }

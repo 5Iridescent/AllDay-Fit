@@ -4,8 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.alldayfit.settings.ui.SettingNoticeItem
 import com.example.alldayfit.databinding.SettingNoticeItemBinding
+import com.example.alldayfit.settings.ui.SettingNoticeItem
 
 class SettingNoticeAdapter(private val context: Context) :
     RecyclerView.Adapter<SettingNoticeAdapter.Holder>() {

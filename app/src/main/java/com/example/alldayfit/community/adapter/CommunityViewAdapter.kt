@@ -14,12 +14,21 @@ import com.example.alldayfit.community.CommunityViewModel
 import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.databinding.CommunityItemsBinding
 
-class CommunityViewAdapter(private var viewModel: CommunityViewModel, private var fragmentManager : FragmentManager) :
+class CommunityViewAdapter(
+    private var viewModel: CommunityViewModel,
+    private var fragmentManager: FragmentManager
+) :
     ListAdapter<CommunityPostEntity, CommunityViewAdapter.HomeHolder>(diffUtil) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeHolder {
-        return HomeHolder(CommunityItemsBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+        return HomeHolder(
+            CommunityItemsBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
 
@@ -39,6 +48,7 @@ class CommunityViewAdapter(private var viewModel: CommunityViewModel, private va
             }
 
         }
+
         fun bind(data: CommunityPostEntity) {
             binding.apply {
                 tvTitle.text = data.title
@@ -55,7 +65,7 @@ class CommunityViewAdapter(private var viewModel: CommunityViewModel, private va
     }
 
     override fun getItemCount(): Int {
-        return  currentList.size
+        return currentList.size
     }
 
     fun setData(user: List<CommunityPostEntity>) {
@@ -73,7 +83,7 @@ class CommunityViewAdapter(private var viewModel: CommunityViewModel, private va
             }
 
             override fun areContentsTheSame(
-                oldItem:CommunityPostEntity,
+                oldItem: CommunityPostEntity,
                 newItem: CommunityPostEntity
             ): Boolean {
                 return oldItem.content == newItem.content

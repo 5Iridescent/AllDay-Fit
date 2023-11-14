@@ -18,7 +18,8 @@ class DietRecordAdapter(private val dietRecordsList: MutableList<String>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.diet_record_add_item, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.diet_record_add_item, parent, false)
         return ViewHolder(view)
     }
 
