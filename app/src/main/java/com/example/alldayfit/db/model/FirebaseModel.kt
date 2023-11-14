@@ -24,7 +24,7 @@ data class FirebaseModel(
     )
 
     data class ExerciseRecord(
-        val totalTime: Int,
+        val totalTime: Long,
         val logDate: String,
     )
 

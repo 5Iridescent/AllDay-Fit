@@ -3,6 +3,6 @@ package com.example.alldayfit.main.model
 import java.time.LocalDate
 
 data class DailyExercise(
-    val totalExercise: Int,
+    val totalExercise: Long,
     val date: LocalDate,
 )

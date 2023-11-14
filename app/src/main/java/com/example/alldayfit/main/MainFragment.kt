@@ -118,8 +118,12 @@ class MainFragment : Fragment() {
     private fun setupView() = with(binding) {
         exerciseBtn.setOnClickListener {
             viewModel.toggleExerciseBtn()
-            val intent = Intent(context, CountActivity::class.java)
-            startActivity(intent)
+            if (exerciseBtn.text == getString(R.string.exercise_finish)) {
+                val intent = Intent(context, CountActivity::class.java)
+                startActivity(intent)
+            } else {
+                viewModel.updateExerciseData()
+            }
         }
         weekGoalFixBtn.setOnClickListener {
             showDialog(MainFragmentDirections.actionMainFragmentToExerciseStatusAddGoalDialog())

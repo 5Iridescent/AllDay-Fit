@@ -1,5 +1,6 @@
 package com.example.alldayfit.main
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -37,15 +38,21 @@ class MainViewModel(private val database: RealTimeRepository) : ViewModel() {
         if (currentTxt == false) {
             _exerciseBtnTxt.value = true
             endTime = getCurrentLocalTime()
-//            val elapsedTime =
-//                elapsedTimeInMinutes(startTime, endTime)
         }
     }
 
-    private fun updateExerciseData(elapsedTime: Int) {
-        exerciseData = FirebaseModel.ExerciseRecord(
-            totalTime = elapsedTime, logDate = getCurrentLocalTime().toLogFormat()
-        )
+    fun updateExerciseData() {
+        val elapsedTime = elapsedTimeInMinutes(startTime, endTime)
+        Log.d("test", elapsedTime.toString())
+        if (elapsedTime != null) {
+            if (elapsedTime < 30) {
+                return
+            }
+            exerciseData = FirebaseModel.ExerciseRecord(
+                totalTime = elapsedTime ?: 30, logDate = getCurrentLocalTime().toLogFormat()
+            )
+            database.addExercise(exerciseData)
+        }
     }
 
     /* zonDatetime 형식으로 다시 반환 */
@@ -72,9 +79,6 @@ class MainViewModel(private val database: RealTimeRepository) : ViewModel() {
     }
 
     private fun getWeekExercise() {
-    }
-
-    fun updateExerciseTime(exerciseData: FirebaseModel.ExerciseRecord) {
 
     }
 
