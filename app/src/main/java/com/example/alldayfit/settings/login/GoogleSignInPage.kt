@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.example.alldayfit.MainActivity
 import com.example.alldayfit.R
 import com.example.alldayfit.databinding.SignInPageActivityBinding
+import com.example.alldayfit.utils.Util
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -28,7 +29,7 @@ class GoogleSignInPage : AppCompatActivity() {
         setContentView(view)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id)) // 웹 클라이언트 ID로부터 ID 토큰 요청
+            .requestIdToken(Util.google_login) // 웹 클라이언트 ID로부터 ID 토큰 요청
             .requestEmail() // 사용자 이메일 정보 요청
             .build()
 

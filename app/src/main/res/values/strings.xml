@@ -139,7 +139,6 @@
     <string name="emailSiginIn">Email Sign In</string>
     <string name="googleSignIn">Sign In with Google</string>
     <string name="google">Sign up with GooGle </string>
-    <string name="default_web_client_id">11976146148-omnd8puu3ithu4bspropaf2tehgeffc9.apps.googleusercontent.com</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>

@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -17,6 +19,13 @@ android {
         viewBinding = true
         dataBinding = true
     }
+    val properties = Properties()
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        localPropertiesFile.inputStream().use { input ->
+            properties.load(input)
+        }
+    }
 
     defaultConfig {
         applicationId = "nrplh.Iridescent.alldayfit"
@@ -24,6 +33,9 @@ android {
         targetSdk = 33
         versionCode = 3
         versionName = "0.3"
+
+        buildConfigField("String", "REALTIME_DATABASE", "${properties["REALTIME"]}")
+        buildConfigField("String", "GOOGLE_LOGIN", "${properties["LOGIN"]}")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -40,6 +52,9 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+    }
+    buildFeatures {
+        buildConfig = true
     }
     kotlinOptions {
         jvmTarget = "17"
