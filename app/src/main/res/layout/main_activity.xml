@@ -42,7 +42,7 @@
         android:id="@+id/main_nav"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:theme="@style/Widget.BottomNavigationView"
+        android:theme="@style/Widget.Material3.BottomNavigationView"
         app:itemIconTint="@drawable/menu_click_color"
         app:itemTextAppearanceActiveBoldEnabled="true"
         app:itemTextColor="@drawable/menu_click_color"

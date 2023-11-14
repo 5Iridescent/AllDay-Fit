@@ -183,4 +183,13 @@
     <string name="proverb_text">기운과 끈기는 모든것을 이겨낸다.</string>
     <string name="login_google">login google</string>
     <string name="sign_up_email">sign up email</string>
+    <string name="sign_up_google">sign up google</string>
+    <string name="add_week_goal_btn_desc">주간 목표 추가</string>
+    <string name="close_dialog">close dialog</string>
+    <string name="edit_email_hint">이메일을 입력하세요</string>
+    <string name="edit_name_hint">이름을 입력하세요</string>
+    <string name="edit_password_hint">비밀번호를 입력하세요</string>
+    <string name="sign_in">로그인</string>
+    <string name="user_profile_txt">유저 프로필</string>
+    <string name="weight_unit">kg</string>
 </resources>

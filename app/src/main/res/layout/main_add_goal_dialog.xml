@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/none"
-    android:padding="10dp"
+    android:padding="15dp"
     tools:context=".main.ExerciseStatusAddGoalDialog">
 
     <ImageButton
@@ -17,7 +17,8 @@
         android:minHeight="48dp"
         android:src="@drawable/ic_close"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/close_dialog" />
 
 
     <TextView
@@ -44,6 +45,7 @@
 
 
     <EditText
+        android:inputType="text"
         android:id="@+id/goal_edit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -58,10 +60,11 @@
         app:layout_constraintDimensionRatio="7:1"
         app:layout_constraintEnd_toEndOf="@id/close_btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/goal_listview" />
+        app:layout_constraintTop_toBottomOf="@id/goal_listview"
+        android:importantForAutofill="no" />
 
     <ImageButton
-        android:contentDescription="주간 목표 추가"
+        android:contentDescription="@string/add_week_goal_btn_desc"
         android:id="@+id/add_goal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

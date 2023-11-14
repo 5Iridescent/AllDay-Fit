@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="홍현민의 프로필"
+        android:text="@string/user_profile_txt"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@id/user_status_wrap"
@@ -31,7 +31,8 @@
         android:src="@drawable/ic_close"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/user_condition_txt"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/close_dialog" />
 
     <LinearLayout
         android:id="@+id/user_status_wrap"
@@ -99,13 +100,15 @@
 
             <EditText
                 android:id="@+id/et_height"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:inputType="number"
                 android:minHeight="48dp"
-                android:textSize="@dimen/text_size_very_small" />
+                android:textSize="@dimen/text_size_very_small"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -136,19 +139,21 @@
 
             <EditText
                 android:id="@+id/et_weight"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:inputType="number"
                 android:minHeight="44dp"
-                android:textSize="@dimen/text_size_very_small" />
+                android:textSize="@dimen/text_size_very_small"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
-                android:text="kg"
+                android:text="@string/weight_unit"
                 android:textSize="@dimen/text_size_very_small"
                 android:textStyle="bold" />
 
@@ -161,7 +166,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/exercise_status_fix_btn_shape"
-        android:text="수정완료"
+        android:text="@string/edit_finish"
         android:textColor="@color/black"
         android:textSize="@dimen/text_size_small"
         android:textStyle="bold"
