@@ -8,35 +8,37 @@
     tools:context=".settings.GoogleSignInPage">
 
     <EditText
-        android:background="@drawable/btn_google"
-        android:paddingLeft="20dp"
         android:id="@+id/editTextEmail"
         android:layout_width="377dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="17dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="244dp"
-        android:layout_marginRight="16dp"
-        android:hint="이메일을 입력하세요"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/btn_google"
+        android:hint="@string/add_email"
         android:inputType="textEmailAddress"
+        android:paddingHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
     <EditText
-        android:paddingLeft="20dp"
         android:id="@+id/editTextPassword"
         android:layout_width="377dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="36dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/btn_google"
-        android:hint="비밀번호를 입력하세요"
+        android:hint="@string/add_password"
         android:inputType="textPassword"
+        android:paddingHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextEmail" />
+        app:layout_constraintTop_toBottomOf="@id/editTextEmail"
+        android:importantForAutofill="no" />
 
 
     <Button
@@ -46,24 +48,23 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
-        android:text="Log In"
+        android:text="@string/log_in"
         app:layout_constraintBottom_toTopOf="@+id/email_sign_up"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextPassword"
-        app:layout_constraintVertical_bias="0.725" />
+        app:layout_constraintTop_toBottomOf="@id/editTextPassword" />
 
     <TextView
         android:id="@+id/logo"
+        style="@style/playerFont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="All-Day Fit"
-        android:textSize="48sp"
         android:layout_marginTop="50dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/app_title"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
@@ -119,12 +120,12 @@
         android:id="@+id/ic_google"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_google"
-        android:elevation="20dp"
         android:layout_marginStart="16dp"
+        android:elevation="20dp"
+        android:src="@drawable/ic_google"
+        app:layout_constraintBottom_toBottomOf="@id/googleSignInButton"
         app:layout_constraintStart_toStartOf="@id/googleSignInButton"
-        app:layout_constraintTop_toTopOf="@id/googleSignInButton"
-        app:layout_constraintBottom_toBottomOf="@id/googleSignInButton" />
+        app:layout_constraintTop_toTopOf="@id/googleSignInButton" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -8,17 +8,18 @@
 
     <TextView
         android:id="@+id/date_txt"
+        style="@style/subtitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="2023.10.24"
         android:textColor="@color/black"
-        style="@style/subtitleText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
+        android:minHeight="48dp"
+        android:minWidth="48dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
@@ -30,6 +31,8 @@
         app:layout_constraintTop_toTopOf="@id/date_txt" />
 
     <ImageButton
+        android:minHeight="48dp"
+        android:minWidth="48dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -51,17 +54,16 @@
 
         <TextView
             android:id="@+id/user_condition_txt"
+            style="@style/subtitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="홍현민"
             android:textColor="@color/black"
-            style="@style/subtitleText"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="의 오늘 상태"
+            android:text="@string/user_condition_today"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_small" />
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -72,6 +74,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/none"
+        android:contentDescription="@string/fix_today_user_condition"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
         android:src="@drawable/ic_edit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/title_wrap"
@@ -81,10 +86,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
-        android:theme="@style/playerFont"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="@color/white"
+        android:theme="@style/playerFont"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_wrap">
@@ -95,6 +100,7 @@
             android:layout_height="0dp"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="10dp"
+            android:contentDescription="@string/height"
             android:src="@drawable/gray_stroke_white_back_shape"
             app:layout_constraintBottom_toTopOf="@id/kind_back"
             app:layout_constraintDimensionRatio="1.5"
@@ -118,7 +124,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="80dp"
             android:layout_marginTop="10dp"
-            android:text="163cm"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="@id/height_back"
             app:layout_constraintStart_toStartOf="@id/height_back"
@@ -130,6 +135,7 @@
             android:layout_height="0dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="10dp"
+            android:contentDescription="@string/weight"
             android:src="@drawable/gray_stroke_white_back_shape"
             app:layout_constraintBottom_toTopOf="@id/kind_back"
             app:layout_constraintDimensionRatio="1.5"
@@ -153,7 +159,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="80dp"
             android:layout_marginTop="10dp"
-            android:text="53kg"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="@id/weight_back"
             app:layout_constraintStart_toStartOf="@id/weight_back"
@@ -164,6 +169,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginHorizontal="20dp"
+            android:contentDescription="@string/exercise_time_bmi"
             android:src="@drawable/gray_stroke_white_back_shape"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="3"
@@ -187,7 +193,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="1650kal"
             android:textAlignment="center"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="@id/string_calorie"
@@ -221,7 +226,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="35h"
             android:textAlignment="center"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="@id/string_exercise_time"
@@ -254,7 +258,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="21.6"
             android:textAlignment="center"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="@id/string_bmi"
@@ -279,7 +282,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="150dp"
             android:layout_marginTop="5dp"
-            android:text="주간 운동 랭킹"
+            android:text="@string/week_exercse_rank"
             android:textSize="@dimen/text_size_medium"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -292,6 +295,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="20dp"
+            android:contentDescription="@string/rank_second_desc"
             android:src="@drawable/gray_stroke_white_back_shape"
             app:layout_constraintBottom_toTopOf="@+id/my_rank_detail"
             app:layout_constraintDimensionRatio="1.5"
@@ -306,6 +310,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="33dp"
             android:layout_marginTop="5dp"
+            android:contentDescription="@string/rank_star"
             android:src="@drawable/ic_star"
             app:layout_constraintStart_toStartOf="@id/rank_second"
             app:layout_constraintTop_toTopOf="@id/rank_second" />
@@ -316,6 +321,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
+            android:contentDescription="@string/rank_star"
             android:src="@drawable/ic_star"
             app:layout_constraintStart_toEndOf="@id/ic_second_star1"
             app:layout_constraintTop_toTopOf="@id/rank_second" />
@@ -325,7 +331,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="2위"
+            android:text="@string/rank_second"
             app:layout_constraintEnd_toEndOf="@id/rank_second"
             app:layout_constraintStart_toStartOf="@id/rank_second"
             app:layout_constraintTop_toBottomOf="@id/ic_second_star1" />
@@ -333,7 +339,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="하체"
             app:layout_constraintEnd_toEndOf="@+id/title_second"
             app:layout_constraintStart_toStartOf="@+id/title_second"
             app:layout_constraintTop_toBottomOf="@+id/title_second" />
@@ -345,6 +350,7 @@
             android:layout_height="0dp"
             android:layout_marginStart="130dp"
             android:layout_marginTop="20dp"
+            android:contentDescription="@string/rank_third_desc"
             android:src="@drawable/gray_stroke_white_back_shape"
             app:layout_constraintDimensionRatio="1.5"
             app:layout_constraintEnd_toEndOf="parent"
@@ -358,6 +364,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginTop="5dp"
+            android:contentDescription="@string/rank_star"
             android:src="@drawable/ic_star"
             app:layout_constraintStart_toStartOf="@+id/rank_third"
             app:layout_constraintTop_toTopOf="@+id/rank_third" />
@@ -367,7 +374,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="3위"
+            android:text="@string/rank_third"
             app:layout_constraintEnd_toEndOf="@id/ic_third_star1"
             app:layout_constraintStart_toStartOf="@id/ic_third_star1"
             app:layout_constraintTop_toBottomOf="@id/ic_third_star1" />
@@ -376,7 +383,6 @@
             android:id="@+id/third"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="상체"
             app:layout_constraintEnd_toEndOf="@id/title_third"
             app:layout_constraintStart_toStartOf="@id/title_third"
             app:layout_constraintTop_toBottomOf="@id/title_third" />
@@ -384,11 +390,13 @@
 
         <ImageView
             android:id="@+id/rank_first"
+
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginHorizontal="125dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="25dp"
+            android:contentDescription="@string/rank_first_desc"
             android:src="@drawable/gray_stroke_white_back_shape"
             app:layout_constraintBottom_toTopOf="@+id/my_rank_detail"
             app:layout_constraintEnd_toEndOf="parent"
@@ -402,6 +410,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="15dp"
+            android:contentDescription="@string/rank_star"
             android:src="@drawable/ic_star"
             app:layout_constraintStart_toStartOf="@+id/rank_first"
             app:layout_constraintTop_toTopOf="@+id/rank_first" />
@@ -412,6 +421,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
+            android:contentDescription="@string/rank_star"
             android:src="@drawable/ic_star"
             app:layout_constraintStart_toEndOf="@id/ic_first_star1"
             app:layout_constraintTop_toTopOf="@+id/rank_first" />
@@ -422,6 +432,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="15dp"
+            android:contentDescription="@string/rank_star"
             android:src="@drawable/ic_star"
             app:layout_constraintStart_toEndOf="@id/ic_first_star2"
             app:layout_constraintTop_toTopOf="@+id/rank_first" />
@@ -431,7 +442,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="1위"
+            android:text="@string/rank_first"
             app:layout_constraintEnd_toEndOf="@id/rank_first"
             app:layout_constraintStart_toStartOf="@id/rank_first"
             app:layout_constraintTop_toBottomOf="@id/ic_first_star2" />
@@ -439,7 +450,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="유산소"
             app:layout_constraintEnd_toEndOf="@+id/title_first"
             app:layout_constraintStart_toStartOf="@+id/title_first"
             app:layout_constraintTop_toBottomOf="@+id/title_first" />
@@ -450,7 +460,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="내 운동 순위 상세보기"
+            android:text="@string/get_detail_exsercise_rank"
             app:layout_constraintStart_toStartOf="@id/rank_second"
             app:layout_constraintTop_toBottomOf="@id/rank_second" />
 

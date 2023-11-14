@@ -11,9 +11,8 @@
         android:id="@+id/tv_guide"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="이용가이드"
         android:gravity="center"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
 </FrameLayout>

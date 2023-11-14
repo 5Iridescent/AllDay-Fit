@@ -25,11 +25,11 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <Switch
+        <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/all_app_notifi"
             android:layout_width="70dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="20dp" />
+            android:layout_marginEnd="20dp"/>
 
     </LinearLayout>
 
@@ -57,7 +57,7 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <Switch
+        <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/exer_notifi"
             android:layout_width="70dp"
             android:layout_height="50dp"
@@ -89,7 +89,7 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <Switch
+        <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/comm_notifi"
             android:layout_width="70dp"
             android:layout_height="50dp"
