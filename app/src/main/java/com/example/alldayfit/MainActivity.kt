@@ -10,9 +10,10 @@ import com.example.alldayfit.databinding.MainActivityBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: MainActivityBinding
-    private val navHostFragment =
+    private val navHostFragment by lazy {
         supportFragmentManager.findFragmentById(binding.mainFrame.id) as NavHostFragment
-    private val navController = navHostFragment.navController
+    }
+    private val navController by lazy { navHostFragment.navController }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
