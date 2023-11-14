@@ -167,7 +167,7 @@ class CountActivity : AppCompatActivity() {
             viewModel.onEndButtonClick()
             viewModel.clearRoutine()
             finishView()
-            val rainbowColors = intArrayOf(
+            intArrayOf(
                 Color.RED,
                 Color.YELLOW,
                 Color.GREEN,
@@ -237,10 +237,5 @@ class CountActivity : AppCompatActivity() {
         binding.finishExerciseBtn.visibility = View.VISIBLE
     }
 
-    companion object {
-        const val BEFORE = "before"
-        const val START = "start"
-        const val STOP = "stop"
-        const val AFTER = "after"
-    }
+
 }

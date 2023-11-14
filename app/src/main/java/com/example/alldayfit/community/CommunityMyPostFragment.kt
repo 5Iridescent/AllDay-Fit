@@ -1,11 +1,11 @@
-package com.example.alldayfit.community;
+package com.example.alldayfit.community
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alldayfit.community.adapter.CommunityMyPostAdapter
@@ -24,13 +24,13 @@ class CommunityMyPostFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = CommunityMypostFragmentBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(requireActivity()).get(CommunityViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity())[CommunityViewModel::class.java]
         adapter = CommunityMyPostAdapter(viewModel, childFragmentManager)
         binding.recyclerview.adapter = adapter
         binding.recyclerview.layoutManager = LinearLayoutManager(context)
-        viewModel.communitymydata.observe(viewLifecycleOwner, Observer { data ->
+        viewModel.communitymydata.observe(viewLifecycleOwner) { data ->
             adapter.setData(data)
-        })
+        }
         return binding.root
     }
 

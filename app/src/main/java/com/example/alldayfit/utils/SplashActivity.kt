@@ -12,11 +12,11 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_activity)
-        var lodingImage = findViewById(R.id.splash_image) as LottieAnimationView
+        val lodingImage = findViewById(R.id.splash_image) as LottieAnimationView
 
         lodingImage.playAnimation()
 
-        val handler: Handler = Handler()
+        val handler = Handler()
         handler.postDelayed({
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

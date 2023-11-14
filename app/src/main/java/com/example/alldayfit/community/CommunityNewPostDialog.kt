@@ -47,7 +47,7 @@ class CommunityNewPostDialog(private var viewModel: CommunityViewModel) : Dialog
         return view
     }
 
-    fun exit() = with(binding) {
+    private fun exit() = with(binding) {
         btnClose.setOnClickListener {
             dismiss()
         }

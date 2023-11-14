@@ -60,6 +60,4 @@ class ExerciseStatusFragment : Fragment() {
         findNavController().navigate(action)
     }
 
-    companion object {
-    }
 }

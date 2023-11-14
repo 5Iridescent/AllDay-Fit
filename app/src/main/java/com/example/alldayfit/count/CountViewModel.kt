@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.alldayfit.count.model.Count
 
-class CountViewModel() : ViewModel() {
+class CountViewModel : ViewModel() {
     private val _isRunning = MutableLiveData<Boolean>()
     val isRunning: LiveData<Boolean> get() = _isRunning
     private val _isCounting = MutableLiveData<Boolean>()
@@ -31,9 +31,7 @@ class CountViewModel() : ViewModel() {
     fun onSetButtonClick() {
         if (_isRunning.value == true) {
             _isCounting.value = !_isCounting.value!!
-            if (_isCounting.value == true) {
-
-            }
+            if (_isCounting.value != true) return
         } else {
             _isRunning.value = !_isRunning.value!!
             _isCounting.value = !_isCounting.value!!

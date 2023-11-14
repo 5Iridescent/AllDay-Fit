@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.Observer
 import com.example.alldayfit.community.model.CommunityPostEntity
 import com.example.alldayfit.databinding.CommunityEditDialogBinding
 
@@ -19,13 +18,13 @@ class CommunityEditDialog(private var viewModel: CommunityViewModel) : DialogFra
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = CommunityEditDialogBinding.inflate(inflater, container, false)
         val view = binding.root
-        viewModel.selectedCommunityModel.observe(viewLifecycleOwner, Observer { comment ->
+        viewModel.selectedCommunityModel.observe(viewLifecycleOwner) { comment ->
             binding.etInfo.setText(comment.content)
             binding.etTitle.setText(comment.title)
-        })
+        }
 
         binding.btnWrite.setOnClickListener {
             if (binding.etTitle.text.toString().isEmpty() or binding.etInfo.text.toString()
@@ -58,7 +57,7 @@ class CommunityEditDialog(private var viewModel: CommunityViewModel) : DialogFra
         _binding = null
     }
 
-    fun exit() = with(binding) {
+    private fun exit() = with(binding) {
         btnClose.setOnClickListener {
             dismiss()
         }

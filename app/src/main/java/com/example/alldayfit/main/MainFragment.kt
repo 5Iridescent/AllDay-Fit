@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -87,7 +86,7 @@ class MainFragment : Fragment() {
     }
 
     private fun initViewModel() = with(viewModel) {
-        exerciseBtnTxt.observe(viewLifecycleOwner) { it ->
+        exerciseBtnTxt.observe(viewLifecycleOwner) {
             if (it) {
                 binding.exerciseBtn.text = getString(R.string.exercise_finish)
             } else {
@@ -124,10 +123,6 @@ class MainFragment : Fragment() {
         weekGoalFixBtn.setOnClickListener {
             showDialog(MainFragmentDirections.actionMainFragmentToExerciseStatusAddGoalDialog())
         }
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
     private fun showDialog(action: NavDirections) {

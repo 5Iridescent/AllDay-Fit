@@ -20,7 +20,7 @@ abstract class BaseFragment(@LayoutRes layoutRes: Int) : Fragment(layoutRes) {
 
     abstract val titleRes: Int?
 
-    val activityToolbar: Toolbar
+    private val activityToolbar: Toolbar
         get() = (requireActivity() as CalendarActivity).binding.activityToolbar
 
     override fun onStart() {

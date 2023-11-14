@@ -51,15 +51,9 @@ interface RealTimeRepository {
 
     companion object {
         const val USERS = "users"
-        const val INFORMATION = "information"
-        const val PHYSICAL = "physicalLog"
         const val EXERCISE = "exerciseLog"
         const val DIET = "dietLog"
         const val POST = "post"
-        const val BREAKFAST = "Breakfast"
-        const val LUNCH = "Lunch"
-        const val DINNER = "Dinner"
-        const val SNACK = "Snack"
         const val DATE = "LogDate"
         const val POSTDATE = "postingDate"
     }

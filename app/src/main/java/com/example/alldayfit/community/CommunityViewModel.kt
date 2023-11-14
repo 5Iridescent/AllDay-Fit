@@ -15,7 +15,7 @@ import java.util.Locale
 
 class CommunityViewModel : ViewModel() {
 
-    var communityEditlist = mutableListOf<CommunityPostEntity>()
+    private var communityEditlist = mutableListOf<CommunityPostEntity>()
 
     var communityLivedata = MutableLiveData<List<CommunityPostEntity>>()
 
@@ -23,9 +23,8 @@ class CommunityViewModel : ViewModel() {
 
     var selectedCommunityModel = MutableLiveData<CommunityPostEntity>()
 
-    var changeCommet = MutableLiveData<CommunityPostEntity>()
 
-    private var onDataChangedCallback: ((List<CommunityPostEntity>) -> Unit)? = null
+    private var changeCommet = MutableLiveData<CommunityPostEntity>()
 
 
     fun addcomment(entity: CommunityPostEntity) {
@@ -34,11 +33,10 @@ class CommunityViewModel : ViewModel() {
     }
 
     fun currentDate(): String {
-        val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
-        return currentDate
+        return SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
     }
 
-    fun deletecomment(entity: CommunityPostEntity) {
+    private fun deletecomment(entity: CommunityPostEntity) {
         communityEditlist.remove(entity)
         communityLivedata.value = communityEditlist
         communitymydata.value = communityEditlist

@@ -1,5 +1,6 @@
 package com.example.alldayfit.community.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,27 +37,23 @@ class CommunityMyPostAdapter(
         holder.bind(data)
     }
 
-    fun updateItem(position: Int, communityPostEntity: CommunityPostEntity) {
-        if (position >= 0 && position < currentList.size) {
-            currentList[position] = communityPostEntity
-            notifyItemChanged(position)
-        }
-    }
+
 
     inner class MyPostHolder(val binding: CommunityItemsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
             binding.btnAmen.setOnClickListener {
-                val data = currentList[adapterPosition] // 현재 항목에 대한 데이터를 가져옵니다.
+                val data = currentList[bindingAdapterPosition] // 현재 항목에 대한 데이터를 가져옵니다.
                 val communityEditDialog = CommunityEditDialog(viewModel)
                 viewModel.onContentClicked(data)
                 communityEditDialog.show(fragmentManager, "communityEditDialog")
-                viewModel.setSelectedPosition(adapterPosition)
+                viewModel.setSelectedPosition(bindingAdapterPosition)
             }
 
         }
 
 
+        @SuppressLint("SetTextI18n")
         fun bind(data: CommunityPostEntity) {
             binding.apply {
                 tvTitle.text = data.title
@@ -80,6 +77,7 @@ class CommunityMyPostAdapter(
         return currentList.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(user: List<CommunityPostEntity>) {
         notifyDataSetChanged()
         super.submitList(user)

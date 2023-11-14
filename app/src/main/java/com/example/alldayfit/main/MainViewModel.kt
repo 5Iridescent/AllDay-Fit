@@ -14,7 +14,6 @@ import java.time.ZonedDateTime
 class MainViewModel(private val database: RealTimeRepository) : ViewModel() {
     private val _goal: MutableList<Goal> = mutableListOf()
     private val _goalList: MutableLiveData<List<Goal>> = MutableLiveData()
-    val goalList: MutableLiveData<List<Goal>> get() = _goalList
 
     private val _exerciseBtnTxt: MutableLiveData<Boolean> = MutableLiveData()
     val exerciseBtnTxt: LiveData<Boolean> get() = _exerciseBtnTxt
@@ -48,7 +47,7 @@ class MainViewModel(private val database: RealTimeRepository) : ViewModel() {
                 return
             }
             exerciseData = FirebaseModel.ExerciseRecord(
-                totalTime = elapsedTime ?: 30, logDate = getCurrentLocalTime().toLogFormat()
+                totalTime = elapsedTime, logDate = getCurrentLocalTime().toLogFormat()
             )
             database.addExercise(exerciseData)
         }
@@ -68,10 +67,6 @@ class MainViewModel(private val database: RealTimeRepository) : ViewModel() {
         }
         val duration = Duration.between(startTime, endTime)
         return duration.toMinutes()
-    }
-
-    private fun getWeekExercise() {
-
     }
 
 
