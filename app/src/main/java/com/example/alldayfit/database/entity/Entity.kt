@@ -15,7 +15,7 @@ data class UserEntity(
 data class PhysicalInformationEntity(
     @PrimaryKey
     val name: String,
-    val inputDate: String, // yyyy.MM.dd 형식의 날짜 문자열
+    val inputDate: String,
     val height: Int,
     val weight: Int
 )
@@ -25,7 +25,7 @@ data class ExerciseLogEntity(
     @PrimaryKey
     val name: String,
     val totalTime: Int,
-    val exerciseDate: String // yyyy.MM.dd 형식의 날짜 문자열
+    val exerciseDate: String
 )
 
 @Entity(tableName = "diet_logs")
@@ -40,5 +40,5 @@ data class DietLogEntity(
     val dinnerFoodImage: String,
     val snackFoodText: List<String>,
     val snackFoodImage: String,
-    val mealDate: String // yyyy.MM.dd 형식의 날짜 문자열
+    val mealDate: String
 )

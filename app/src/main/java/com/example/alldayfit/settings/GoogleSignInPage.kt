@@ -28,26 +28,21 @@ class GoogleSignInPage : AppCompatActivity() {
         setContentView(view)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id)) // 웹 클라이언트 ID로부터 ID 토큰 요청
-            .requestEmail() // 사용자 이메일 정보 요청
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
             .build()
 
-        // GoogleSignInClient 초기화
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        // FirebaseAuth 인스턴스 초기화
         firebaseAuth = FirebaseAuth.getInstance()
 
-        // Google 로그인 버튼 클릭 이벤트 처리
         binding.googleSignInButton.setOnClickListener {
-            signInWithGoogle() // Google 로그인 함수 호출
+            signInWithGoogle()
         }
 
-        // Email 회원가입 버튼 클릭 이벤트 처리
         binding.emailSignUp.setOnClickListener {
             signUpEmailPage()
         }
-        // 기존 사용자 로그인 버튼 클릭 이벤트 처리
         binding.buttonLogin.setOnClickListener {
             signIn(binding.editTextEmail.text.toString(), binding.editTextPassword.text.toString())
         }
@@ -74,7 +69,6 @@ class GoogleSignInPage : AppCompatActivity() {
         }
     }
 
-    // 유저정보 넘겨주고 메인 액티비티 호출
     fun moveMainPage(user: FirebaseUser?) {
         if (user != null) {
             startActivity(Intent(this, MainActivity::class.java))
@@ -83,20 +77,17 @@ class GoogleSignInPage : AppCompatActivity() {
     }
 
 
-    // Email 회원가입 페이지
     private fun signUpEmailPage() {
         startActivity(Intent(this, EmailSignUpActivity::class.java))
 
     }
 
-    // Google 로그인 시작
     private fun signInWithGoogle() {
         Log.d("GoogleSignIn", "signInWithGoogle() called")
         val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN) // 로그인 Intent 시작
+        startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
-    // startActivityForResult로부터 결과 처리
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -109,30 +100,26 @@ class GoogleSignInPage : AppCompatActivity() {
             try {
                 val account = task.getResult(ApiException::class.java)
                 if (account != null) {
-                    firebaseAuthWithGoogle(account) // Google 로그인 정보로 Firebase 인증 시작
+                    firebaseAuthWithGoogle(account)
                 }
             } catch (e: ApiException) {
                 Log.e("GoogleSignIn", "Google sign in failed: ${e.message}")
-                // Google 로그인 실패 처리
                 Toast.makeText(this, "Google 로그인 실패", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    // Firebase로부터 Google 로그인 정보를 사용하여 인증 처리
     private fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {
         Log.d("GoogleSignIn", "firebaseAuthWithGoogle() called")
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Firebase로부터 로그인 성공 처리
                     val user = firebaseAuth.currentUser
                     Log.d("GoogleSignIn", "Firebase 로그인 성공: ${user?.displayName}")
                     Toast.makeText(this, "Google 로그인 성공: ${user?.displayName}", Toast.LENGTH_SHORT)
                         .show()
                 } else {
-                    // Firebase로부터 로그인 실패 처리
                     Log.e("GoogleSignIn", "Firebase 로그인 실패: ${task.exception}")
                     Toast.makeText(this, "Google 로그인 실패", Toast.LENGTH_SHORT).show()
                 }
@@ -140,6 +127,6 @@ class GoogleSignInPage : AppCompatActivity() {
     }
 
     companion object {
-        private const val RC_SIGN_IN = 9001 // Google 로그인 요청 코드
+        private const val RC_SIGN_IN = 9001
     }
 }

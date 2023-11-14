@@ -29,23 +29,19 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //데이터 바인딩 연결
         _binding = MainAddGoalDialogBinding.inflate(inflater, container, false)
         initView()
         initViewModel()
         return binding.root
     }
 
-    /* dialog design, data 초기 설정 */
     private fun initView() = with(binding) {
         goalListview.adapter = adapter
         binding.goalListview.layoutManager = LinearLayoutManager(context)
     }
 
     private fun initViewModel() = with(viewModel) {
-//        goalLiveData.observe(viewLifecycleOwner) { data ->
-//            adapter.addGoal(data)
-//        }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,13 +50,10 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
     }
 
     private fun setupView() = with(binding) {
-        // exercise 주간 목표 마치는 버튼
         finishBtn.setOnClickListener {
             goal = Goal(binding.goalEdit.text.toString(), false, Goal.POST_POSITION)
-//            viewModel.changeDialogType(goal)
             dismiss()
         }
-        // dialog 닫는 버튼
         closeBtn.setOnClickListener {
             dismiss()
         }
@@ -69,7 +62,6 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
                 return@setOnClickListener
             }
             goal = Goal(goalEdit.text.toString(), false, Goal.POST_POSITION)
-//            viewModel.setGoalList(goal)
             goalEdit.text.clear()
         }
     }

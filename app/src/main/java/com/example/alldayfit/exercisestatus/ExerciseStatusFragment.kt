@@ -17,7 +17,6 @@ class ExerciseStatusFragment : Fragment() {
     private var _binding: ExerciseStatusFragmentBinding? = null
     private val binding get() = _binding!!
 
-    // Todo viewmodel 초기화 방법 lateinit by lazy & factory 만들어서 veiwmodle 실행
     private lateinit var viewModel: BodyStatusViewModel
 
     override fun onCreateView(
@@ -31,14 +30,11 @@ class ExerciseStatusFragment : Fragment() {
         return binding.root
     }
 
-    /* fragment design, data 초기 설정 */
     private fun initView() = with(binding) {
-        /*  아이템 text 초기 설정*/
     }
 
     private fun initViewModel() = with(viewModel) {
         bodyStatus.observe(viewLifecycleOwner) { bodyStatus ->
-            // 라이브 데이터 변경 감지
             binding.statusWeightView.text = getString(R.string.weight_value, bodyStatus.weight)
             binding.statusHeightView.text = getString(R.string.height_value, bodyStatus.height)
         }
@@ -50,7 +46,6 @@ class ExerciseStatusFragment : Fragment() {
     }
 
     private fun setupView() = with(binding) {
-        // 사용자 건강 상태 입력 다이얼로그 표시
         fixed.setOnClickListener {
             showDialog(ExerciseStatusFragmentDirections.actionExerciseStatusFragmentToExerciseStatusDailyEditDialog())
         }
@@ -61,7 +56,6 @@ class ExerciseStatusFragment : Fragment() {
         _binding = null
     }
 
-    /* main_graph의 action을 활용해서 dialog 띄우기 */
     private fun showDialog(action: NavDirections) {
         findNavController().navigate(action)
     }

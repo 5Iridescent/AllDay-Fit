@@ -55,12 +55,10 @@ class GoalAdapter() :
                 mealEdit.setText(data.goals)
             }
             binding.btnDelete.setOnClickListener {
-//                viewModel.deletegoal(data)
             }
         }
     }
 
-    // 아이템 타입 리턴
     override fun getItemViewType(position: Int): Int {
         return getItem(position).type
     }

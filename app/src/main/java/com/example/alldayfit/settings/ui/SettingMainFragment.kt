@@ -22,7 +22,6 @@ class SettingMainFragment : Fragment() {
         return binding.root
     }
 
-    /* fragment design, data 초기 설정 */
     private fun initView() = with(binding) {
         appNotifiSetting.setOnClickListener { showDialog(SettingMainFragmentDirections.actionSettingMainFragmentToSettingNoticeFragment()) }
         settingGuide.setOnClickListener { showDialog(SettingMainFragmentDirections.actionSettingMainFragmentToSettingGuideFragment()) }
@@ -35,7 +34,6 @@ class SettingMainFragment : Fragment() {
         _binding = null
     }
 
-    /* main_graph의 action을 활용해서 dialog 띄우기 */
     private fun showDialog(action: NavDirections) {
         findNavController().navigate(action)
     }

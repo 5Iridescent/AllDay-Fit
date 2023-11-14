@@ -23,7 +23,6 @@ class ExerciseBodyStatusEditDialog : DialogFragment() {
         return binding.root
     }
 
-    /* dialog design, data 초기 설정 */
     private fun initView() = with(binding) {
         etHeight.setText(viewModel.getHeight().toString())
         etWeight.setText(viewModel.getWeight().toString())

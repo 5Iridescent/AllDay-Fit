@@ -32,7 +32,6 @@ class CountActivity : AppCompatActivity() {
         )[CountViewModel::class.java]
     }
 
-    //리사이클러뷰 및 어댑터 초기화
     private val adapter by lazy { ExerciseRecordAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -135,16 +134,11 @@ class CountActivity : AppCompatActivity() {
     }
 
     private fun initView() = with(binding) {
-        // toolbar set actionbar
         setSupportActionBar(toolbar)
-        // toolbar back button show true
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        // toolbar app title show false
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        // 루틴 리시트 어댑터 연결
         routineList.layoutManager = LinearLayoutManager(this@CountActivity)
         routineList.adapter = adapter
-        //시간을 00:00:00 으로 보이게 하는 코드
         timer.setOnChronometerTickListener {
             val elapsedMillis = SystemClock.elapsedRealtime() - it.base
             val hours = (elapsedMillis / 3600000).toInt()
@@ -153,14 +147,11 @@ class CountActivity : AppCompatActivity() {
             val formattedTime = String.format("%02d:%02d:%02d", hours, minutes, seconds)
             it.text = formattedTime
         }
-        // progressbar 색 초기화
         progressbar.progressTintList = ColorStateList.valueOf(contextGetColor(R.color.blue))
-        // 루신 설정 버튼
         routineSetBtn.setOnClickListener {
             val countDialog = CountDialog()
             countDialog.show(supportFragmentManager, "CountDialogFragment")
         }
-        // 시작 버튼을 누르면 타이머 시작
         startBtn.setOnClickListener {
             if (startBtn.text == getString(R.string.rest)) {
                 viewModel.addRoutine(
@@ -172,11 +163,9 @@ class CountActivity : AppCompatActivity() {
             }
             viewModel.onSetButtonClick()
         }
-        // 종료 버튼을 누르면 타이머 종료
         endBtn.setOnClickListener {
             viewModel.onEndButtonClick()
             viewModel.clearRoutine()
-//            saveRecyclerView()
             finishView()
             val rainbowColors = intArrayOf(
                 Color.RED,
@@ -187,17 +176,12 @@ class CountActivity : AppCompatActivity() {
                 Color.MAGENTA,
                 Color.RED
             )
-//            val progressDrawable =
-//                GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, rainbowColors)
-//            progressDrawable.findDrawableByLayerId(R.drawable.progress_circular) as ClipDrawable
-//// ProgressBar에 설정
         }
-        // 운동 더하기 버튼 클릭 시 스톱워치 초기 화면으로 이동
+
         moreExerciseBtn.setOnClickListener {
             viewModel.stopwatchMode()
             recreate()
         }
-        // 운동 끝내기 버튼 클릭 시 메인화면으로 이동
         finishExerciseBtn.setOnClickListener {
             finish()
         }
@@ -211,7 +195,6 @@ class CountActivity : AppCompatActivity() {
         }
         countDownTimer = object : CountDownTimer(46000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                // 남은 시간을 HH:mm:ss 형식으로 변환
                 if (viewModel.isRunning.value == false) {
                     onFinish()
                     return
@@ -223,10 +206,8 @@ class CountActivity : AppCompatActivity() {
                 binding.startBtn.isEnabled = false
             }
 
-            // 타이머가 완료되면 호출되는 메서드
             override fun onFinish() {
                 binding.startBtn.performClick()
-                // countdown이 끝나면 버튼 다시 활성화
                 binding.startBtn.apply {
                     isEnabled = true
                     alpha = 1.0f
@@ -249,9 +230,6 @@ class CountActivity : AppCompatActivity() {
 
     private fun finishView() {
         binding.textView.text = getString(R.string.count_finish_ment)
-        //        binding.timer.visibility = View.INVISIBLE
-//                binding.progressbar.setImageResource(R.drawable.circle_blue_back_shape) //Todo 무지개 테두리로 변경
-        // 스톱워치 종료 후 다시 클릭해도 반응 없게하는 코드
         binding.endBtn.isEnabled = false
         binding.timer.stop()
         binding.startBtn.isEnabled = false

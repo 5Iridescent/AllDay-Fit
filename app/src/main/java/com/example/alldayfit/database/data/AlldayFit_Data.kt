@@ -7,7 +7,7 @@ data class User(
 )
 
 data class InformationId(
-    val inputDate: String, // yyyy.MM.dd 형식의 날짜 문자열
+    val inputDate: String,
     val height: Int,
     val weight: Int
 )
@@ -19,7 +19,7 @@ data class PhysicalInformation(
 
 data class LogId(
     val totalTime: Int,
-    val exerciseDate: String // yyyy.MM.dd 형식의 날짜 문자열
+    val exerciseDate: String
 )
 
 data class ExerciseLog(
@@ -32,7 +32,7 @@ data class MealLogId(
     val lunch: Meal,
     val dinner: Meal,
     val snack: Meal,
-    val mealDate: String // yyyy.MM.dd 형식의 날짜 문자열
+    val mealDate: String
 )
 
 data class Meal(

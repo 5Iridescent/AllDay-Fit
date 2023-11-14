@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModelProvider
 
 
 class CommunityViewModelFactory() : ViewModelProvider.Factory {
-//    private val repositoryImpl : RealTimeRepository = RealTimeRepositoryImpl()
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(CommunityViewModel::class.java)) {

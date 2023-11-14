@@ -61,7 +61,6 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
-    /* fragment design, data 초기 설정 */
     private fun initView() = with(binding) {
         yearDateTxt.text = today.toDateFormat(MONTH_FORMAT)
         val startDay = getStartDay()
@@ -97,16 +96,13 @@ class MainFragment : Fragment() {
         }
     }
 
-    /* ZonedDateTime을 원하는 형식으로 변경 */
     private fun ZonedDateTime.toDateFormat(format: String): String {
         val formatter = DateTimeFormatter.ofPattern(format)
         return this.format(formatter)
     }
 
     private fun getStartDay(): ZonedDateTime {
-        // 현재 날짜의 요일을 구합니다.
         val currentDayOfWeek = today.dayOfWeek
-        // 주의 시작 날짜를 계산합니다. (월요일을 시작으로 한 주)
         return today.minusDays(currentDayOfWeek.value.toLong())
     }
 
