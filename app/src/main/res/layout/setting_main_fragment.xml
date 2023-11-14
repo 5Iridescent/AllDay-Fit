@@ -34,6 +34,7 @@
             android:layout_weight="1" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
+            android:text="@string/off"
             android:id="@+id/dark_switch"
             android:layout_width="70dp"
             android:layout_height="50dp"
