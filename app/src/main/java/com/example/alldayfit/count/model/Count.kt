@@ -1,7 +1,11 @@
-package com.example.alldayfit.count
+package com.example.alldayfit.count.model
+
+
+import java.time.ZonedDateTime
 
 data class Count(
-    val name : String,
-    val set : Int,
-    val count: Int
+    val date : ZonedDateTime,
+    val name: String,
+    val count: Int = 0,
+    val set: Int = 0,
 )
