@@ -27,6 +27,11 @@ android {
         }
     }
 
+    buildFeatures {
+        // 뷰 바인딩 활성화
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "nrplh.Iridescent.alldayfit"
         minSdk = 27
