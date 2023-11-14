@@ -3,7 +3,7 @@
 
     <!-- main activity -->
     <string name="commity">커뮤니티</string>
-    <string name="main_page">메인페이지</string>
+    <string name="main_page">메인</string>
     <string name="exercise_sit">운동상태</string>
     <string name="app_title">All-DayFit</string>
 
