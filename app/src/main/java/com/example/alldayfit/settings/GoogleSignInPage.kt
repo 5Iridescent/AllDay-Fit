@@ -44,7 +44,7 @@ class GoogleSignInPage : AppCompatActivity() {
         }
 
         // Email 회원가입 버튼 클릭 이벤트 처리
-        binding.emailSignUp.setOnClickListener{
+        binding.emailSignUp.setOnClickListener {
             signUpEmailPage()
         }
         // 기존 사용자 로그인 버튼 클릭 이벤트 처리
@@ -73,9 +73,10 @@ class GoogleSignInPage : AppCompatActivity() {
                 }
         }
     }
+
     // 유저정보 넘겨주고 메인 액티비티 호출
-    fun moveMainPage(user: FirebaseUser?){
-        if( user!= null){
+    fun moveMainPage(user: FirebaseUser?) {
+        if (user != null) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
@@ -83,8 +84,8 @@ class GoogleSignInPage : AppCompatActivity() {
 
 
     // Email 회원가입 페이지
-    private fun signUpEmailPage(){
-        startActivity(Intent(this,EmailSignUpActivity::class.java))
+    private fun signUpEmailPage() {
+        startActivity(Intent(this, EmailSignUpActivity::class.java))
 
     }
 
@@ -100,7 +101,10 @@ class GoogleSignInPage : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == RC_SIGN_IN) {
-            Log.d("GoogleSignIn", "onActivityResult: requestCode=$requestCode, resultCode=$resultCode")
+            Log.d(
+                "GoogleSignIn",
+                "onActivityResult: requestCode=$requestCode, resultCode=$resultCode"
+            )
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)
@@ -125,7 +129,8 @@ class GoogleSignInPage : AppCompatActivity() {
                     // Firebase로부터 로그인 성공 처리
                     val user = firebaseAuth.currentUser
                     Log.d("GoogleSignIn", "Firebase 로그인 성공: ${user?.displayName}")
-                    Toast.makeText(this, "Google 로그인 성공: ${user?.displayName}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Google 로그인 성공: ${user?.displayName}", Toast.LENGTH_SHORT)
+                        .show()
                 } else {
                     // Firebase로부터 로그인 실패 처리
                     Log.e("GoogleSignIn", "Firebase 로그인 실패: ${task.exception}")

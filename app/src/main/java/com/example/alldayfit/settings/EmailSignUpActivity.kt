@@ -14,7 +14,6 @@ import com.example.alldayfit.databinding.SignInPageActivityBinding
 import com.google.firebase.auth.FirebaseAuth
 
 
-
 class EmailSignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: EmailSignUpActivityBinding
@@ -38,31 +37,27 @@ class EmailSignUpActivity : AppCompatActivity() {
             val email = editTextEmail.text.toString()
             val password = editTextPassword.text.toString()
 
-            mAuth.createUserWithEmailAndPassword(email,password) // 회원 가입
-                .addOnCompleteListener {
-                        result ->
-                    if(result.isSuccessful){
-                        Toast.makeText(this,"회원가입이 완료되었습니다.",Toast.LENGTH_SHORT).show()
-                        if(mAuth.currentUser!=null){
+            mAuth.createUserWithEmailAndPassword(email, password) // 회원 가입
+                .addOnCompleteListener { result ->
+                    if (result.isSuccessful) {
+                        Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
+                        if (mAuth.currentUser != null) {
                             var intent = Intent(this, GoogleSignInPage::class.java)
                             startActivity(intent)
                         }
-                    }
-                    else if (result.exception?.message.isNullOrEmpty()){
-                        Toast.makeText(this,"오류가 발생했습니다.",Toast.LENGTH_SHORT).show()
-                    }
-                    else{
-                        login(email,password)
+                    } else if (result.exception?.message.isNullOrEmpty()) {
+                        Toast.makeText(this, "오류가 발생했습니다.", Toast.LENGTH_SHORT).show()
+                    } else {
+                        login(email, password)
                     }
                 }
         }
     }
 
-    fun login(email:String,password:String){
-        mAuth.signInWithEmailAndPassword(email,password) // 로그인
-            .addOnCompleteListener {
-                    result->
-                if(result.isSuccessful){
+    fun login(email: String, password: String) {
+        mAuth.signInWithEmailAndPassword(email, password) // 로그인
+            .addOnCompleteListener { result ->
+                if (result.isSuccessful) {
                     var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }

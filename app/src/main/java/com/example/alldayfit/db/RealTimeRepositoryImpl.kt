@@ -45,9 +45,22 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    val id = dataSnapshot.key
-                    if (id != null) {
-                        exerciseRef.child(id).setValue(data)
+                    for (snapshot in dataSnapshot.children) {
+                        val id = snapshot.key
+                        if (id != null) {
+                            val existingData =
+                                snapshot.getValue(FirebaseModel.ExerciseRecord::class.java)
+                            Log.d("test", snapshot.value.toString())
+                            if (existingData != null) {
+                                exerciseRef.child(id).setValue(
+                                    FirebaseModel.ExerciseRecord(
+                                        existingData.totalTime + data.totalTime,
+                                        data.logDate
+                                    )
+                                )
+                                return
+                            }
+                        }
                     }
                 } else {
                     exerciseRef.push().setValue(data)
@@ -55,7 +68,7 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // 에러
+                Log.e("FirebaseError", "Error: ${databaseError.message}")
             }
         })
     }

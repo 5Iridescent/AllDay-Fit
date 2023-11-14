@@ -16,7 +16,7 @@
         android:id="@+id/mainFragment"
         android:enabled="true"
         android:icon="@drawable/ic_main"
-        android:title="@string/main_page" >
+        android:title="@string/main_page">
 
     </item>
 
