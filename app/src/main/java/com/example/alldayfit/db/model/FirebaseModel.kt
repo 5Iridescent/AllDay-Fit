@@ -1,8 +1,6 @@
 package com.example.alldayfit.db.model
 
-/*
-현 데이터 모델은 real-time firebase 전체 데이터 모델입니다.
-*/
+
 
 data class FirebaseModel(
     val user: UserData,
@@ -50,70 +48,3 @@ data class FirebaseModel(
     )
 
 }
-
-//{
-//    users{
-//        userId(firebase Authentication user id){
-//            Email : String
-//            Name : String
-//            Nickname : String
-//            Gender : String
-//        }
-//    }
-//    information{
-//        userId{
-//            exerciseLocate :
-//            exerciseTime :
-//
-//        }
-//    }
-//    physicalLog{
-//        userId(firebase Authentication user id){
-//            physicalId(firebaseid) {
-//                LogDate : yyyy.MM.dd
-//                Height : Int
-//                Weight : Int
-//                weeklyGoal : List<String>
-//            }
-//        }
-//    }
-//    exerciseLog{
-//        userId{
-//                logId(firebaseid) {
-//                    TotalTime : Int
-//                    LogDate : yyyy.MM.dd
-//                }
-//        }
-//    }
-//    dietLog{
-//        userId(firebase Authentication user id) {
-//            mealLogId(firebaseid) {
-//                Breakfast{
-//                    FoodText : [String String String]
-//                    FoodImage : String
-//                }
-//                Lunch{
-//                    FoodText : [String String String]
-//                    FoodImage : String
-//                }
-//                Dinner{
-//                    FoodText : [String String String]
-//                    FoodImage : String
-//                }
-//                Snack{
-//                    FoodText : [String String String]
-//                    FoodImage : String
-//                }
-//                LogDate : yyyy.MM.dd
-//            }
-//        }
-//    }
-//    postLog{
-//        postId(firebaseid){
-//            Author: String
-//            PostingDate : String
-//            Image : String
-//            Content : String
-//        }
-//    }
-//}

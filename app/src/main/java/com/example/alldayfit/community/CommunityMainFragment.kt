@@ -16,7 +16,6 @@ class CommunityMainFragment() : Fragment() {
     private lateinit var viewModel: CommunityViewModel
 
 
-    // viewpager adapter
     private val communityViewPagerAdapter by lazy {
         CommunityViewPagerAdapter(requireActivity())
     }
@@ -40,7 +39,6 @@ class CommunityMainFragment() : Fragment() {
         }
     }
 
-    /* fragment design, data 초기 설정 */
     private fun initView() = with(binding) {
         // viewpager와 adpater 연결
         viewpager.adapter = communityViewPagerAdapter

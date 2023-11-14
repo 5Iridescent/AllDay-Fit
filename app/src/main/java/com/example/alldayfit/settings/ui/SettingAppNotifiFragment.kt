@@ -20,7 +20,6 @@ class SettingAppNotifiFragment : Fragment() {
         return binding.root
     }
 
-    /* fragment design, data 초기 설정 */
     private fun initView() {
     }
 

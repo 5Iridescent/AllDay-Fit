@@ -41,7 +41,7 @@ class CommunityNewPostDialog(private var viewModel: CommunityViewModel) : Dialog
             }
         }
         binding.btnCancel.setOnClickListener {
-            dismiss() // 다이얼로그 닫기
+            dismiss()
         }
         exit()
         return view

@@ -27,9 +27,7 @@ class DietRecordAdapter(private val dietRecordsList: MutableList<String>) :
         val dietRecord = dietRecordsList[position]
         holder.mealTextView.text = dietRecord
 
-        // 삭제 버튼 클릭 리스너 설정
         holder.btnDelete.setOnClickListener {
-            // 해당 위치의 아이템을 삭제하고 RecyclerView 갱신
             dietRecordsList.removeAt(position)
             notifyDataSetChanged()
         }

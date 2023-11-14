@@ -12,7 +12,6 @@ import java.time.format.DateTimeFormatter
 
 class RealTimeRepositoryImpl() : RealTimeRepository {
 
-    //    private val listener = object : ValueEventListener
     private val userRef = getUserReference(RealTimeRepository.USERS)
     private val mealRef = getUserReference(RealTimeRepository.DIET)
     private val physicalRef = getUserReference(RealTimeRepository.PHYSICAL)
@@ -20,21 +19,17 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
     private val exerciseRef = getUserReference(RealTimeRepository.EXERCISE)
     private val postRef = getReference(RealTimeRepository.POST)
 
-    /* 현 유저의 고유 user id를 가지고 user 테이블에 접근하여 데이터 가져오기 */
     override fun getUserData() {
         userRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     val userData = dataSnapshot.getValue(FirebaseModel.UserData::class.java)
-                    // 사용자 정보를 이용하여 무엇인가를 수행합니다.
                 } else {
-                    // 데이터가 존재하지 않을 때의 처리
                     Log.d("firebase", "NO DATA")
                 }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // 에러 처리
                 Log.d("firebase", "ERROR GET USER DATA")
             }
         })
@@ -99,7 +94,6 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
         return dataList
     }
 
-    //
     override fun addMealAll(data: FirebaseModel.DietRecord) {
         val query = mealRef.orderByChild(RealTimeRepository.DATE).equalTo(data.logDate)
         query.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -115,7 +109,6 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // 에러
             }
         })
     }
@@ -138,7 +131,6 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // 에러
             }
         })
     }
@@ -148,14 +140,11 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    // 이미 데이터가 있음
                 } else {
-                    // 데이터가 없음
                 }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // 에러
             }
         })
     }
@@ -181,9 +170,9 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
     private var startAtKey: String? = null
     override fun getPosts(id: String): MutableList<FirebaseModel.Post> {
         val query = postRef.limitToLast(20)
-            .orderByChild(RealTimeRepository.POSTDATE)  // timestamp는 데이터의 타임스탬프 필드 이름입니다.
+            .orderByChild(RealTimeRepository.POSTDATE)
         if (startAtKey != null) {
-            query.endAt(startAtKey)  // 특정 키부터 시작하는 경우에 사용합니다.
+            query.endAt(startAtKey)
         }
         val dataList = mutableListOf<FirebaseModel.Post>()
         query.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -198,7 +187,6 @@ class RealTimeRepositoryImpl() : RealTimeRepository {
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // 에러 처리
             }
         })
         return dataList

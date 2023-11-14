@@ -24,7 +24,6 @@ interface RealTimeRepository {
     private val database: FirebaseDatabase
         get() = Firebase.database(Util.realtime_database)
 
-    /* 현 유저의 고유 user id를 가지고 user 테이블에 접근하여 데이터 가져오기 */
     fun getUserData()
 
     fun addExercise(data: FirebaseModel.ExerciseRecord)
@@ -36,7 +35,6 @@ interface RealTimeRepository {
 
     fun isPresenceDataExercise(date: String)
 
-    // community
     fun addPost(content: CommunityPostEntity): String?
     fun updatePost(content: CommunityPostEntity)
     fun removePost(content: CommunityPostEntity)

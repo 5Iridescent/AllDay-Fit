@@ -17,16 +17,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() = with(binding) {
-        /* bottom navigation click event - 클릭 */
         val navHostFragment =
             supportFragmentManager.findFragmentById(mainFrame.id) as NavHostFragment
-        val navController = navHostFragment.navController // 기본 선택 아이템
+        val navController = navHostFragment.navController
         mainNav.setOnItemSelectedListener { item ->
-            navController.navigate(item.itemId) // 아이템 선택
+            navController.navigate(item.itemId)
             true
         }
         mainNav.selectedItemId = R.id.mainFragment
-        // 툴바 메뉴 버튼을 설정- menu에 있는 item을 연결하는 부분
         setSupportActionBar(mainToolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.title = getString(R.string.app_title)
@@ -34,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         toolbarTitle.text = getString(R.string.app_title)
     }
 
-    // 툴바 메뉴 버튼을 설정- menu에 있는 item을 연결하는 부분
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.main_toolbar_menu, menu)

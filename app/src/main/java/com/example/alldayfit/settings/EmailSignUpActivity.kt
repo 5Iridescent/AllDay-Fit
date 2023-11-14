@@ -37,7 +37,7 @@ class EmailSignUpActivity : AppCompatActivity() {
             val email = editTextEmail.text.toString()
             val password = editTextPassword.text.toString()
 
-            mAuth.createUserWithEmailAndPassword(email, password) // 회원 가입
+            mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { result ->
                     if (result.isSuccessful) {
                         Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
@@ -55,7 +55,7 @@ class EmailSignUpActivity : AppCompatActivity() {
     }
 
     fun login(email: String, password: String) {
-        mAuth.signInWithEmailAndPassword(email, password) // 로그인
+        mAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { result ->
                 if (result.isSuccessful) {
                     var intent = Intent(this, MainActivity::class.java)

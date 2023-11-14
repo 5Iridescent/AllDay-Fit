@@ -69,15 +69,12 @@ class DietRecordFragment : Fragment() {
         dietRecordChart.invalidate()
 
         sharedViewModel.selectedImageUri.observe(viewLifecycleOwner, { uri ->
-            // 선택된 이미지 URI로 UI 업데이트
-            // Glide를 사용하여 이미지를 ImageView에 띄우기
             if (uri != null) {
                 Glide.with(requireContext())
                     .load(uri)
                     .centerCrop()
-//                    .into(binding.breakfastView.addMealView) //Todo 아침,점심,저녁,간식 각각 들어가도록
+                    .into(binding.breakfastView.addMealView)
             } else {
-                // 이미지가 없으면 아이콘으로 대체
                 val dietIcon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_diet)
                 binding.breakfastView.addMealView.setImageDrawable(dietIcon)
             }
@@ -91,7 +88,6 @@ class DietRecordFragment : Fragment() {
         val entries = ArrayList<BarEntry>()
         val random = java.util.Random()
 
-        // 하루 식단 기록에 대한 더미 데이터 생성
         val carbs = random.nextFloat() * 100 // 탄수화물
         val protein = random.nextFloat() * 100 // 단백질
         val fat = random.nextFloat() * 100 // 지방
@@ -105,9 +101,7 @@ class DietRecordFragment : Fragment() {
         return entries
     }
 
-    /* fragment design, data 초기 설정 */
     private fun initView() = with(binding) {
-        /* 식사 위젯, 칼로리 수치 아이템 text 초기 설정*/
         breakfastView.mealTxt.text = getString(R.string.diet_record_breakfast)
         lunchView.mealTxt.text = getString(R.string.diet_record_lunch)
         dinnerView.mealTxt.text = getString(R.string.diet_record_dinner)
@@ -121,14 +115,12 @@ class DietRecordFragment : Fragment() {
     }
 
     private fun setupView() = with(binding) {
-        /* 식사(아침,점심,저녁,간식) 이미지 클릭 시 다이얼로그 표시 */
         breakfastView.showDietAddDialog()
         lunchView.showDietAddDialog()
         dinnerView.showDietAddDialog()
         snackView.showDietAddDialog()
     }
 
-    /* main_graph의 action을 활용해서 dialog 띄우기 */
     private fun DietRecordMealItemBinding.showDietAddDialog() {
         this.addMealView.setOnClickListener {
             findNavController().navigate(

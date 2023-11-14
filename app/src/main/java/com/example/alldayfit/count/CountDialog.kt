@@ -18,8 +18,6 @@ class CountDialog : DialogFragment() {
         _binding = CountAddDialogBinding.inflate(inflater, container, false)
         return binding.root
     }
-//      스피너 아이템
-//    var exercisedata = resources.getStringArray(R.array.exercise_list)
 
 
 }

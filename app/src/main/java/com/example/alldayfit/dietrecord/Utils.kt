@@ -15,7 +15,6 @@ object Utils {
         val fileInputStream: FileInputStream?
         val bFile = ByteArray(file.length().toInt())
         try {
-            //convert file into array of bytes
             fileInputStream = FileInputStream(file)
             fileInputStream.read(bFile)
             fileInputStream.close()

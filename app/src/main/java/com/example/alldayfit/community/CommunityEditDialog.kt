@@ -25,7 +25,6 @@ class CommunityEditDialog(private var viewModel: CommunityViewModel) : DialogFra
         viewModel.selectedCommunityModel.observe(viewLifecycleOwner, Observer { comment ->
             binding.etInfo.setText(comment.content)
             binding.etTitle.setText(comment.title)
-//            binding.tvDate.text = "작성일 :${comment.date}"
         })
 
         binding.btnWrite.setOnClickListener {

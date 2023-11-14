@@ -45,8 +45,3 @@ class CalendarActivity : AppCompatActivity() {
         }
     }
 }
-
-//        val fragmentTransaction = supportFragmentManager.beginTransaction()
-//        fragmentTransaction.replace(R.id.calendarFrame, CalendarFragment())
-//        fragmentTransaction.addToBackStack(null)
-//        fragmentTransaction.commit()

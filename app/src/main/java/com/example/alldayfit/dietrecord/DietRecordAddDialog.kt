@@ -41,10 +41,8 @@ class DietRecordAddDialog : DialogFragment() {
         )[DietRecordDialogViewModel::class.java]
     }
 
-    // adapter data list
     private val dietRecordsList: MutableList<String> = mutableListOf()
 
-    // listview adapter
     private val dietRecordAdapter by lazy { DietRecordAdapter(dietRecordsList) }
 
     override fun onCreateView(
@@ -57,7 +55,6 @@ class DietRecordAddDialog : DialogFragment() {
         return binding.root
     }
 
-    /* dialog design, data 초기 설정 */
     private fun initView() = with(binding) {
         mealText.text = mealType
     }
@@ -68,14 +65,11 @@ class DietRecordAddDialog : DialogFragment() {
     }
 
     private fun setupView() = with(binding) {
-        // RecyclerView 및 어댑터 초기화
         mealListview.layoutManager = LinearLayoutManager(requireContext())
         mealListview.adapter = dietRecordAdapter
-        // edittext 옆 식사 추가 button을 눌렀을 때 클릭 리스너
         btnAdd.setOnClickListener {
             addMealText()
         }
-        // close button을 눌렀을 때 창이 닫히게 해주는 클릭 리스너
         closeBtn.setOnClickListener {
             dismiss()
         }
@@ -113,13 +107,11 @@ class DietRecordAddDialog : DialogFragment() {
             intent.type = "image/*"
             startActivityForResult(intent, PICK_IMAGE_REQUEST)
         } catch (e: Exception) {
-            // 갤러리 열기 중에 문제 발생 시 처리
             e.printStackTrace()
             Toast.makeText(requireContext(), "갤러리를 열 수 없습니다.", Toast.LENGTH_SHORT).show()
         }
     }
 
-    // 상대경로를 절대경로로 바꿔주는 코드
     fun getRealPathFromURI(uri: Uri): String {
         val buildName = Build.MANUFACTURER
         if (buildName.equals("Xiami")) {
@@ -150,10 +142,8 @@ class DietRecordAddDialog : DialogFragment() {
             val imageUri: Uri = data.data!!
             val newImageUri = getRealPathFromURI(imageUri)
 
-            // SharedViewModel에 선택된 이미지 URI 설정
             sharedViewModel.setSelectedImageUri(Uri.fromFile(File(newImageUri)))
 
-            // Glide를 사용하여 이미지를 로드
             Glide.with(requireContext())
                 .load(File(newImageUri).path)
                 .centerCrop()
@@ -163,12 +153,10 @@ class DietRecordAddDialog : DialogFragment() {
 
     private fun addMealText() {
         val dietRecord = binding.mealEdit.text.toString()
-        //editText가 빈칸일 때 toast 메세지 띄우고 식단 추가 되지 않음
         if (dietRecord.isNotEmpty()) {
             dietRecordsList.add(dietRecord)
             dietRecordAdapter.notifyDataSetChanged()
             Toast.makeText(requireContext(), "식단 추가 완료!", Toast.LENGTH_SHORT).show()
-            //식단 기록 입력 후 editText 초기화
             binding.mealEdit.text.clear()
         } else {
             Toast.makeText(requireContext(), "식단을 입력해주세요.", Toast.LENGTH_SHORT).show()
