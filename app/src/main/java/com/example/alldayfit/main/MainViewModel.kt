@@ -16,8 +16,8 @@ class MainViewModel(private val database: RealTimeRepository) : ViewModel() {
     private val _goalList: MutableLiveData<List<Goal>> = MutableLiveData()
     val goalList: MutableLiveData<List<Goal>> get() = _goalList
 
-    private val _exerciseBtnTxt: MutableLiveData<Int> = MutableLiveData()
-    val exerciseBtnTxt: LiveData<Int> get() = _exerciseBtnTxt
+    private val _exerciseBtnTxt: MutableLiveData<Boolean> = MutableLiveData()
+    val exerciseBtnTxt: LiveData<Boolean> get() = _exerciseBtnTxt
 
     private lateinit var exerciseData: FirebaseModel.ExerciseRecord
     private lateinit var startTime: ZonedDateTime
@@ -25,20 +25,21 @@ class MainViewModel(private val database: RealTimeRepository) : ViewModel() {
 
     // ViewModel 초기 값 설정
     init {
-        _exerciseBtnTxt.value = R.string.exercise_start
+        _exerciseBtnTxt.value = false
         _goalList.value = _goal
     }
 
     fun toggleExerciseBtn() {
         val currentTxt = exerciseBtnTxt.value
-        if (currentTxt == R.string.exercise_start) {
-            _exerciseBtnTxt.value = R.string.exercise_finish
+        if (currentTxt == true) {
+            _exerciseBtnTxt.value = false
             startTime = getCurrentLocalTime()
-        } else {
-            _exerciseBtnTxt.value = R.string.exercise_start
+        }
+        if (currentTxt == false) {
+            _exerciseBtnTxt.value = true
             endTime = getCurrentLocalTime()
-            val elapsedTime =
-                elapsedTimeInMinutes(startTime, endTime)
+//            val elapsedTime =
+//                elapsedTimeInMinutes(startTime, endTime)
         }
     }
 

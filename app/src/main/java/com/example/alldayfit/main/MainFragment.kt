@@ -87,10 +87,12 @@ class MainFragment : Fragment() {
         weekGoalList.adapter = goalAdapter
     }
 
-    private fun initViewModel() {
-        with(viewModel) {
-            exerciseBtnTxt.observe(viewLifecycleOwner) { it ->
-                binding.exerciseBtn.text = getString(it)
+    private fun initViewModel() = with(viewModel) {
+        exerciseBtnTxt.observe(viewLifecycleOwner) { it ->
+            if (it) {
+                binding.exerciseBtn.text = getString(R.string.exercise_finish)
+            } else {
+                binding.exerciseBtn.text = getString(R.string.exercise_start)
             }
         }
     }
