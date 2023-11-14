@@ -181,4 +181,6 @@
     <string name="delete_week_goal">주간 목표 삭제</string>
     <string name="off">off</string>
     <string name="proverb_text">기운과 끈기는 모든것을 이겨낸다.</string>
+    <string name="login_google">login google</string>
+    <string name="sign_up_email">sign up email</string>
 </resources>

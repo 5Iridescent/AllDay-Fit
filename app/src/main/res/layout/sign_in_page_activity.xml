@@ -43,11 +43,12 @@
 
     <Button
         android:id="@+id/buttonLogin"
-        android:layout_width="0dp"
+        android:layout_width="354dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
+        android:paddingHorizontal="30dp"
         android:text="@string/log_in"
         app:layout_constraintBottom_toTopOf="@+id/email_sign_up"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +91,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="@+id/email_sign_up"
         app:layout_constraintTop_toTopOf="@+id/email_sign_up"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:contentDescription="@string/sign_up_email" />
 
     <ImageView
         android:id="@+id/email_sign_up"
@@ -100,9 +102,9 @@
         android:elevation="20dp"
         android:src="@drawable/btn_google"
         app:layout_constraintEnd_toEndOf="@+id/googleSignInButton"
-        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="@+id/googleSignInButton"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        android:contentDescription="@string/sign_up_email" />
 
     <ImageView
         android:id="@+id/googleSignInButton"
@@ -116,7 +118,8 @@
         app:layout_constraintDimensionRatio="7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_sign_up" />
+        app:layout_constraintTop_toBottomOf="@+id/email_sign_up"
+        android:contentDescription="@string/login_google" />
 
     <ImageView
         android:id="@+id/ic_google"
@@ -142,6 +145,5 @@
         app:layout_constraintEnd_toEndOf="@+id/googleSignInButton"
         app:layout_constraintHorizontal_bias="0.203"
         app:layout_constraintStart_toEndOf="@id/ic_google"
-        app:layout_constraintTop_toTopOf="@id/googleSignInButton"
-        app:layout_constraintVertical_bias="0.477" />
+        app:layout_constraintTop_toTopOf="@id/googleSignInButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
