@@ -1,183 +1,243 @@
 package com.example.alldayfit.count
 
 
-import ExerciseRecordAdapter
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.SystemClock
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alldayfit.R
-import com.example.alldayfit.databinding.CountPageActivityBinding
-import com.example.alldayfit.main.MainFragment
+import com.example.alldayfit.count.adapter.ExerciseRecordAdapter
+import com.example.alldayfit.count.model.Count
+import com.example.alldayfit.count.model.ExerciseRecord
+import com.example.alldayfit.databinding.CountActivityBinding
+import java.time.ZoneId
+import java.time.ZonedDateTime
 
 
-
-class CountPage : AppCompatActivity() {
-    private lateinit var mBinding: CountPageActivityBinding
-    private var timerRunning = false
+class CountActivity : AppCompatActivity() {
+    private lateinit var binding: CountActivityBinding
     private lateinit var countDownTimer: CountDownTimer
 
+    private val viewModel: CountViewModel by lazy {
+        ViewModelProvider(
+            this,
+            CountViewModelFactory()
+        )[CountViewModel::class.java]
+    }
+
     //리사이클러뷰 및 어댑터 초기화
-    val exerciseRecords = mutableListOf<ExerciseRecord>()
-    val adapter = ExerciseRecordAdapter(exerciseRecords)
+    private val adapter by lazy { ExerciseRecordAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = CountPageActivityBinding.inflate(layoutInflater)
-        val view = mBinding.root
-        setContentView(view)
+        binding = CountActivityBinding.inflate(layoutInflater)
+        initView()
+        initViewModel()
+        setContentView(binding.root)
+    }
 
-        // 어댑터 연결
-        mBinding.rvCount.layoutManager = LinearLayoutManager(this)
-        mBinding.rvCount.adapter = adapter
-
-        mBinding.setRootine.setOnClickListener {
-            val countDialog = CountDialog()
-            countDialog.show(supportFragmentManager, "CountDialogFragment")
-        }
-
-        // 시작 버튼을 누르면 타이머 시작
-        mBinding.btnStart.setOnClickListener {
-            mBinding.btnRest.visibility = View.VISIBLE
-            clickTimer()
-        }
-
-        // 휴식 버튼 눌렀을 때 카운트 다운 시작
-        mBinding.btnRest.setOnClickListener {
-            stopTimer()
-            startCountDown()
-
-            mBinding.rvCount.visibility = View.VISIBLE
-            // 클릭한 순간의 타이머 값을 타임스탬프로 사용
-            val exerciseRecord = ExerciseRecord(mBinding.timer.text.toString())
-            // 리스트에 기록 추가
-            exerciseRecords.add(exerciseRecord)
-            // 어댑터에 데이터 변경 알림
-            adapter.notifyDataSetChanged()
-        }
-
-        // 종료 버튼을 누르면 타이머 종료
-        mBinding.btnFinish.setOnClickListener {
-            saveRecyclerView()
-            if(!timerRunning){
-                saveRecyclerView()
-                finishView()
+    private fun initViewModel() = with(viewModel) {
+        isCounting.observe(this@CountActivity) {
+            if (isRunning.value == true) {
+                updateStartPauseButton(it)
             }
-                mBinding.rvCount.visibility = View.VISIBLE
-                finishView()
         }
+        isRunning.observe(this@CountActivity) {
+            toggleVisibility(it)
+        }
+        routine.observe(this@CountActivity) {
+            showRoutine(it)
+            adapter.submitList(it)
+        }
+    }
 
+    private fun showRoutine(routine: List<Count>) = with(binding) {
+        if (routine.isEmpty()) {
+            routineSetBtn.visibility = View.VISIBLE
+            routineList.visibility = View.INVISIBLE
+        } else {
+            routineSetBtn.visibility = View.GONE
+            routineList.visibility = View.VISIBLE
+        }
+    }
 
+    private fun toggleVisibility(isRunning: Boolean) = with(binding) {
+        if (isRunning) {
+            routineSetBtn.visibility = View.GONE
+            textView.visibility = View.INVISIBLE
+            timer.visibility = View.VISIBLE
+            rest.visibility = View.VISIBLE
+        } else {
+            textView.visibility = View.VISIBLE
+            timer.visibility = View.INVISIBLE
+            rest.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun contextGetColor(color: Int): Int {
+        return ContextCompat.getColor(this@CountActivity, color)
+    }
+
+    private fun updateStartPauseButton(isCounting: Boolean) = with(binding) {
+        if (isCounting) {
+            rest.visibility = View.INVISIBLE
+            startBtn.apply {
+                text = getString(R.string.rest)
+                background = AppCompatResources.getDrawable(
+                    this@CountActivity,
+                    R.drawable.btn_circle_orange_counter
+                )
+            }
+            progressbar.apply {
+                progressTintList =
+                    ColorStateList.valueOf(contextGetColor(R.color.blue))
+                progress = progressbar.max
+            }
+            timer.apply {
+                setTextColor(contextGetColor(R.color.blue))
+                base = SystemClock.elapsedRealtime()
+                start()
+            }
+        } else {
+            rest.visibility = View.VISIBLE
+            startBtn.apply {
+                text = getString(R.string.start)
+                background = AppCompatResources.getDrawable(
+                    this@CountActivity,
+                    R.drawable.btn_circle_blue_counter
+                )
+            }
+            progressbar.progressTintList =
+                ColorStateList.valueOf(ContextCompat.getColor(this@CountActivity, R.color.orange))
+            timer.apply {
+                setTextColor(contextGetColor(R.color.orange))
+                stop()
+            }
+            startCountDown()
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun initView() = with(binding) {
+        // toolbar set actionbar
+        setSupportActionBar(toolbar)
+        // toolbar back button show true
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        // toolbar app title show false
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        // 루틴 리시트 어댑터 연결
+        routineList.layoutManager = LinearLayoutManager(this@CountActivity)
+        routineList.adapter = adapter
         //시간을 00:00:00 으로 보이게 하는 코드
-        mBinding.timer.setOnChronometerTickListener {
+        timer.setOnChronometerTickListener {
             val elapsedMillis = SystemClock.elapsedRealtime() - it.base
             val hours = (elapsedMillis / 3600000).toInt()
             val minutes = (elapsedMillis - hours * 3600000) / 60000
             val seconds = (elapsedMillis - hours * 3600000 - minutes * 60000) / 1000
-
             val formattedTime = String.format("%02d:%02d:%02d", hours, minutes, seconds)
             it.text = formattedTime
         }
-
+        // progressbar 색 초기화
+        progressbar.progressTintList = ColorStateList.valueOf(contextGetColor(R.color.blue))
+        // 루신 설정 버튼
+        routineSetBtn.setOnClickListener {
+            val countDialog = CountDialog()
+            countDialog.show(supportFragmentManager, "CountDialogFragment")
+        }
+        // 시작 버튼을 누르면 타이머 시작
+        startBtn.setOnClickListener {
+            if (startBtn.text == getString(R.string.rest)) {
+                viewModel.addRoutine(
+                    Count(
+                        ZonedDateTime.now(ZoneId.systemDefault()),
+                        binding.timer.text.toString()
+                    )
+                )
+            }
+            viewModel.onSetButtonClick()
+        }
+        // 종료 버튼을 누르면 타이머 종료
+        endBtn.setOnClickListener {
+            viewModel.onEndButtonClick()
+            viewModel.clearRoutine()
+//            saveRecyclerView()
+            finishView()
+            val rainbowColors = intArrayOf(
+                Color.RED,
+                Color.YELLOW,
+                Color.GREEN,
+                Color.CYAN,
+                Color.BLUE,
+                Color.MAGENTA,
+                Color.RED
+            )
+//            val progressDrawable =
+//                GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, rainbowColors)
+//            progressDrawable.findDrawableByLayerId(R.drawable.progress_circular) as ClipDrawable
+//// ProgressBar에 설정
+        }
         // 운동 더하기 버튼 클릭 시 스톱워치 초기 화면으로 이동
-        mBinding.btnMoreExercise.setOnClickListener {
-            val intent = Intent(this, CountPage::class.java)
-            startActivity(intent)
+        moreExerciseBtn.setOnClickListener {
+            viewModel.stopwatchMode()
+            recreate()
         }
-
         // 운동 끝내기 버튼 클릭 시 메인화면으로 이동
-        mBinding.btnFinishExercise.setOnClickListener {
-            val fagmentManager = supportFragmentManager
-            val fragmentTrasaction = fagmentManager.beginTransaction()
-
-            val mainFragment = MainFragment()
-            fragmentTrasaction.replace(R.id.main_fragment, mainFragment)
-
-            fragmentTrasaction.addToBackStack(null)
-            fragmentTrasaction.commit()
+        finishExerciseBtn.setOnClickListener {
+            finish()
         }
-
-        // back 버튼 클릭 시 메인화면으로 이동
-        mBinding.back.setOnClickListener {
-            val fagmentManager = supportFragmentManager
-            val fragmentTrasaction = fagmentManager.beginTransaction()
-
-            val mainFragment = MainFragment()
-            fragmentTrasaction.replace(R.id.main_fragment, mainFragment)
-
-            fragmentTrasaction.addToBackStack(null)
-            fragmentTrasaction.commit()
-        }
-    }
-
-    private fun clickTimer() {
-        if (!timerRunning) {
-            startTimer()
-            mBinding.textView.visibility = View.GONE
-            mBinding.setRootine.visibility = View.INVISIBLE
-            mBinding.timer.visibility = View.VISIBLE
-        } else {
-            startCountDown()
-            stopTimer()
-        }
-        timerRunning = !timerRunning
-    }
-
-
-    private fun startTimer() {
-        mBinding.timer.base = SystemClock.elapsedRealtime()
-        mBinding.timer.start()
-    }
-
-    private fun stopTimer() {
-        mBinding.timer.stop()
     }
 
     private fun startCountDown() {
-        mBinding.rest.visibility = View.VISIBLE
-        mBinding.progressbar.visibility = View.VISIBLE
-        mBinding.count.visibility = View.INVISIBLE
-        mBinding.rest.setTextColor(ContextCompat.getColor(this, R.color.orange))
-        mBinding.timer.setTextColor(ContextCompat.getColor(this, R.color.orange))
 
-        // countdown이 시작되면 버튼 비활성화
-        mBinding.btnRest.isEnabled = false
-        mBinding.btnStart.isEnabled = false
-
+        binding.startBtn.apply {
+            isEnabled = false
+            alpha = 0.3f
+        }
         countDownTimer = object : CountDownTimer(46000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 // 남은 시간을 HH:mm:ss 형식으로 변환
+                if (viewModel.isRunning.value == false) {
+                    onFinish()
+                }
                 val formattedTime = formatTime(millisUntilFinished)
-                mBinding.timer.text = formattedTime
-
-                val progress = millisUntilFinished.toInt()
-                mBinding.progressbar.progress = progress
+                val progress = millisUntilFinished.toInt() - 1000
+                binding.timer.text = formattedTime
+                binding.progressbar.progress = progress
+                binding.startBtn.isEnabled = false
             }
 
+            // 타이머가 완료되면 호출되는 메서드
             override fun onFinish() {
-                if(mBinding.finishTextView.visibility == View.VISIBLE){
-                    return
-                }
-                startTimer()
-                timerRunning = !timerRunning
+                binding.startBtn.performClick()
                 // countdown이 끝나면 버튼 다시 활성화
-                mBinding.btnRest.isEnabled = true
-                // 타이머가 완료되면 호출되는 메서드
-                mBinding.timer.text = "00:00:00"
-                mBinding.rest.visibility = View.INVISIBLE
-                mBinding.count.setImageResource(R.drawable.circle_blue_back_shape)
-                mBinding.timer.setTextColor(ContextCompat.getColor(this@CountPage, R.color.blue))
-
-                mBinding.count.visibility = View.VISIBLE
-                mBinding.progressbar.visibility = View.INVISIBLE
+                binding.startBtn.apply {
+                    isEnabled = true
+                    alpha = 1.0f
+                }
+                binding.progressbar.progress = binding.progressbar.max
             }
         }
         countDownTimer.start()
+
     }
 
     private fun formatTime(millis: Long): String {
@@ -189,29 +249,21 @@ class CountPage : AppCompatActivity() {
         return String.format("%02d:%02d:%02d", hours, minutes, remainingSeconds)
     }
 
-    private fun finishView(){
-        mBinding.finishTextView.visibility = View.VISIBLE
-        mBinding.timer.visibility = View.INVISIBLE
-        mBinding.count.setImageResource(R.drawable.circle_blue_back_shape) //Todo 무지개 테두리로 변경
-
+    private fun finishView() {
+        binding.textView.text = getString(R.string.count_finish_ment)
+        //        binding.timer.visibility = View.INVISIBLE
+//                binding.progressbar.setImageResource(R.drawable.circle_blue_back_shape) //Todo 무지개 테두리로 변경
         // 스톱워치 종료 후 다시 클릭해도 반응 없게하는 코드
-        mBinding.btnFinish.isEnabled = false
-        mBinding.rest.visibility = View.GONE
-        mBinding.btnMoreExercise.visibility = View.VISIBLE
-        mBinding.btnFinishExercise.visibility = View.VISIBLE
-        mBinding.progressbar.visibility = View.INVISIBLE
-        mBinding.btnRest.visibility = View.INVISIBLE
-        mBinding.btnRest.isEnabled = false
-        mBinding.btnStart.isEnabled = false
-        mBinding.btnStart.visibility = View.VISIBLE
-        mBinding.count.visibility = View.VISIBLE
+        binding.endBtn.isEnabled = false
+        binding.moreExerciseBtn.visibility = View.VISIBLE
+        binding.finishExerciseBtn.visibility = View.VISIBLE
+        binding.startBtn.isEnabled = false
     }
 
-    private fun saveRecyclerView(){
-        mBinding.rvCount.visibility = View.VISIBLE
-        // 종료할 때 마지막 타이머 기록 저장
-        val exerciseRecord = ExerciseRecord(mBinding.timer.text.toString())
-        exerciseRecords.add(exerciseRecord)
-        adapter.notifyDataSetChanged()
+    companion object {
+        const val BEFORE = "before"
+        const val START = "start"
+        const val STOP = "stop"
+        const val AFTER = "after"
     }
 }
