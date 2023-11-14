@@ -20,7 +20,6 @@ class CommunityViewAdapter(
 ) :
     ListAdapter<CommunityPostEntity, CommunityViewAdapter.HomeHolder>(diffUtil) {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeHolder {
         return HomeHolder(
             CommunityItemsBinding.inflate(
@@ -30,7 +29,6 @@ class CommunityViewAdapter(
             )
         )
     }
-
 
     override fun onBindViewHolder(holder: CommunityViewAdapter.HomeHolder, position: Int) {
         holder.bind(currentList[position])
@@ -79,7 +77,7 @@ class CommunityViewAdapter(
                 oldItem: CommunityPostEntity,
                 newItem: CommunityPostEntity
             ): Boolean {
-                return oldItem.title == newItem.title
+                return oldItem.postId == newItem.postId
             }
 
             override fun areContentsTheSame(
@@ -87,9 +85,7 @@ class CommunityViewAdapter(
                 newItem: CommunityPostEntity
             ): Boolean {
                 return oldItem.content == newItem.content
-
             }
         }
-
     }
 }

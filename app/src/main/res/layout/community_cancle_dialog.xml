@@ -15,7 +15,7 @@
         android:text="게시글을 삭제하시겠습니까?"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <android.widget.Button
         android:id="@+id/btn_delete"
@@ -30,7 +30,7 @@
         app:layout_constraintEnd_toStartOf="@id/btn_cancel"
         android:background="@drawable/button_radius"
         android:textColor="@color/white"
-        android:text="삭제"/>
+        android:text="삭제" />
 
     <android.widget.Button
         android:id="@+id/btn_cancel"
@@ -45,5 +45,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@drawable/button_radius"
         android:backgroundTint="@color/gray"
-        android:text="취소"/>
+        android:text="취소" />
 </androidx.constraintlayout.widget.ConstraintLayout>

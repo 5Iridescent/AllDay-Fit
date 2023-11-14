@@ -125,7 +125,7 @@
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="@id/googleSignInButton"
         app:layout_constraintTop_toTopOf="@id/googleSignInButton"
-        app:layout_constraintBottom_toBottomOf="@id/googleSignInButton"/>
+        app:layout_constraintBottom_toBottomOf="@id/googleSignInButton" />
 
     <TextView
         android:layout_width="wrap_content"

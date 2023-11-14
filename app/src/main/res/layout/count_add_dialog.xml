@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/count_spinner_item">
@@ -56,7 +54,7 @@
         android:src="@drawable/ic_arrrow_down"
         app:layout_constraintBottom_toBottomOf="@id/choice1"
         app:layout_constraintTop_toTopOf="@id/choice1"
-        app:layout_constraintEnd_toEndOf="@+id/choice1"/>
+        app:layout_constraintEnd_toEndOf="@+id/choice1" />
 
     <TextView
         android:id="@+id/exercise_details"
@@ -95,7 +93,7 @@
         android:src="@drawable/ic_arrrow_down"
         app:layout_constraintBottom_toBottomOf="@id/choice2"
         app:layout_constraintTop_toTopOf="@id/choice2"
-        app:layout_constraintEnd_toEndOf="@+id/choice2"/>
+        app:layout_constraintEnd_toEndOf="@+id/choice2" />
 
     <TextView
         android:id="@+id/select_exercise"
@@ -117,7 +115,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/select_exercise"
         app:layout_constraintWidth_percent="0.8"
-        app:singleSelection="true" >
+        app:singleSelection="true">
+
         <com.google.android.material.chip.Chip
             android:id="@+id/music_chip"
             android:layout_width="wrap_content"
@@ -157,7 +156,7 @@
         android:layout_marginStart="180dp"
         android:text="회"
         app:layout_constraintTop_toBottomOf="@id/chip_group"
-        app:layout_constraintStart_toEndOf="@id/count_set"/>
+        app:layout_constraintStart_toEndOf="@id/count_set" />
 
     <EditText
         android:id="@+id/edit_count"
@@ -194,7 +193,7 @@
         app:layout_constraintEnd_toEndOf="@+id/create_rootine"
         app:layout_constraintTop_toTopOf="@id/create_rootine"
         app:layout_constraintStart_toStartOf="@id/create_rootine"
-        app:layout_constraintBottom_toBottomOf="@id/create_rootine"/>
+        app:layout_constraintBottom_toBottomOf="@id/create_rootine" />
 
     <ImageView
         android:id="@+id/exit"
@@ -219,5 +218,5 @@
         app:layout_constraintStart_toStartOf="@id/exit"
         app:layout_constraintBottom_toBottomOf="@id/exit"
         app:layout_constraintTop_toTopOf="@id/exit"
-        app:layout_constraintEnd_toEndOf="@id/exit"/>
+        app:layout_constraintEnd_toEndOf="@id/exit" />
 </androidx.constraintlayout.widget.ConstraintLayout>
