@@ -102,7 +102,7 @@
 
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="com.example.alldayfit.calendar.CalendarFragment"
+        android:name="com.example.alldayfit.main.MainFragment"
         android:label="calendar_fragment"
         tools:layout="@layout/calendar_fragment" />
 

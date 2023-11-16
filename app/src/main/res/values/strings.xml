@@ -135,10 +135,11 @@
     <string name="rest">휴식</string>
 
     <!-- login activity -->
-    <string name="emailSign">Email Sign Up</string>
-    <string name="emailSiginIn">Email Sign In</string>
+    <string name="email_Sign_Up">Email Sign Up</string>
+    <string name="email_Sign_In">Email Sign In</string>
     <string name="googleSignIn">Sign In with Google</string>
     <string name="google">Sign up with GooGle </string>
+    <string name="sign">Sign Up</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
@@ -181,8 +182,6 @@
     <string name="off">off</string>
     <string name="proverb_text">기운과 끈기는 모든것을 이겨낸다.</string>
     <string name="login_google">login google</string>
-    <string name="sign_up_email">sign up email</string>
-    <string name="sign_up_google">sign up google</string>
     <string name="add_week_goal_btn_desc">주간 목표 추가</string>
     <string name="close_dialog">close dialog</string>
     <string name="edit_email_hint">이메일을 입력하세요</string>

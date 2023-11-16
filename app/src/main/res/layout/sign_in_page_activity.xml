@@ -9,10 +9,12 @@
 
     <EditText
         android:id="@+id/editTextEmail"
-        android:layout_width="377dp"
-        android:layout_height="48dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintDimensionRatio="7"
         android:layout_marginStart="17dp"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="84dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/btn_google"
         android:hint="@string/add_email"
@@ -20,14 +22,18 @@
         android:inputType="textEmailAddress"
         android:paddingHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <EditText
+
         android:id="@+id/editTextPassword"
-        android:layout_width="377dp"
-        android:layout_height="48dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="7"
         android:layout_marginLeft="16dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="36dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/btn_google"
@@ -42,15 +48,21 @@
 
 
     <android.widget.Button
+        app:layout_constraintDimensionRatio="7"
         android:id="@+id/buttonLogin"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="84dp"
         android:layout_marginRight="16dp"
+        android:background="@drawable/sky_blue_solid_shape"
         android:paddingHorizontal="30dp"
+        android:layout_marginHorizontal="30dp"
         android:text="@string/log_in"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editTextPassword" />
 
@@ -89,18 +101,18 @@
             app:layout_constraintTop_toTopOf="@+id/email_sign_up" />
 
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:contentDescription="@string/sign_up_email"
-            android:elevation="21dp"
-            android:src="@drawable/baseline_alternate_email_24"
-            app:layout_constraintBottom_toBottomOf="@+id/textView3"
-            app:layout_constraintStart_toStartOf="@+id/email_sign_up"
-            app:layout_constraintTop_toTopOf="@+id/email_sign_up"
-            app:layout_constraintVertical_bias="1.0" />
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:elevation="21dp"
+        android:src="@drawable/baseline_alternate_email_24"
+        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/email_sign_up"
+        app:layout_constraintTop_toTopOf="@+id/email_sign_up"
+        app:layout_constraintVertical_bias="1.0"
+        android:contentDescription="@string/sign_up_email" />
 
         <ImageView
             android:id="@+id/email_sign_up"
