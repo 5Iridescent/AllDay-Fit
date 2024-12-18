@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import com.example.alldayfit.databinding.MainActivityBinding
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: MainActivityBinding
 

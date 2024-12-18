@@ -12,7 +12,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_activity)
-        var lodingImage = findViewById(R.id.splash_image) as LottieAnimationView
+        val lodingImage: LottieAnimationView = findViewById(R.id.splash_image)
 
         // 애니메이션 시작
         lodingImage.playAnimation()

@@ -154,4 +154,7 @@
     <string name="user">유저</string>
 
     <string name="community_edit">수정</string>
+
+    <string name="naver_client_id">hQ39nFNCoJ8iwBNz9p1i</string>
+    <string name="naver_client_secret">oAD8p31JBQ</string>
 </resources>

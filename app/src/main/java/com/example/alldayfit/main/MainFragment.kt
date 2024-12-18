@@ -2,12 +2,13 @@ package com.example.alldayfit.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -16,13 +17,16 @@ import com.example.alldayfit.count.CountActivity
 import com.example.alldayfit.databinding.MainFragmentBinding
 import com.example.alldayfit.databinding.MainWeeklyRecordItemBinding
 import com.example.alldayfit.main.adapter.GoalAdapter
+
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 class MainFragment : Fragment() {
+
+
     private var _binding: MainFragmentBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding!!  // Non-null binding
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(
             this,
@@ -52,13 +56,36 @@ class MainFragment : Fragment() {
     )
     private val today: ZonedDateTime = ZonedDateTime.now(ZoneId.systemDefault())
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+    // Fragment 뷰를 생성하는 부분
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = MainFragmentBinding.inflate(inflater, container, false)
-        initView()
-        initViewModel()
         return binding.root
+    }
+
+    // Fragment 뷰가 생성된 후에 호출되어 UI 초기화 및 ViewModel 설정
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+        setupView()
+        initViewModel()
+        setWeekExercise()
+    }
+
+    // Fragment 뷰가 파괴될 때 호출되어 메모리 누수 방지를 위해 binding을 null로 설정
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    companion object {
+        const val DAY_FORMAT = "dd"
+        const val MONTH_FORMAT = "yyyy.MM"
     }
 
     /* fragment design, data 초기 설정 */
@@ -110,10 +137,6 @@ class MainFragment : Fragment() {
         return today.minusDays(currentDayOfWeek.value.toLong())
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupView()
-    }
 
     private fun setupView() = with(binding) {
         exerciseBtn.setOnClickListener {
@@ -130,22 +153,22 @@ class MainFragment : Fragment() {
         }
     }
 
-    private fun showToast(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-    }
-
     private fun showDialog(action: NavDirections) {
         findNavController().navigate(action)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun setWeekExercise() {
+        // 파이어 베이스에 있는 weekgoal 리사이클러뷰에 로드
+        viewModel.goalList.observe(viewLifecycleOwner, Observer {
+            goalAdapter.submitList(it)
+            goalAdapter.addGoal(it)
+            Log.d("MainFragment", "goalList: $it")
+        })
+
     }
 
-    companion object {
-        const val DAY_FORMAT = "dd"
-        const val MONTH_FORMAT = "yyyy.MM"
-    }
+
+
+
 
 }

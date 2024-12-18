@@ -48,6 +48,10 @@ data class FirebaseModel(
         val nickname: String,
         val content: String,
     )
+    // 유저 토큰 정보
+    data class UserToken(
+        val token: String
+    )
 
 }
 

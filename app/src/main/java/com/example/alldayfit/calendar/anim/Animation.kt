@@ -2,6 +2,7 @@ package com.example.alldayfit.calendar.anim
 
 import com.example.alldayfit.R
 
+
 val vertical = com.example.alldayfit.calendar.data.Animation(
     enter = R.anim.slide_in_up,
     exit = R.anim.fade_out,

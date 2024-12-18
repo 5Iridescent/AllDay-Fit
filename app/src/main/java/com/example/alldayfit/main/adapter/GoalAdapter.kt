@@ -43,7 +43,7 @@ class GoalAdapter() :
         fun bind(data: Goal) {
             binding.apply {
                 goal.text = data.goals
-                checkbox.isChecked = data.goalckeck
+                checkbox.isChecked = data.goalCheck
             }
         }
     }

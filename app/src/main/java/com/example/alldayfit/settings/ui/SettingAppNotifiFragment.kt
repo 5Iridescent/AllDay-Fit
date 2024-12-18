@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.alldayfit.databinding.SettingNotifiFragmentBinding
 
+
 class SettingAppNotifiFragment : Fragment() {
     private var _binding: SettingNotifiFragmentBinding? = null
     private val binding get() = _binding!!

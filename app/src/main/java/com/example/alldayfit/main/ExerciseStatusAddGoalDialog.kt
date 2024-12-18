@@ -1,20 +1,30 @@
 package com.example.alldayfit.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alldayfit.databinding.MainAddGoalDialogBinding
+
 import com.example.alldayfit.main.adapter.GoalAdapter
 import com.example.alldayfit.main.model.Goal
+
 
 class ExerciseStatusAddGoalDialog : DialogFragment() {
 
     private var _binding: MainAddGoalDialogBinding? = null
     private val binding get() = _binding!!
+    private var onItemAddedListener: OnItemAddedListener? = null
+    private val goalList = mutableListOf<Goal>()
+    interface OnItemAddedListener {
+        fun onItemAdded(goal: Goal)
+    }
+
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(
             this,
@@ -29,10 +39,9 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //데이터 바인딩 연결
+        // 데이터 바인딩 연결
         _binding = MainAddGoalDialogBinding.inflate(inflater, container, false)
         initView()
-        initViewModel()
         return binding.root
     }
 
@@ -40,12 +49,11 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
     private fun initView() = with(binding) {
         goalListview.adapter = adapter
         binding.goalListview.layoutManager = LinearLayoutManager(context)
-    }
-
-    private fun initViewModel() = with(viewModel) {
-//        goalLiveData.observe(viewLifecycleOwner) { data ->
-//            adapter.addGoal(data)
-//        }
+        // 파이어베이스에 있는 데이터 로드 후 adapter에 submit
+        viewModel.goalList.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
+            Log.d("ExerciseStatusAddGoalDialog", "goalList: $it")
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,8 +64,7 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
     private fun setupView() = with(binding) {
         // exercise 주간 목표 마치는 버튼
         finishBtn.setOnClickListener {
-            goal = Goal(binding.goalEdit.text.toString(), false, Goal.POST_POSITION)
-//            viewModel.changeDialogType(goal)
+            viewModel.addGoalsToFirebase(goalList)
             dismiss()
         }
         // dialog 닫는 버튼
@@ -69,7 +76,12 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
                 return@setOnClickListener
             }
             goal = Goal(goalEdit.text.toString(), false, Goal.POST_POSITION)
-//            viewModel.setGoalList(goal)
+            goalList.add(goal)
+            adapter.submitList(goalList.toList())
+            adapter.addGoal(goalList)
+
+            onItemAddedListener?.onItemAdded(goal)
+            Log.d("ExerciseStatusAddGoalDialog", "goalList: $goalList")
             goalEdit.text.clear()
         }
     }
@@ -78,5 +90,4 @@ class ExerciseStatusAddGoalDialog : DialogFragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

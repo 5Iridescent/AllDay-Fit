@@ -31,7 +31,7 @@ class CommunityMyPostAdapter(
     }
 
 
-    override fun onBindViewHolder(holder: CommunityMyPostAdapter.MyPostHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyPostHolder, position: Int) {
         val data = currentList[position]
         holder.bind(data)
     }
